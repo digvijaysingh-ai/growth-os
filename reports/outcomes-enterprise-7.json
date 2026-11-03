@@ -1,0 +1,979 @@
+{
+ "hub": "enterprise-7.sqlite",
+ "from": "2026-11-02",
+ "days": 91,
+ "decisions": [
+  {
+   "id": 1,
+   "rank": 1,
+   "action": "P0 engineering fix for iOS checkout and payment in Paris and Amsterdam",
+   "type": "open_ticket",
+   "target": "engineering",
+   "to": "",
+   "pct": 0.0,
+   "risk": "low",
+   "approver": "Product / engineering owner",
+   "executed": [
+    {
+     "id": 1,
+     "type": "open_ticket",
+     "target": "engineering",
+     "status": "executed",
+     "detail": "ticket for engineering (sandbox #1)"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 362266,
+    "spend": 0,
+    "gross_profit": 182653,
+    "orders": 5940,
+    "new_customers": 1948
+   },
+   "change_pct": {
+    "revenue": 0.4,
+    "spend": 0.0,
+    "gross_profit": 0.5
+   }
+  },
+  {
+   "id": 2,
+   "rank": 2,
+   "action": "Apply the mix model's channel split across the whole portfolio, with no channel moving more than 25%",
+   "type": "apply_mix_plan",
+   "target": "all",
+   "to": "",
+   "pct": 25.0,
+   "risk": "high",
+   "approver": "Leadership",
+   "executed": [
+    {
+     "id": 2,
+     "type": "apply_mix_plan",
+     "target": "all",
+     "status": "executed",
+     "detail": "all: channel split applied on 44 market-lines (max ±25% per channel); model expects +€141,784 revenue a week"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 2075860,
+    "spend": 47328,
+    "gross_profit": 995780,
+    "orders": 34119,
+    "new_customers": 12100
+   },
+   "change_pct": {
+    "revenue": 2.4,
+    "spend": 0.5,
+    "gross_profit": 2.9
+   }
+  },
+  {
+   "id": 3,
+   "rank": 3,
+   "action": "Ticket to SEO: restore Barcelona's old URLs (301 redirects), resubmit the sitemap and fix site search",
+   "type": "open_ticket",
+   "target": "seo",
+   "to": "",
+   "pct": 0.0,
+   "risk": "low",
+   "approver": "Product / engineering owner",
+   "executed": [
+    {
+     "id": 3,
+     "type": "open_ticket",
+     "target": "seo",
+     "status": "executed",
+     "detail": "ticket for seo (sandbox #1)"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 135438,
+    "spend": -15314,
+    "gross_profit": 84583,
+    "orders": 2273,
+    "new_customers": 546
+   },
+   "change_pct": {
+    "revenue": 0.2,
+    "spend": -0.2,
+    "gross_profit": 0.2
+   }
+  },
+  {
+   "id": 4,
+   "rank": 4,
+   "action": "Bring London spend back to its \\u20ac360k budget (\\u221214%)",
+   "type": "change_budget",
+   "target": "London",
+   "to": "",
+   "pct": -14.0,
+   "risk": "medium",
+   "approver": "Growth manager",
+   "executed": [
+    {
+     "id": 4,
+     "type": "change_budget",
+     "target": "London",
+     "status": "executed",
+     "detail": "London: paid budget -14%"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": -342961,
+    "spend": -152215,
+    "gross_profit": -21402,
+    "orders": -5725,
+    "new_customers": -2221
+   },
+   "change_pct": {
+    "revenue": -0.4,
+    "spend": -1.6,
+    "gross_profit": -0.1
+   }
+  },
+  {
+   "id": 5,
+   "rank": 5,
+   "action": "Raise Paris Home's budget by 15%",
+   "type": "change_line_budget",
+   "target": "Paris|Home",
+   "to": "",
+   "pct": 15.0,
+   "risk": "medium",
+   "approver": "Growth manager",
+   "executed": [
+    {
+     "id": 5,
+     "type": "change_line_budget",
+     "target": "Paris|Home",
+     "status": "executed",
+     "detail": "Paris|Home: paid budget +15%"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 162955,
+    "spend": 36389,
+    "gross_profit": 41829,
+    "orders": 2202,
+    "new_customers": 936
+   },
+   "change_pct": {
+    "revenue": 0.2,
+    "spend": 0.4,
+    "gross_profit": 0.1
+   }
+  },
+  {
+   "id": 6,
+   "rank": 6,
+   "action": "Cut Lisbon Beauty's budget by 25% to fund Paris Home",
+   "type": "change_line_budget",
+   "target": "Lisbon|Beauty",
+   "to": "",
+   "pct": -25.0,
+   "risk": "medium",
+   "approver": "Growth manager",
+   "executed": [
+    {
+     "id": 6,
+     "type": "change_line_budget",
+     "target": "Lisbon|Beauty",
+     "status": "executed",
+     "detail": "Lisbon|Beauty: paid budget -25%"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": -49846,
+    "spend": -37975,
+    "gross_profit": 7070,
+    "orders": -1218,
+    "new_customers": -440
+   },
+   "change_pct": {
+    "revenue": -0.1,
+    "spend": -0.4,
+    "gross_profit": 0.0
+   }
+  },
+  {
+   "id": 7,
+   "rank": 7,
+   "action": "Ticket to logistics: fix late deliveries in Milan",
+   "type": "open_ticket",
+   "target": "logistics",
+   "to": "",
+   "pct": 0.0,
+   "risk": "low",
+   "approver": "Product / engineering owner",
+   "executed": [
+    {
+     "id": 7,
+     "type": "open_ticket",
+     "target": "logistics",
+     "status": "executed",
+     "detail": "ticket for logistics (sandbox #1)"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 34366,
+    "spend": 0,
+    "gross_profit": 17534,
+    "orders": 580,
+    "new_customers": 141
+   },
+   "change_pct": {
+    "revenue": 0.0,
+    "spend": 0.0,
+    "gross_profit": 0.1
+   }
+  },
+  {
+   "id": 8,
+   "rank": 8,
+   "action": "Refresh the creative on the fatigued Berlin Gifts Meta prospecting ad",
+   "type": "manual",
+   "target": "",
+   "to": "",
+   "pct": 0.0,
+   "risk": "low",
+   "approver": "Growth manager",
+   "executed": [],
+   "simulated": false,
+   "change": null,
+   "change_pct": null
+  },
+  {
+   "id": 9,
+   "rank": 9,
+   "action": "Rain rule for Milan Gifts (+30% upper-funnel spend on rainy days)",
+   "type": "weather_rule",
+   "target": "Milan|Gifts",
+   "to": "",
+   "pct": 30.0,
+   "risk": "low",
+   "approver": "Paid media manager",
+   "executed": [
+    {
+     "id": 9,
+     "type": "weather_rule",
+     "target": "Milan|Gifts",
+     "status": "executed",
+     "detail": "Milan|Gifts: upper-funnel spend +30% on rainy days"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 22594,
+    "spend": 5573,
+    "gross_profit": 4368,
+    "orders": 342,
+    "new_customers": 125
+   },
+   "change_pct": {
+    "revenue": 0.0,
+    "spend": 0.1,
+    "gross_profit": 0.0
+   }
+  },
+  {
+   "id": 10,
+   "rank": 10,
+   "action": "Rain rule for Berlin Gifts (+25% upper-funnel spend on rainy days)",
+   "type": "weather_rule",
+   "target": "Berlin|Gifts",
+   "to": "",
+   "pct": 25.0,
+   "risk": "low",
+   "approver": "Paid media manager",
+   "executed": [
+    {
+     "id": 10,
+     "type": "weather_rule",
+     "target": "Berlin|Gifts",
+     "status": "executed",
+     "detail": "Berlin|Gifts: upper-funnel spend +25% on rainy days"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 13004,
+    "spend": 2973,
+    "gross_profit": 2748,
+    "orders": 197,
+    "new_customers": 79
+   },
+   "change_pct": {
+    "revenue": 0.0,
+    "spend": 0.0,
+    "gross_profit": 0.0
+   }
+  },
+  {
+   "id": 11,
+   "rank": 11,
+   "action": "Rain rule for Barcelona Home (+20% upper-funnel spend on rainy days)",
+   "type": "weather_rule",
+   "target": "Barcelona|Home",
+   "to": "",
+   "pct": 20.0,
+   "risk": "low",
+   "approver": "Paid media manager",
+   "executed": [
+    {
+     "id": 11,
+     "type": "weather_rule",
+     "target": "Barcelona|Home",
+     "status": "executed",
+     "detail": "Barcelona|Home: upper-funnel spend +20% on rainy days"
+    }
+   ],
+   "simulated": true,
+   "change": {
+    "revenue": 19394,
+    "spend": 5448,
+    "gross_profit": 3860,
+    "orders": 262,
+    "new_customers": 95
+   },
+   "change_pct": {
+    "revenue": 0.0,
+    "spend": 0.1,
+    "gross_profit": 0.0
+   }
+  },
+  {
+   "id": 12,
+   "rank": 12,
+   "action": "A/B test trust signals on Mexico City product pages",
+   "type": "launch_ab_test",
+   "target": "/product",
+   "to": "",
+   "pct": 0.0,
+   "risk": "low",
+   "approver": "Growth manager",
+   "executed": [
+    {
+     "id": 12,
+     "type": "launch_ab_test",
+     "target": "/product",
+     "status": "executed",
+     "detail": "ab test for /product (sandbox #1)"
+    }
+   ],
+   "simulated": false,
+   "change": null,
+   "change_pct": null
+  }
+ ],
+ "all_approved": {
+  "days": 91,
+  "from": "2026-11-02",
+  "as_is": {
+   "revenue": 85702271,
+   "spend": 9623481,
+   "gross_profit": 33886304,
+   "mer": 8.91,
+   "orders": 1431679,
+   "new_customers": 400427,
+   "cac": 24.03
+  },
+  "with_decisions": {
+   "revenue": 88153530,
+   "spend": 9520354,
+   "gross_profit": 35209783,
+   "mer": 9.26,
+   "orders": 1470950,
+   "new_customers": 413798,
+   "cac": 23.01
+  },
+  "change": {
+   "revenue": 2451259,
+   "spend": -103127,
+   "gross_profit": 1323479,
+   "orders": 39271,
+   "new_customers": 13371
+  },
+  "change_pct": {
+   "revenue": 2.9,
+   "spend": -1.1,
+   "gross_profit": 3.9
+  },
+  "by_market": {
+   "Amsterdam": {
+    "revenue": 268218,
+    "spend": 2970,
+    "gross_profit": 131166
+   },
+   "Barcelona": {
+    "revenue": 337346,
+    "spend": 6392,
+    "gross_profit": 163451
+   },
+   "Berlin": {
+    "revenue": 141974,
+    "spend": 1741,
+    "gross_profit": 68081
+   },
+   "Lisbon": {
+    "revenue": 16059,
+    "spend": -39339,
+    "gross_profit": 41572
+   },
+   "London": {
+    "revenue": -101135,
+    "spend": -145805,
+    "gross_profit": 94533
+   },
+   "Madrid": {
+    "revenue": 221734,
+    "spend": 3302,
+    "gross_profit": 108970
+   },
+   "Mexico City": {
+    "revenue": 0,
+    "spend": 0,
+    "gross_profit": 0
+   },
+   "Miami": {
+    "revenue": 106350,
+    "spend": 2535,
+    "gross_profit": 51327
+   },
+   "Milan": {
+    "revenue": 173344,
+    "spend": 6658,
+    "gross_profit": 80049
+   },
+   "New York": {
+    "revenue": 365032,
+    "spend": 7761,
+    "gross_profit": 177520
+   },
+   "Paris": {
+    "revenue": 755836,
+    "spend": 49060,
+    "gross_profit": 324138
+   },
+   "São Paulo": {
+    "revenue": 166501,
+    "spend": 1600,
+    "gross_profit": 82671
+   }
+  },
+  "assumptions": [
+   "Baseline (no system): the team still catches each problem, later. Counting from the decision day, a payment fault is fixed after 10 days, late deliveries after 21, a search-traffic drop after 35, a sell-out restocked after 14, a worn-out creative replaced after 21.",
+   "With the system, the approved ticket fixes it sooner: payment 3 days, deliveries 7, search traffic 10, restock 3, creative 7. A ticket only counts if it goes to a team that can fix it and names the right market and the right kind of problem.",
+   "Budget changes take effect the day after approval and stay for the quarter.",
+   "Weather after the 16-day forecast is taken from the same calendar day last year.",
+   "A/B tests, notifications, email flows and other tickets are executed and tracked; their effects are not simulated."
+  ],
+  "policy": {
+   "mult": {
+    "New York|Home|meta_retargeting": 0.836,
+    "New York|Home|google_brand": 0.8361,
+    "New York|Home|google_generic": 0.8362,
+    "New York|Home|meta_prospecting": 0.9383,
+    "New York|Home|tiktok": 1.3935,
+    "New York|Home|youtube": 1.3937,
+    "New York|Home|affiliates": 1.3933,
+    "New York|Home|creators": 1.3938,
+    "São Paulo|Gifts|meta_retargeting": 0.8535,
+    "São Paulo|Gifts|google_brand": 0.8535,
+    "São Paulo|Gifts|google_generic": 0.8537,
+    "São Paulo|Gifts|meta_prospecting": 0.9019,
+    "São Paulo|Gifts|tiktok": 1.4225,
+    "São Paulo|Gifts|youtube": 1.4225,
+    "São Paulo|Gifts|affiliates": 1.4225,
+    "São Paulo|Gifts|creators": 1.4231,
+    "New York|Fashion drops|meta_prospecting": 0.8436,
+    "New York|Fashion drops|meta_retargeting": 0.8394,
+    "New York|Fashion drops|google_brand": 0.8395,
+    "New York|Fashion drops|google_generic": 0.9357,
+    "New York|Fashion drops|tiktok": 1.3991,
+    "New York|Fashion drops|youtube": 1.3991,
+    "New York|Fashion drops|affiliates": 1.3989,
+    "New York|Fashion drops|creators": 1.3991,
+    "Paris|Fashion drops|meta_prospecting": 0.8583,
+    "Paris|Fashion drops|google_brand": 0.8584,
+    "Paris|Fashion drops|google_generic": 0.8582,
+    "Paris|Fashion drops|meta_retargeting": 0.9017,
+    "Paris|Fashion drops|tiktok": 1.4304,
+    "Paris|Fashion drops|youtube": 1.4302,
+    "Paris|Fashion drops|affiliates": 1.4304,
+    "Paris|Fashion drops|creators": 1.4302,
+    "São Paulo|Home|meta_retargeting": 0.8165,
+    "São Paulo|Home|google_brand": 0.8167,
+    "São Paulo|Home|google_generic": 0.8165,
+    "São Paulo|Home|meta_prospecting": 0.9552,
+    "São Paulo|Home|tiktok": 1.3606,
+    "São Paulo|Home|youtube": 1.361,
+    "São Paulo|Home|affiliates": 1.3611,
+    "São Paulo|Home|creators": 1.3609,
+    "Paris|Gifts|meta_retargeting": 0.8208,
+    "Paris|Gifts|google_brand": 0.8208,
+    "Paris|Gifts|google_generic": 0.8208,
+    "Paris|Gifts|meta_prospecting": 0.9492,
+    "Paris|Gifts|tiktok": 1.368,
+    "Paris|Gifts|youtube": 1.3683,
+    "Paris|Gifts|affiliates": 1.3684,
+    "Paris|Gifts|creators": 1.3679,
+    "Miami|Home|meta_retargeting": 0.8386,
+    "Miami|Home|google_brand": 0.8385,
+    "Miami|Home|google_generic": 0.8386,
+    "Miami|Home|meta_prospecting": 0.8804,
+    "Miami|Home|tiktok": 1.3973,
+    "Miami|Home|youtube": 1.3979,
+    "Miami|Home|affiliates": 1.3971,
+    "Miami|Home|creators": 1.3976,
+    "Madrid|Home|meta_prospecting": 0.8098,
+    "Madrid|Home|meta_retargeting": 0.8095,
+    "Madrid|Home|google_brand": 0.8098,
+    "Madrid|Home|google_generic": 1.1473,
+    "Madrid|Home|tiktok": 1.3492,
+    "Madrid|Home|youtube": 1.3501,
+    "Madrid|Home|affiliates": 1.3491,
+    "Madrid|Home|creators": 1.3496,
+    "Miami|Gifts|meta_prospecting": 0.8552,
+    "Miami|Gifts|meta_retargeting": 0.8554,
+    "Miami|Gifts|google_brand": 0.8553,
+    "Miami|Gifts|google_generic": 0.8552,
+    "Miami|Gifts|tiktok": 1.4253,
+    "Miami|Gifts|youtube": 1.4251,
+    "Miami|Gifts|affiliates": 1.4255,
+    "Miami|Gifts|creators": 1.4258,
+    "São Paulo|Fashion drops|meta_retargeting": 0.8392,
+    "São Paulo|Fashion drops|google_brand": 0.8392,
+    "São Paulo|Fashion drops|google_generic": 0.839,
+    "São Paulo|Fashion drops|meta_prospecting": 0.8809,
+    "São Paulo|Fashion drops|tiktok": 1.3984,
+    "São Paulo|Fashion drops|youtube": 1.3984,
+    "São Paulo|Fashion drops|affiliates": 1.3984,
+    "São Paulo|Fashion drops|creators": 1.3987,
+    "New York|Gifts|meta_retargeting": 0.8076,
+    "New York|Gifts|google_brand": 0.8076,
+    "New York|Gifts|meta_prospecting": 0.8813,
+    "New York|Gifts|google_generic": 0.9599,
+    "New York|Gifts|tiktok": 1.346,
+    "New York|Gifts|youtube": 1.3463,
+    "New York|Gifts|affiliates": 1.3464,
+    "New York|Gifts|creators": 1.3464,
+    "Miami|Fashion drops|meta_prospecting": 0.8465,
+    "Miami|Fashion drops|google_brand": 0.8466,
+    "Miami|Fashion drops|google_generic": 0.8611,
+    "Miami|Fashion drops|meta_retargeting": 0.8928,
+    "Miami|Fashion drops|tiktok": 1.4109,
+    "Miami|Fashion drops|youtube": 1.4111,
+    "Miami|Fashion drops|affiliates": 1.4107,
+    "Miami|Fashion drops|creators": 1.4113,
+    "New York|Beauty|google_brand": 0.8234,
+    "New York|Beauty|meta_retargeting": 0.862,
+    "New York|Beauty|google_generic": 0.896,
+    "New York|Beauty|meta_prospecting": 0.906,
+    "New York|Beauty|affiliates": 1.2822,
+    "New York|Beauty|tiktok": 1.3723,
+    "New York|Beauty|youtube": 1.3727,
+    "New York|Beauty|creators": 1.3725,
+    "Madrid|Gifts|meta_prospecting": 0.8445,
+    "Madrid|Gifts|meta_retargeting": 0.8446,
+    "Madrid|Gifts|google_brand": 0.8442,
+    "Madrid|Gifts|google_generic": 0.8446,
+    "Madrid|Gifts|tiktok": 1.4074,
+    "Madrid|Gifts|youtube": 1.4075,
+    "Madrid|Gifts|affiliates": 1.4076,
+    "Madrid|Gifts|creators": 1.4077,
+    "Barcelona|Home|meta_retargeting": 0.8053,
+    "Barcelona|Home|google_brand": 0.8055,
+    "Barcelona|Home|google_generic": 0.8052,
+    "Barcelona|Home|meta_prospecting": 1.0346,
+    "Barcelona|Home|tiktok": 1.3425,
+    "Barcelona|Home|youtube": 1.3423,
+    "Barcelona|Home|affiliates": 1.3424,
+    "Barcelona|Home|creators": 1.3424,
+    "Berlin|Home|meta_retargeting": 0.8165,
+    "Berlin|Home|google_brand": 0.8169,
+    "Berlin|Home|google_generic": 0.8168,
+    "Berlin|Home|meta_prospecting": 0.9757,
+    "Berlin|Home|tiktok": 1.3613,
+    "Berlin|Home|youtube": 1.361,
+    "Berlin|Home|affiliates": 1.3618,
+    "Berlin|Home|creators": 1.3609,
+    "Madrid|Fashion drops|meta_retargeting": 0.8169,
+    "Madrid|Fashion drops|google_brand": 0.817,
+    "Madrid|Fashion drops|google_generic": 0.8167,
+    "Madrid|Fashion drops|meta_prospecting": 1.0003,
+    "Madrid|Fashion drops|affiliates": 1.1625,
+    "Madrid|Fashion drops|tiktok": 1.3613,
+    "Madrid|Fashion drops|youtube": 1.362,
+    "Madrid|Fashion drops|creators": 1.3612,
+    "São Paulo|Beauty|meta_retargeting": 0.8047,
+    "São Paulo|Beauty|google_brand": 0.8049,
+    "São Paulo|Beauty|google_generic": 0.8048,
+    "São Paulo|Beauty|meta_prospecting": 0.9784,
+    "São Paulo|Beauty|tiktok": 1.3413,
+    "São Paulo|Beauty|youtube": 1.3412,
+    "São Paulo|Beauty|affiliates": 1.341,
+    "São Paulo|Beauty|creators": 1.3415,
+    "Barcelona|Fashion drops|meta_retargeting": 0.7973,
+    "Barcelona|Fashion drops|google_brand": 0.7975,
+    "Barcelona|Fashion drops|google_generic": 0.7975,
+    "Barcelona|Fashion drops|meta_prospecting": 1.0763,
+    "Barcelona|Fashion drops|affiliates": 1.2665,
+    "Barcelona|Fashion drops|tiktok": 1.3293,
+    "Barcelona|Fashion drops|youtube": 1.3288,
+    "Barcelona|Fashion drops|creators": 1.3292,
+    "Berlin|Fashion drops|meta_retargeting": 0.8111,
+    "Berlin|Fashion drops|google_brand": 0.8114,
+    "Berlin|Fashion drops|google_generic": 0.8317,
+    "Berlin|Fashion drops|meta_prospecting": 0.9541,
+    "Berlin|Fashion drops|tiktok": 1.3518,
+    "Berlin|Fashion drops|youtube": 1.3521,
+    "Berlin|Fashion drops|affiliates": 1.3519,
+    "Berlin|Fashion drops|creators": 1.3515,
+    "Milan|Gifts|meta_retargeting": 0.8553,
+    "Milan|Gifts|google_brand": 0.8553,
+    "Milan|Gifts|google_generic": 0.8568,
+    "Milan|Gifts|meta_prospecting": 0.8781,
+    "Milan|Gifts|tiktok": 1.4256,
+    "Milan|Gifts|youtube": 1.4247,
+    "Milan|Gifts|affiliates": 1.4246,
+    "Milan|Gifts|creators": 1.4251,
+    "Paris|Beauty|meta_prospecting": 0.8216,
+    "Paris|Beauty|google_brand": 0.8214,
+    "Paris|Beauty|google_generic": 0.8217,
+    "Paris|Beauty|meta_retargeting": 1.2303,
+    "Paris|Beauty|tiktok": 1.3691,
+    "Paris|Beauty|youtube": 1.3691,
+    "Paris|Beauty|affiliates": 1.3691,
+    "Paris|Beauty|creators": 1.3695,
+    "Miami|Beauty|meta_retargeting": 0.8334,
+    "Miami|Beauty|google_brand": 0.8335,
+    "Miami|Beauty|google_generic": 0.8335,
+    "Miami|Beauty|meta_prospecting": 0.9063,
+    "Miami|Beauty|tiktok": 1.3894,
+    "Miami|Beauty|youtube": 1.3888,
+    "Miami|Beauty|affiliates": 1.3889,
+    "Miami|Beauty|creators": 1.3892,
+    "Berlin|Gifts|meta_retargeting": 0.7725,
+    "Berlin|Gifts|google_brand": 0.7724,
+    "Berlin|Gifts|google_generic": 0.7723,
+    "Berlin|Gifts|meta_prospecting": 1.0728,
+    "Berlin|Gifts|tiktok": 1.2874,
+    "Berlin|Gifts|youtube": 1.2874,
+    "Berlin|Gifts|affiliates": 1.288,
+    "Berlin|Gifts|creators": 1.288,
+    "Barcelona|Gifts|meta_retargeting": 0.7612,
+    "Barcelona|Gifts|google_brand": 0.7616,
+    "Barcelona|Gifts|google_generic": 0.7616,
+    "Barcelona|Gifts|meta_prospecting": 1.1998,
+    "Barcelona|Gifts|tiktok": 1.2691,
+    "Barcelona|Gifts|youtube": 1.2695,
+    "Barcelona|Gifts|affiliates": 1.2697,
+    "Barcelona|Gifts|creators": 1.2689,
+    "Amsterdam|Home|meta_retargeting": 0.8264,
+    "Amsterdam|Home|google_brand": 0.8267,
+    "Amsterdam|Home|google_generic": 0.8448,
+    "Amsterdam|Home|meta_prospecting": 0.935,
+    "Amsterdam|Home|tiktok": 1.378,
+    "Amsterdam|Home|youtube": 1.3782,
+    "Amsterdam|Home|affiliates": 1.3773,
+    "Amsterdam|Home|creators": 1.3775,
+    "Lisbon|Home|meta_retargeting": 0.8437,
+    "Lisbon|Home|google_brand": 0.8439,
+    "Lisbon|Home|meta_prospecting": 0.8681,
+    "Lisbon|Home|google_generic": 0.8818,
+    "Lisbon|Home|tiktok": 1.4061,
+    "Lisbon|Home|youtube": 1.4058,
+    "Lisbon|Home|affiliates": 1.4064,
+    "Lisbon|Home|creators": 1.4057,
+    "Milan|Home|meta_retargeting": 0.7884,
+    "Milan|Home|google_brand": 0.7888,
+    "Milan|Home|google_generic": 0.7884,
+    "Milan|Home|meta_prospecting": 1.0165,
+    "Milan|Home|tiktok": 1.3139,
+    "Milan|Home|youtube": 1.3145,
+    "Milan|Home|affiliates": 1.314,
+    "Milan|Home|creators": 1.3146,
+    "Milan|Fashion drops|meta_retargeting": 0.8316,
+    "Milan|Fashion drops|google_brand": 0.8319,
+    "Milan|Fashion drops|google_generic": 0.8395,
+    "Milan|Fashion drops|meta_prospecting": 0.9006,
+    "Milan|Fashion drops|tiktok": 1.3861,
+    "Milan|Fashion drops|youtube": 1.3861,
+    "Milan|Fashion drops|affiliates": 1.3858,
+    "Milan|Fashion drops|creators": 1.3863,
+    "Barcelona|Beauty|meta_retargeting": 0.8355,
+    "Barcelona|Beauty|google_brand": 0.8357,
+    "Barcelona|Beauty|google_generic": 0.8358,
+    "Barcelona|Beauty|meta_prospecting": 0.9478,
+    "Barcelona|Beauty|tiktok": 1.3927,
+    "Barcelona|Beauty|youtube": 1.3928,
+    "Barcelona|Beauty|affiliates": 1.3923,
+    "Barcelona|Beauty|creators": 1.3932,
+    "Madrid|Beauty|meta_retargeting": 0.8157,
+    "Madrid|Beauty|google_brand": 0.816,
+    "Madrid|Beauty|google_generic": 0.8158,
+    "Madrid|Beauty|meta_prospecting": 0.9824,
+    "Madrid|Beauty|tiktok": 1.3598,
+    "Madrid|Beauty|youtube": 1.36,
+    "Madrid|Beauty|affiliates": 1.3603,
+    "Madrid|Beauty|creators": 1.3599,
+    "Berlin|Beauty|meta_retargeting": 0.8305,
+    "Berlin|Beauty|google_brand": 0.8301,
+    "Berlin|Beauty|meta_prospecting": 0.8622,
+    "Berlin|Beauty|google_generic": 0.9118,
+    "Berlin|Beauty|tiktok": 1.3836,
+    "Berlin|Beauty|youtube": 1.3835,
+    "Berlin|Beauty|affiliates": 1.384,
+    "Berlin|Beauty|creators": 1.3832,
+    "Amsterdam|Gifts|meta_retargeting": 0.8206,
+    "Amsterdam|Gifts|google_brand": 0.821,
+    "Amsterdam|Gifts|google_generic": 0.8207,
+    "Amsterdam|Gifts|meta_prospecting": 0.9394,
+    "Amsterdam|Gifts|tiktok": 1.3682,
+    "Amsterdam|Gifts|youtube": 1.3684,
+    "Amsterdam|Gifts|affiliates": 1.3676,
+    "Amsterdam|Gifts|creators": 1.3674,
+    "Amsterdam|Beauty|meta_prospecting": 0.8272,
+    "Amsterdam|Beauty|meta_retargeting": 0.8272,
+    "Amsterdam|Beauty|google_brand": 0.8274,
+    "Amsterdam|Beauty|google_generic": 1.0917,
+    "Amsterdam|Beauty|tiktok": 1.3788,
+    "Amsterdam|Beauty|youtube": 1.3791,
+    "Amsterdam|Beauty|affiliates": 1.3784,
+    "Amsterdam|Beauty|creators": 1.3788,
+    "Milan|Beauty|meta_retargeting": 0.7917,
+    "Milan|Beauty|google_brand": 0.7914,
+    "Milan|Beauty|google_generic": 0.7917,
+    "Milan|Beauty|meta_prospecting": 1.0178,
+    "Milan|Beauty|tiktok": 1.3195,
+    "Milan|Beauty|youtube": 1.3189,
+    "Milan|Beauty|affiliates": 1.3196,
+    "Milan|Beauty|creators": 1.3192,
+    "Amsterdam|Fashion drops|meta_retargeting": 0.8179,
+    "Amsterdam|Fashion drops|google_brand": 0.8179,
+    "Amsterdam|Fashion drops|google_generic": 0.8183,
+    "Amsterdam|Fashion drops|meta_prospecting": 1.0053,
+    "Amsterdam|Fashion drops|youtube": 1.0054,
+    "Amsterdam|Fashion drops|tiktok": 1.3636,
+    "Amsterdam|Fashion drops|affiliates": 1.3636,
+    "Amsterdam|Fashion drops|creators": 1.3632,
+    "Lisbon|Fashion drops|meta_prospecting": 0.8499,
+    "Lisbon|Fashion drops|google_brand": 0.8472,
+    "Lisbon|Fashion drops|google_generic": 0.8472,
+    "Lisbon|Fashion drops|youtube": 1.0071,
+    "Lisbon|Fashion drops|meta_retargeting": 1.1212,
+    "Lisbon|Fashion drops|tiktok": 1.4124,
+    "Lisbon|Fashion drops|affiliates": 1.4122,
+    "Lisbon|Fashion drops|creators": 1.4123,
+    "Lisbon|Gifts|meta_retargeting": 0.8075,
+    "Lisbon|Gifts|google_brand": 0.8076,
+    "Lisbon|Gifts|google_generic": 0.8614,
+    "Lisbon|Gifts|meta_prospecting": 0.9274,
+    "Lisbon|Gifts|tiktok": 1.3464,
+    "Lisbon|Gifts|youtube": 1.3463,
+    "Lisbon|Gifts|affiliates": 1.346,
+    "Lisbon|Gifts|creators": 1.3463,
+    "London|Home|meta_prospecting": 0.8939,
+    "London|Home|meta_retargeting": 0.6847,
+    "London|Home|tiktok": 1.1416,
+    "London|Home|youtube": 1.1416,
+    "London|Home|google_brand": 0.6848,
+    "London|Home|google_generic": 0.7112,
+    "London|Home|affiliates": 1.1414,
+    "London|Home|creators": 1.1418,
+    "London|Fashion drops|meta_prospecting": 0.7958,
+    "London|Fashion drops|meta_retargeting": 0.7012,
+    "London|Fashion drops|tiktok": 1.1687,
+    "London|Fashion drops|youtube": 1.1689,
+    "London|Fashion drops|google_brand": 0.7012,
+    "London|Fashion drops|google_generic": 0.7503,
+    "London|Fashion drops|affiliates": 1.1687,
+    "London|Fashion drops|creators": 1.169,
+    "London|Beauty|meta_prospecting": 0.9334,
+    "London|Beauty|meta_retargeting": 0.6859,
+    "London|Beauty|tiktok": 1.1043,
+    "London|Beauty|youtube": 1.1041,
+    "London|Beauty|google_brand": 0.6626,
+    "London|Beauty|google_generic": 0.6625,
+    "London|Beauty|affiliates": 1.1047,
+    "London|Beauty|creators": 1.1044,
+    "London|Gifts|meta_prospecting": 0.8703,
+    "London|Gifts|meta_retargeting": 0.6874,
+    "London|Gifts|tiktok": 1.1457,
+    "London|Gifts|youtube": 1.1456,
+    "London|Gifts|google_brand": 0.6876,
+    "London|Gifts|google_generic": 0.6875,
+    "London|Gifts|affiliates": 1.1457,
+    "London|Gifts|creators": 1.1461,
+    "Paris|Home|meta_prospecting": 1.3939,
+    "Paris|Home|meta_retargeting": 0.8781,
+    "Paris|Home|tiktok": 1.4635,
+    "Paris|Home|youtube": 1.2786,
+    "Paris|Home|google_brand": 0.8783,
+    "Paris|Home|google_generic": 0.8784,
+    "Paris|Home|affiliates": 1.4635,
+    "Paris|Home|creators": 1.4639,
+    "Lisbon|Beauty|meta_prospecting": 0.7425,
+    "Lisbon|Beauty|meta_retargeting": 0.6058,
+    "Lisbon|Beauty|tiktok": 1.0097,
+    "Lisbon|Beauty|youtube": 1.0098,
+    "Lisbon|Beauty|google_brand": 0.6061,
+    "Lisbon|Beauty|google_generic": 0.6059,
+    "Lisbon|Beauty|affiliates": 1.0095,
+    "Lisbon|Beauty|creators": 1.01
+   },
+   "paused": [],
+   "weather_boost": {
+    "Milan|Gifts": 1.3,
+    "Berlin|Gifts": 1.25,
+    "Barcelona|Home": 1.2
+   },
+   "fixes": {
+    "payment_fix": "2026-11-05",
+    "delivery_fix": "2026-11-09",
+    "seo_fix": "2026-11-12",
+    "restock": "2026-11-16",
+    "new_creative": "2026-11-23"
+   }
+  },
+  "baseline": "as-is budgets; each problem still fixed by the team, later (see assumptions)",
+  "note": "SIMULATED: synthetic business; both runs share every random draw, so the difference is the decisions."
+ },
+ "audit": [
+  {
+   "kind": "open_ticket",
+   "target": "engineering",
+   "status": "executed",
+   "detail": "ticket for engineering (sandbox #1)",
+   "approved_by": "Lee (product) (product_owner)"
+  },
+  {
+   "kind": "apply_mix_plan",
+   "target": "all",
+   "status": "executed",
+   "detail": "all: channel split applied on 44 market-lines (max ±25% per channel); model expects +€141,784 revenue a week",
+   "approved_by": "Dana (leadership) (leadership)"
+  },
+  {
+   "kind": "open_ticket",
+   "target": "seo",
+   "status": "executed",
+   "detail": "ticket for seo (sandbox #2)",
+   "approved_by": "Lee (product) (product_owner)"
+  },
+  {
+   "kind": "change_budget",
+   "target": "London",
+   "status": "executed",
+   "detail": "London: paid budget -14%",
+   "approved_by": "Sam (growth manager) (growth_manager)"
+  },
+  {
+   "kind": "change_line_budget",
+   "target": "Paris|Home",
+   "status": "executed",
+   "detail": "Paris|Home: paid budget +15%",
+   "approved_by": "Sam (growth manager) (growth_manager)"
+  },
+  {
+   "kind": "change_line_budget",
+   "target": "Lisbon|Beauty",
+   "status": "executed",
+   "detail": "Lisbon|Beauty: paid budget -25%",
+   "approved_by": "Sam (growth manager) (growth_manager)"
+  },
+  {
+   "kind": "open_ticket",
+   "target": "logistics",
+   "status": "executed",
+   "detail": "ticket for logistics (sandbox #3)",
+   "approved_by": "Lee (product) (product_owner)"
+  },
+  {
+   "kind": "weather_rule",
+   "target": "Milan|Gifts",
+   "status": "executed",
+   "detail": "Milan|Gifts: upper-funnel spend +30% on rainy days",
+   "approved_by": "Alex (paid media) (channel_manager)"
+  },
+  {
+   "kind": "weather_rule",
+   "target": "Berlin|Gifts",
+   "status": "executed",
+   "detail": "Berlin|Gifts: upper-funnel spend +25% on rainy days",
+   "approved_by": "Alex (paid media) (channel_manager)"
+  },
+  {
+   "kind": "weather_rule",
+   "target": "Barcelona|Home",
+   "status": "executed",
+   "detail": "Barcelona|Home: upper-funnel spend +20% on rainy days",
+   "approved_by": "Alex (paid media) (channel_manager)"
+  },
+  {
+   "kind": "launch_ab_test",
+   "target": "/product",
+   "status": "executed",
+   "detail": "ab test for /product (sandbox #4)",
+   "approved_by": "Sam (growth manager) (growth_manager)"
+  }
+ ],
+ "assumptions": [
+  "Baseline (no system): the team still catches each problem, later. Counting from the decision day, a payment fault is fixed after 10 days, late deliveries after 21, a search-traffic drop after 35, a sell-out restocked after 14, a worn-out creative replaced after 21.",
+  "With the system, the approved ticket fixes it sooner: payment 3 days, deliveries 7, search traffic 10, restock 3, creative 7. A ticket only counts if it goes to a team that can fix it and names the right market and the right kind of problem.",
+  "Budget changes take effect the day after approval and stay for the quarter.",
+  "Weather after the 16-day forecast is taken from the same calendar day last year.",
+  "A/B tests, notifications, email flows and other tickets are executed and tracked; their effects are not simulated."
+ ],
+ "team_cost_usd": 2.26,
+ "team_seconds": 307,
+ "time_estimate": {
+  "rows": [
+   {
+    "task": "Weekly performance reporting across 12 markets (pulling platform, analytics and sales data, building the deck)",
+    "hours_per_week": 18.0,
+    "basis": "1.5 h per market"
+   },
+   {
+    "task": "Cross-checking platform-reported conversions against first-party sales",
+    "hours_per_week": 4,
+    "basis": "half a day"
+   },
+   {
+    "task": "Budget and channel-mix analysis and reallocation proposals",
+    "hours_per_week": 8,
+    "basis": "one day"
+   },
+   {
+    "task": "Benchmarking markets against last year and peers to find what is abnormal",
+    "hours_per_week": 6,
+    "basis": ""
+   },
+   {
+    "task": "Reading and tagging survey, review and ticket comments",
+    "hours_per_week": 6,
+    "basis": "about 2,700 comments a month at ~8 s each"
+   },
+   {
+    "task": "Writing stakeholder updates (leadership, finance, channel owners, product)",
+    "hours_per_week": 5,
+    "basis": ""
+   },
+   {
+    "task": "Chasing approvals and making the changes in each platform",
+    "hours_per_week": 6,
+    "basis": ""
+   }
+  ],
+  "hours_per_week": 53.0,
+  "note": "ESTIMATE: typical hours for this work in a 12-market team; replace with a real team's own numbers."
+ },
+ "note": "SIMULATED outcomes on a SYNTHETIC business; each decision measured alone and all together against doing nothing."
+}

@@ -1,0 +1,620 @@
+{
+  "when": "2026-11-01T12:29:08",
+  "scenario": "b2c",
+  "split": "dev",
+  "commit": "349b82c-dirty",
+  "score": 0.964,
+  "runs": [
+    {
+      "seed": 1,
+      "grounding": {
+        "numbers": 272,
+        "grounded": 266,
+        "derived": 0,
+        "unsupported": 6,
+        "supported_pct": 97.8,
+        "unsupported_examples": [
+          {
+            "number": 230.0,
+            "in": "880 of 2,883 sold (30.5%) with 77.4% of the window gone and 12 days left (ends 6 Nov), at €71.26. Sales are flat at 133–159 units a week (133 in the last 7 days"
+          },
+          {
+            "number": 230.0,
+            "in": "880 of 2,883 sold (30.5%) with 77.4% of the window gone and 12 days left (ends 6 Nov), at €71.26. Sales are flat at 133–159 units a week (133 in the last 7 days"
+          },
+          {
+            "number": 1965498.0,
+            "in": "London email went from about €10–11k a week to €22–23k a week (orders 159–178 → 359–375), +€49.9k this period. Over the same weeks, Meta impressions fell from 1"
+          },
+          {
+            "number": 1437487.0,
+            "in": "London email went from about €10–11k a week to €22–23k a week (orders 159–178 → 359–375), +€49.9k this period. Over the same weeks, Meta impressions fell from 1"
+          },
+          {
+            "number": 40.0,
+            "in": "About 2,000 units (€142.7k at list price) are unsold, the sales pace is flat at about 19 a day, and the product ends 6 Nov. Madrid's other editions are on pace,"
+          },
+          {
+            "number": 230.0,
+            "in": "About 2,000 units (€142.7k at list price) are unsold, the sales pace is flat at about 19 a day, and the product ends 6 Nov. Madrid's other editions are on pace,"
+          }
+        ]
+      },
+      "turns": 14,
+      "queries": 23,
+      "comparisons": 4,
+      "cost_usd": 0.94,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true,
+        "numbers_supported_pct": 97.8,
+        "numbers_unsupported": 6,
+        "recommendations_measurable": "5/5"
+      },
+      "grades": [
+        {
+          "criterion": "paris_creative_fatigue",
+          "pass": true,
+          "reason": "The finding \"Paris 'Video A' (PAR-META-1) is fatigued: frequency 1.9 → 5.3, CTR halved\" reports ROAS falling from 6.8 to 3.1 at unchanged spend and says other Paris ads hold steady."
+        },
+        {
+          "criterion": "milan_brand_search",
+          "pass": true,
+          "reason": "The memo says Milan brand search was off 16–29 Aug, organic \"recaptur[ed] about 58%\", and warns \"Do not read its 15–20x reported ROAS as the value of extra brand spend\", which correctly states that ROAS overstates incrementality."
+        },
+        {
+          "criterion": "ios_checkout_berlin_amsterdam",
+          "pass": true,
+          "reason": "The top finding has Berlin and Amsterdam iOS checkout-to-order falling from about 64% to about 22% since 7 Oct, with Android, desktop and other markets' iOS unchanged."
+        },
+        {
+          "criterion": "mexico_launch_behind",
+          "pass": false,
+          "reason": "The memo argues that \"Mexico City is limited by product capacity, not demand\" and says \"Do not judge Mexico against Miami or São Paulo on absolute revenue\", which explains away the slow ramp instead of flagging it as behind."
+        },
+        {
+          "criterion": "london_email_masks_paid",
+          "pass": true,
+          "reason": "The London finding reports email doubling (+€49.9k) while Meta delivery got about 35% pricier and paid Meta revenue fell €81.8k → €58.5k, with total London revenue still roughly flat to up."
+        },
+        {
+          "criterion": "madrid_product_pacing",
+          "pass": true,
+          "reason": "The memo says the Madrid 'Autumn special' has sold \"880 of 2,883 sold (30.5%) with 77.4% of the window gone and 12 days left\", while other Madrid editions are on pace."
+        },
+        {
+          "criterion": "barcelona_budget_pacing",
+          "pass": true,
+          "reason": "The memo says \"Barcelona has spent €18,895 of €20,296 (93.1%) with 80.6% of the month gone\" and that daily spend rose above its earlier level."
+        },
+        {
+          "criterion": "new_york_seasonal_trap",
+          "pass": true,
+          "reason": "The finding \"New York's -€137k vs the previous period is seasonal, not a problem\" cites flat year-over-year weekly figures."
+        },
+        {
+          "criterion": "porto_tiny_trap",
+          "pass": true,
+          "reason": "The memo does not mention Porto at all."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": true,
+          "reason": "São Paulo and Miami appear only as launch benchmarks for Mexico City, with no problem claimed for either."
+        },
+        {
+          "criterion": "sized_in_money",
+          "pass": true,
+          "reason": "Each recommendation states EUR impact (€30k/week, €16k, €2.5–3k/week, €0.6–3k, €0.7k), and they are roughly ordered from largest to smallest."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The recommendations cut or reallocate spend (Barcelona trim, Mexico generic pause, Madrid push \"within the existing Madrid budget\") and never raise the total."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Every recommendation names a concrete action and comes with a how_to_measure metric, SQL, baseline and check-after period."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Small samples are flagged and matched with cautious wording, e.g. Mexico generic ROAS 0.41 \"the sample is small\" with low confidence, and Mexico Meta \"samples are small\"."
+        }
+      ],
+      "memo": {
+        "headline": "Since 7 October, iOS checkout in Berlin and Amsterdam has been broken: only about 22% of iOS checkouts become orders, against about 64% before. That has cost an estimated €82k of revenue in 19 days, roughly €30k a week, and fixing it is Monday's top priority. Most of the remaining drop since the previous four weeks (New York's -€137k) is the same seasonal dip as last year.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "The data runs from 2025-09-01 to 2026-10-25, so last year's same weeks are available for every market except São Paulo, Miami and Mexico City. The iOS checkout break is based on 1,734 Berlin and 1,385 Amsterdam iOS checkouts since 7 Oct and is significant after correcting for 36 market×device comparisons. Paris Video A's fatigue is based on about 290k–420k impressions per window. Two things are less certain. First, whether paid spend actually adds sales: there is only one natural experiment (Milan brand search off for 14 days) and no test for Meta or TikTok. Second, London's email lift and its pricier Meta delivery are directional only. No gross-margin data is available, so a first-party ROAS of about 2 (generic search, TikTok) cannot be judged profitable or not."
+        },
+        "kpis": [
+          {
+            "name": "First-party revenue (all markets)",
+            "value": "€2,287,340",
+            "previous": "€2,581,078",
+            "note": "-11.4% on the previous 4 weeks, but mostly seasonal. In the 9 markets that also existed last year, revenue is €1.876M vs €1.925M (-2.6% YoY). Leaving out Berlin and Amsterdam, it is +2.5% YoY."
+          },
+          {
+            "name": "Orders",
+            "value": "36,879",
+            "previous": "41,692",
+            "note": "New York alone is 3,814 vs 6,023, which matches last year's seasonal step-down (NYC YoY: +1.4% to +3.6% each week)."
+          },
+          {
+            "name": "Checkout-to-order rate",
+            "value": "62.2%",
+            "previous": "64.4%",
+            "note": "All of the drop comes from iOS in Berlin and Amsterdam. Other markets on iOS are at 64.1%."
+          },
+          {
+            "name": "Ad spend",
+            "value": "€193,068",
+            "previous": "€187,216",
+            "note": "+3.1%. Barcelona accounts for +€2.6k and has already spent 93.1% of its October budget with 80.6% of the month gone."
+          },
+          {
+            "name": "Paid ROAS (first-party, last click)",
+            "value": "5.37",
+            "previous": "6.57",
+            "note": "€1,036,202 paid revenue / €193,068 spend. The fall comes from NYC seasonality, the Berlin/Amsterdam checkout bug, London's pricier Meta delivery and Paris creative fatigue."
+          },
+          {
+            "name": "New customers",
+            "value": "13,927",
+            "previous": "15,946",
+            "note": "-12.7%, following the same drivers as orders."
+          },
+          {
+            "name": "Platform overclaim vs first-party",
+            "value": "Meta 1.35x, TikTok 1.71x, Google 1.08x",
+            "previous": "n/a",
+            "note": "Meta claims €723,939 vs €536,867 first-party. TikTok claims €169,416 vs €99,326."
+          }
+        ],
+        "findings": [
+          {
+            "title": "iOS checkout broken in Berlin and Amsterdam since 7 Oct: about €82k lost so far, about €30k a week",
+            "evidence": "Berlin iOS checkout-to-order fell from 64.7% (1,962/3,035, 7 Sep–6 Oct) to 21.1% (366/1,734, 7–25 Oct). Amsterdam fell from 63.9% (1,557/2,437) to 22.4% (310/1,385). Both drops are significant after correcting for 36 comparisons. Both cities broke on the same day (6 Oct about 65%, 7 Oct 18.5%). Android and desktop in both cities are unchanged (about 62–66%), and iOS in the other markets is at 64.1%. At the old rates, about 575 Amsterdam and 755 Berlin orders were lost, at an average order value of about €62: roughly €36k + €46k = €82k in 19 days. YoY revenue went from about +5% to -34% (Berlin, weeks of 12 and 19 Oct) and -30% to -34% (Amsterdam). This is the only part of the decline that is not seasonal. Ad spend kept flowing at about €1,050/day into these two cities while iOS buyers could not pay.",
+            "confidence": "high"
+          },
+          {
+            "title": "New York's -€137k vs the previous period is seasonal, not a problem",
+            "evidence": "NYC revenue was €236,236 vs €373,659 in the previous period, but €232,668 in the same weeks last year. Weekly YoY was +1.4%, +1.9%, +3.6% and -0.8%. NYC brand search impressions fell from 14,941 to 10,305 at the same spend, which fits lower seasonal search demand. No action needed.",
+            "confidence": "high"
+          },
+          {
+            "title": "Madrid 'Autumn special' will leave about €126k of capacity unsold",
+            "evidence": "880 of 2,883 sold (30.5%) with 77.4% of the window gone and 12 days left (ends 6 Nov), at €71.26. Sales are flat at 133–159 units a week (133 in the last 7 days, about 19 a day). At that pace about 230 more sell, leaving about 1,770 units (about €126k). Madrid's regular Editions 29 and 30 sell about 51 a day and are on pace, so demand for Madrid is fine and this product is the problem. Even doubling its pace recovers only about 230 units (about €16k), so expectations should be modest.",
+            "confidence": "high"
+          },
+          {
+            "title": "Paris 'Video A' (PAR-META-1) is fatigued: frequency 1.9 → 5.3, CTR halved",
+            "evidence": "CTR fell from 1.42% (5,961/420,395 impressions, 31 Aug–20 Sep) to 0.71% (2,065/291,278, 12–25 Oct), significant after 36-comparison correction. Weekly frequency rose 1.90 → 2.41 → 3.13 → 3.85 → 4.57 → 5.29. First-party revenue fell from about €6.5k a week to €3.1k in the last week, ROAS from 6.8 to 3.1, at an unchanged ~€1k a week of spend. That is about €2.7k a week, or about €11k this period, below its earlier level. The other Paris Meta ads hold steady at frequency ~1.9: UGC C has a CTR of 1.30%, ROAS 5.3–6.4.",
+            "confidence": "high"
+          },
+          {
+            "title": "London: email doubled from 28 Sep while Meta and TikTok delivery got about 35% more expensive",
+            "evidence": "London email went from about €10–11k a week to €22–23k a week (orders 159–178 → 359–375), +€49.9k this period. Over the same weeks, Meta impressions fell from 1,965,498 to 1,437,487 at the same spend (CPM about €7.0 → €9.7). CTR was stable, so the creative is not the problem. Paid Meta revenue fell €81.8k → €58.5k. Total London revenue still rose (+3.5% on the previous period, YoY +1.8% to +9.3% weekly vs -7% to +8% before). The email change looks positive and the rising Meta cost looks external, but why either happened is unknown.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Brand search is incremental, but less than its ROAS of about 17x suggests",
+            "evidence": "Milan brand search was off 16–29 Aug. Organic and direct revenue rose from €44,059 to €55,596 (+€11.5k), recapturing about 58% of the €19,781 the campaign normally gets. Total market revenue fell from €112,629 to €99,408 (-€13.2k), and the period after was €105,184. The likely incremental revenue is roughly €6–13k per 14 days against about €778 of spend. Keep brand search on. Do not read its 15–20x reported ROAS as the value of extra brand spend.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Platforms overclaim, TikTok the most; generic search and TikTok have thin first-party returns",
+            "evidence": "First-party ROAS this period: Google brand 17.3 (€340,835 / €19,746), Meta 4.93 (€536,867 / €108,787), TikTok 2.73 (€99,326 / €36,416), Google generic 2.10 (€59,174 / €28,118). TikTok claims 1.71x what first-party sales show, Meta 1.35x. Mexico City generic search returned €296 on €724 (ROAS 0.41, 5 orders), so the sample is small. Without margin data, the ~2x channels cannot be judged profitable or not.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Mexico City is limited by product capacity, not demand",
+            "evidence": "At week 7 after launch, Mexico City made €12,490 on €1,499 spend (8.3x). At the same age Miami made €29,528 on €3,080 (9.6x) and São Paulo €35,202 on €3,766 (9.3x). Efficiency is close, and the absolute gap matches capacity: Edition 28 had 286 units and sold 95.5%, Edition 29 is on pace (62.6% sold vs 64.3% of the window gone), while Miami's editions have about 1,440 units. Its meta ROAS of 1.2–1.6 is weak, but the samples are small (64 Meta orders).",
+            "confidence": "medium"
+          },
+          {
+            "title": "Barcelona is overspending its October budget",
+            "evidence": "Barcelona has spent €18,895 of €20,296 (93.1%) with 80.6% of the month gone. Daily spend rose from about €645 (mid-Sep) to €750–770. At that rate it overshoots by about €3.1k by 31 Oct. The extra +€2.6k of spend vs the previous period came with only +€2.7k of total market revenue (€247,394 vs €244,647), so the extra money bought little extra revenue.",
+            "confidence": "medium"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Monday: get the dev team to reproduce and fix iOS checkout for Berlin and Amsterdam, starting with whatever shipped on or around 7 Oct (payment method, Apple Pay, localisation, consent banner, app or webview release). Until the fix is live, exclude iOS from the Berlin and Amsterdam Meta and TikTok ad sets.",
+            "why": "Checkout-to-order on iOS fell from about 64% to about 22% in both cities on the same day, while Android, desktop and iOS in other markets are unaffected. It is the largest non-seasonal loss in the data.",
+            "expected_impact": "About €30k a week of recovered revenue (about €82k already lost in 19 days). Excluding iOS also stops paying for traffic that cannot convert.",
+            "effort": "M",
+            "confidence": "high",
+            "how_to_measure": "iOS checkout-to-order rate in Berlin and Amsterdam, last 7 days; it should go back to about 0.64 from 0.22.",
+            "metric_sql": "SELECT ROUND(1.0*SUM(orders)/NULLIF(SUM(checkouts),0),4) AS value FROM sales_daily WHERE market IN ('Berlin','Amsterdam') AND device='ios' AND day > date((SELECT MAX(day) FROM sales_daily),'-7 days')",
+            "check_after_days": 7,
+            "direction": "up"
+          },
+          {
+            "action": "Push the Madrid Autumn special for its last 12 days: send a dedicated email to the Madrid list (London's cadence change coincided with email doubling there), and point one Madrid Meta ad (UGC C or Video A, both ROAS about 6) at the Autumn special with a 'last days' message. Do this within the existing Madrid budget, which is underpacing at 78.4%.",
+            "why": "About 2,000 units (€142.7k at list price) are unsold, the sales pace is flat at about 19 a day, and the product ends 6 Nov. Madrid's other editions are on pace, so demand for Madrid exists.",
+            "expected_impact": "Doubling the pace to about 40 a day would add about 230 units, about €16k. Selling everything is not realistic.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Autumn special (MAD-P027) units sold in the last 7 days; baseline 133.",
+            "metric_sql": "SELECT SUM(units) AS value FROM product_daily WHERE product_id='MAD-P027' AND day > date((SELECT MAX(day) FROM product_daily),'-7 days')",
+            "check_after_days": 7,
+            "direction": "up"
+          },
+          {
+            "action": "Replace Paris Video A (PAR-META-1) with a fresh cut, or move its ~€1k a week to UGC C (PAR-META-3), and set a frequency cap of about 2.5 a week on Paris Meta.",
+            "why": "Frequency rose to 5.3 and CTR halved (1.42% → 0.71%, significant). Revenue fell from about €6.5k to €3.1k a week at the same spend.",
+            "expected_impact": "About €2.5–3k a week of Paris Meta revenue back, if the replacement performs like UGC C (ROAS about 6).",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Paris Meta CTR over the last 7 days, all ads; baseline 1.005%, healthy level about 1.25–1.3%.",
+            "metric_sql": "SELECT ROUND(100.0*SUM(link_clicks)/NULLIF(SUM(impressions),0),3) AS value FROM ad_daily WHERE market='Paris' AND platform='meta' AND day > date((SELECT MAX(day) FROM ad_daily),'-7 days')",
+            "check_after_days": 10,
+            "direction": "up"
+          },
+          {
+            "action": "Bring Barcelona daily spend back to about €650 a day (its mid-September level) for the rest of October, trimming generic search (ROAS 2.07) and TikTok Creator 2 (ROAS 2.35) first. Keep brand search and Meta Video A (ROAS 6.85) as they are.",
+            "why": "93.1% of the budget is spent with 80.6% of the month gone. The extra spend added almost no total market revenue (+€2.7k on +€2.6k of spend).",
+            "expected_impact": "About €0.6k–3k of overspend avoided in October, with little revenue at risk.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Barcelona spend over the last 7 days; baseline €5,246, target about €4,550 or lower.",
+            "metric_sql": "SELECT ROUND(SUM(spend),2) AS value FROM ad_daily WHERE market='Barcelona' AND day > date((SELECT MAX(day) FROM ad_daily),'-7 days')",
+            "check_after_days": 7,
+            "direction": "down"
+          },
+          {
+            "action": "Pause Mexico City generic search (MEX-GGL-GENERIC, about €180 a week) and move it to Mexico brand search or Meta Video A. Do not judge Mexico against Miami or São Paulo on absolute revenue: it is limited by capacity.",
+            "why": "First-party ROAS of 0.41 (€296 on €724). This is a small, cheap and reversible change.",
+            "expected_impact": "About €0.7k a month of spend saved, at risk of about €0.3k of last-click revenue.",
+            "effort": "S",
+            "confidence": "low",
+            "how_to_measure": "Mexico City paid first-party ROAS over the last 14 days; baseline 2.84.",
+            "metric_sql": "SELECT ROUND((SELECT SUM(revenue) FROM sales_daily WHERE market='Mexico City' AND channel LIKE 'paid:%' AND day > date((SELECT MAX(day) FROM sales_daily),'-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Mexico City' AND day > date((SELECT MAX(day) FROM ad_daily),'-14 days')),3) AS value",
+            "check_after_days": 14,
+            "direction": "up"
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "A fresh Paris video creative will get back to the CTR of the non-fatigued ads (about 1.3%), against the current Video A at 0.71%.",
+            "variant": "B is a new video cut as a separate ad in the same Paris ad set, with a frequency cap of about 2.5 a week. A is the current PAR-META-1. Compare CTR first, then first-party orders per 1,000 impressions.",
+            "metric": "Link CTR (clicks / impressions); secondary: first-party orders per 1,000 impressions",
+            "sample_per_version": 4452,
+            "weeks_at_current_traffic": 0.5
+          },
+          {
+            "hypothesis": "TikTok's first-party ROAS of 2.73, and its 1.71x platform claim, overstate what it adds. Turning it off in one market will cost less than its last-click revenue.",
+            "variant": "Pause TikTok in Milan (about €2.8k per 4 weeks, €9.4k last-click revenue per 4 weeks) for 14 days. Compare Milan's total revenue YoY change and its change vs similar markets (Madrid, Paris, São Paulo) with the 14 days before. This is a geo holdout, so the sample is 14 market-days per version, not visitors.",
+            "metric": "Milan total first-party revenue vs same weeks last year and vs control markets",
+            "sample_per_version": 14,
+            "weeks_at_current_traffic": 4
+          }
+        ],
+        "questions_for_owner": [
+          "What changed on 6–7 Oct that touched iOS in Berlin and Amsterdam only (payment provider, local payment method, app or webview release, consent tool)?",
+          "What changed in London email on 28 Sep (frequency, segment, offer)? If it can be repeated, is there appetite to roll it out to Paris or Madrid as a geo test?",
+          "Why did London Meta and TikTok impressions fall about 25–35% at the same spend from 28 Sep: targeting or placement changes, or auction competition?",
+          "What is the gross margin per order? Without it we can't tell whether generic search (ROAS 2.1) and TikTok (ROAS 2.7) make money.",
+          "How was the Madrid Autumn special's capacity of 2,883 set, and can a price change or bundle be used in its last 12 days?",
+          "Can Mexico City editions get more capacity? They sell out (95.5%) at 286–421 units."
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "grounding": {
+        "numbers": 307,
+        "grounded": 291,
+        "derived": 5,
+        "unsupported": 11,
+        "supported_pct": 96.4,
+        "unsupported_examples": [
+          {
+            "number": 2274577.0,
+            "in": "€2,274,577 €2,598,586 -12.5% on the previous 28 days. Comparing like-for-like markets with the same period last year, it is -3.5% (€1,866,699 vs €1,934,115). Wi"
+          },
+          {
+            "number": 2598586.0,
+            "in": "€2,274,577 €2,598,586 -12.5% on the previous 28 days. Comparing like-for-like markets with the same period last year, it is -3.5% (€1,866,699 vs €1,934,115). Wi"
+          },
+          {
+            "number": 1866699.0,
+            "in": "€2,274,577 €2,598,586 -12.5% on the previous 28 days. Comparing like-for-like markets with the same period last year, it is -3.5% (€1,866,699 vs €1,934,115). Wi"
+          },
+          {
+            "number": 1934115.0,
+            "in": "€2,274,577 €2,598,586 -12.5% on the previous 28 days. Comparing like-for-like markets with the same period last year, it is -3.5% (€1,866,699 vs €1,934,115). Wi"
+          },
+          {
+            "number": 1023970.0,
+            "in": "€1,023,970 €1,239,841 -17%. The biggest falls are New York (seasonal), London, Berlin and Amsterdam."
+          },
+          {
+            "number": 1239841.0,
+            "in": "€1,023,970 €1,239,841 -17%. The biggest falls are New York (seasonal), London, Berlin and Amsterdam."
+          },
+          {
+            "number": 12.6,
+            "in": "36,658 41,932 -12.6%. New York accounts for -1,829 and Berlin plus Amsterdam for -1,907."
+          },
+          {
+            "number": 711.0,
+            "in": "21.7% (711/3,284) 65.5% (2,460/3,760), 16 Sep–6 Oct Last 7 days: 22.9%. Android and desktop in the same markets are unchanged."
+          },
+          {
+            "number": 3284.0,
+            "in": "21.7% (711/3,284) 65.5% (2,460/3,760), 16 Sep–6 Oct Last 7 days: 22.9%. Android and desktop in the same markets are unchanged."
+          },
+          {
+            "number": 4.7,
+            "in": "iOS checkout-to-order fell from about 65% to about 22% overnight on 7 Oct, only in these two markets and only on iOS. Android and desktop are unchanged, so the "
+          },
+          {
+            "number": 9.3,
+            "in": "Frequency is 5.29, CTR fell from 1.42% to 0.65%, and first-party revenue is down €9.3k in 28 days on the same spend. UGC C holds a 1.30% CTR and ROAS 5.64. Brin"
+          }
+        ]
+      },
+      "turns": 8,
+      "queries": 15,
+      "comparisons": 5,
+      "cost_usd": 0.82,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true,
+        "numbers_supported_pct": 96.4,
+        "numbers_unsupported": 11,
+        "recommendations_measurable": "5/5"
+      },
+      "grades": [
+        {
+          "criterion": "paris_creative_fatigue",
+          "pass": true,
+          "reason": "The finding \"Paris 'Video A' (PAR-META-1) is fatigued: frequency rose from 1.85 to 5.29 and CTR halved\" cites flat spend (€3,855), ROAS falling from 6.23 to 3.97, and sibling ad UGC C holding up."
+        },
+        {
+          "criterion": "milan_brand_search",
+          "pass": true,
+          "reason": "It says \"Milan brand search was off from 16 to 29 Aug\", that revenue barely moved while organic plus direct rose, and that the reported ROAS of about 24 compares with an incremental ROAS of about 4.4."
+        },
+        {
+          "criterion": "ios_checkout_berlin_amsterdam",
+          "pass": true,
+          "reason": "It reports iOS checkout-to-order in Amsterdam and Berlin falling from about 65% to 21–23% from 7 Oct, with Android and desktop unchanged and the problem \"only in these two markets and only on iOS\"."
+        },
+        {
+          "criterion": "mexico_launch_behind",
+          "pass": true,
+          "reason": "It states that at week 7 Mexico City made €11,061 against €32,028 for Miami and €32,093 for São Paulo, and that \"It is behind\"."
+        },
+        {
+          "criterion": "london_email_masks_paid",
+          "pass": true,
+          "reason": "It notes London paid Meta and TikTok revenue fell as CPM rose about 38% with CTR steady (so cost per click rose), while email revenue doubled and total revenue held flat (-3%)."
+        },
+        {
+          "criterion": "madrid_product_pacing",
+          "pass": true,
+          "reason": "It says Madrid 'Autumn special' is \"808 of 2,837 sold (28.5%) with 77.4% of the selling window gone and 12 days left\", unlike regular editions that sold 91–99%."
+        },
+        {
+          "criterion": "barcelona_budget_pacing",
+          "pass": true,
+          "reason": "It says Barcelona has spent \"€18,982 of the €20,941 budget\" (90.6% with 80.6% of the month gone) after spend rose about 20% and is heading about €2.6k over budget."
+        },
+        {
+          "criterion": "new_york_seasonal_trap",
+          "pass": true,
+          "reason": "The finding \"New York's -€114k is seasonal, not a loss\" cites +3.3% year on year and says no action is needed."
+        },
+        {
+          "criterion": "porto_tiny_trap",
+          "pass": true,
+          "reason": "The memo does not mention Porto at all."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": true,
+          "reason": "No finding claims a problem in São Paulo or Miami; they appear only as launch benchmarks and as a proposed test market."
+        },
+        {
+          "criterion": "sized_in_money",
+          "pass": true,
+          "reason": "Each recommendation states EUR impact, and they are ordered from largest to smallest: iOS about €130k per 28 days, Madrid about €110k at stake, Paris about €8k, Barcelona about €3.4k, Mexico about €1.6k."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The recommendations cut or reallocate spend (Barcelona, Mexico, Paris), the Madrid push uses unspent budget, and Mexico explicitly says \"Don't increase total spend\"."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Every recommendation names a concrete action and includes how_to_measure, a metric SQL query and check_after_days."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "High confidence is used only for large samples, while the single-episode Milan finding is marked medium with \"This rests on one 14-day episode\" and Mexico City is noted as \"Too little data to judge\"."
+        }
+      ],
+      "memo": {
+        "headline": "Since 7 October, iOS checkout in Amsterdam and Berlin has been converting at about a third of its usual rate, falling from 65–66% to 21–23% of checkouts becoming orders. That has cost about €90k of first-party revenue in 19 days (about €4.7k a day) and is still happening. It also explains the whole year-on-year revenue decline. New York's €114k drop is seasonal, not a problem.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "There are 28 days of first-party sales across 12 markets, with more than 13 months of history, so year-on-year comparisons work. The main findings rest on large samples: thousands of iOS checkouts per market and more than 500k impressions per Meta ad. All of them passed significance after correcting for the number of segments scanned. Weaker spots: (1) brand-search incrementality comes from one 14-day pause in Milan. (2) Mexico City has only 8 weeks of history and small product capacity. (3) There are no margin or cost-of-goods figures, so ROAS cannot yet be turned into profit."
+        },
+        "kpis": [
+          {
+            "name": "First-party revenue (all channels, 12 markets)",
+            "value": "€2,274,577",
+            "previous": "€2,598,586",
+            "note": "-12.5% on the previous 28 days. Comparing like-for-like markets with the same period last year, it is -3.5% (€1,866,699 vs €1,934,115). Without Berlin and Amsterdam it is +1.3%."
+          },
+          {
+            "name": "Ad spend",
+            "value": "€192,899",
+            "previous": "€186,789",
+            "note": "+3.3%. Most of the increase is Barcelona (+€3.1k) and Mexico City (+€3.1k)."
+          },
+          {
+            "name": "Paid first-party revenue",
+            "value": "€1,023,970",
+            "previous": "€1,239,841",
+            "note": "-17%. The biggest falls are New York (seasonal), London, Berlin and Amsterdam."
+          },
+          {
+            "name": "Paid ROAS (first-party)",
+            "value": "5.31",
+            "previous": "6.64",
+            "note": "Platforms claim €1.31M against €1.02M first-party (1.28x overall; TikTok 1.70x, Meta 1.35x, Google 1.08x)."
+          },
+          {
+            "name": "Orders",
+            "value": "36,658",
+            "previous": "41,932",
+            "note": "-12.6%. New York accounts for -1,829 and Berlin plus Amsterdam for -1,907."
+          },
+          {
+            "name": "iOS checkout-to-order, Amsterdam + Berlin (7–25 Oct)",
+            "value": "21.7% (711/3,284)",
+            "previous": "65.5% (2,460/3,760), 16 Sep–6 Oct",
+            "note": "Last 7 days: 22.9%. Android and desktop in the same markets are unchanged."
+          }
+        ],
+        "findings": [
+          {
+            "title": "iOS checkout broke on 7 Oct in Amsterdam and Berlin: about €90k lost so far, about €4.7k a day",
+            "evidence": "Amsterdam iOS checkout-to-order fell from 64.7% (1,075/1,661, 16 Sep–6 Oct) to 23.0% (341/1,484, 7–25 Oct). Berlin fell from 66.0% (1,385/2,099) to 20.6% (370/1,800). Both drops are significant after correcting for 36 market×device comparisons (p≈0). The break happened overnight on 7 Oct in both markets (Amsterdam 66% on 6 Oct, 23% on 7 Oct; Berlin 61%, then 16%) and was still there on 19–25 Oct. Berlin Android, used as a control, did not move: 63.5% to 63.4%, no detectable difference. Checkout volume per day is unchanged, so traffic and demand are intact; orders are failing at the last step. At the old rate we would have expected about 619 more orders in Amsterdam (≈€38.6k at a €62.35 average order) and about 818 more in Berlin (≈€50.9k). Year on year, Berlin went from +2.3% in the week of 28 Sep to -39.5% in the week of 12 Oct, and Amsterdam from -8.3% to -29.9%. Every channel fell in proportion, which points to the site, not marketing. Berlin Edition 28 closes at 88.6% sold, the lowest of any market.",
+            "confidence": "high"
+          },
+          {
+            "title": "Madrid 'Autumn special' will leave about €110k of capacity unsold unless it is pushed now",
+            "evidence": "808 of 2,837 sold (28.5%) with 77.4% of the selling window gone and 12 days left (ends 6 Nov). The last 7 days sold 126 units (18 a day). At that pace it reaches about 1,024, leaving about 1,813 units × €60.64 ≈ €110k unsold. Madrid's regular editions 18–27 all sold 91–99% of capacity. Madrid has also used only 76.6% of its October budget with 80.6% of the month gone, about €900 below pace.",
+            "confidence": "high"
+          },
+          {
+            "title": "Paris 'Video A' (PAR-META-1) is fatigued: frequency rose from 1.85 to 5.29 and CTR halved",
+            "evidence": "Weekly CTR went 1.42% → 1.31% → 1.16% → 0.95% → 0.77% → 0.65% as frequency rose from 1.85 to 5.29 between 31 Aug and 19 Oct. Over 28 days, CTR fell from 1.38% (7,811/564,148) to 0.87% (4,817/551,619), significant after correcting for 84 ad comparisons. First-party revenue fell from €24,598 to €15,315 (-€9.3k in 28 days) on the same spend (€3,855), and ROAS fell from 6.23 to 3.97 (last week 3.38). Its sibling ad UGC C in the same account held a 1.30% CTR, frequency 1.89 and ROAS 5.64. Paris revenue is -6% to -10% year on year since the week of 5 Oct. Video A explains part of that; Paris organic and brand search are also softer.",
+            "confidence": "high"
+          },
+          {
+            "title": "New York's -€114k is seasonal, not a loss",
+            "evidence": "New York revenue was €247,294 against €361,664 in the previous period, but €239,496 in the same period last year (+3.3%). The weekly year-on-year figures from 28 Sep are +7.6%, +4.2%, -1.7% and +2.1%. Last year showed the same step down from about €92k to about €56k a week at the end of September. The fall in brand-search impressions (15,031 to 10,298) matches seasonally lower search demand. No action needed.",
+            "confidence": "high"
+          },
+          {
+            "title": "Barcelona's extra spend (+20% since 28 Sep) bought almost nothing, and the market will overshoot its October budget",
+            "evidence": "Weekly spend rose from about €4,450 to €5,050–5,350 from the week of 28 Sep. Average weekly paid revenue was €29,612 before and €29,946 after, and total revenue was €62,594 before and €61,727 after. That is roughly +€850 a week of spend for about +€330 of paid revenue (marginal ROAS ≈0.4, with no lift in total revenue). €18,982 of the €20,941 budget is already spent (90.6% with 80.6% of the month gone). At about €760 a day the market finishes about €2.6k over budget.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Brand search is mostly paying for buyers who would have come anyway (Milan natural experiment)",
+            "evidence": "Milan brand search was off from 16 to 29 Aug. Market revenue was €113,208 in the 14 days before, €104,031 while it was off and €101,633 after it came back. Organic plus direct rose from €45,297 to €58,833 while it was off. Using the before/after average (€107.4k) as the baseline, the pause cost about €3.4k against €18.8k of revenue the campaign normally claims, so roughly 18% of it is incremental. That is an incremental ROAS of about 4.4 on €774 of spend, against a reported ROAS of about 24. Brand search costs €19,753 per 28 days across all markets. It is probably still worth running, but its reported ROAS of 11–21 should not drive budget decisions. This rests on one 14-day episode in one market.",
+            "confidence": "medium"
+          },
+          {
+            "title": "TikTok and Meta overclaim revenue; TikTok and generic search are the weakest first-party returns",
+            "evidence": "Over 28 days, TikTok claimed €173,854 against €102,324 first-party (1.70x) on €36,328 of spend, so first-party ROAS is 2.82. Meta claimed €705,389 against €521,355 (1.35x). Google claimed €432,632 against €400,292 (1.08x). Generic search costs €28,128 per 28 days at ROAS 1.98–3.33 in every market. Without margin data we cannot say whether these are profitable.",
+            "confidence": "high"
+          },
+          {
+            "title": "Mexico City is selling out its small capacity; extra spend on generic search and TikTok there is wasted",
+            "evidence": "Edition 28 is 98.8% sold (250/253) and Edition 29 is 67.1% sold at 64.3% of its window, so the market is limited by capacity, not demand. Spend nearly tripled (€1,805 to €4,929). Generic search returned €289 on €699 (ROAS 0.41) and TikTok €620 on €921 (0.46–0.89): €1,620 of spend for about €909 of revenue. Against earlier launches at the same age (week 7), Mexico City made €11,061 against €32,028 for Miami and €32,093 for São Paulo, with revenue/spend of 7.4 against 10.4 and 8.6. It is behind, but on far less spend and capacity. Too little data to judge its long-term potential; at least another 8 weeks of history are needed.",
+            "confidence": "medium"
+          },
+          {
+            "title": "London paid social is now about 38% more expensive per impression; total revenue held because email doubled",
+            "evidence": "From the week of 28 Sep, London Meta and TikTok impressions fell about 28% on unchanged spend. For Video A, CPM went from about €7.0 to €9.7, and CTR was steady at about 1.4%. Paid Meta revenue fell from €86,835 to €56,104 and TikTok from €17,363 to €11,430. In the same week, email revenue jumped from about €11k to €21k a week (€42,321 to €86,111 over 28 days). London's total revenue is flat (-3%) and up about 4% on last year. Either auction costs rose in London or email is now taking last-click credit for buyers paid social reached. We can't tell which from this data.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Monday morning: treat the Amsterdam and Berlin iOS checkout as a P1 incident. Put an iOS Safari order through in each market and check the payment methods (Apple Pay, iDEAL, Klarna, card) and whatever was released or changed on 6–7 Oct. Roll back or fix. Until it is fixed, show a visible 'pay by card' fallback on iOS checkout.",
+            "why": "iOS checkout-to-order fell from about 65% to about 22% overnight on 7 Oct, only in these two markets and only on iOS. Android and desktop are unchanged, so the cause is technical, not demand.",
+            "expected_impact": "Recovers about €4.7k of revenue a day (about €130k per 28 days), and lifts Berlin and Amsterdam back to roughly flat year on year.",
+            "effort": "M",
+            "confidence": "high",
+            "how_to_measure": "iOS checkout-to-order rate in Amsterdam and Berlin over the last 7 days. Currently 22.9%; it should return to about 65%.",
+            "metric_sql": "SELECT ROUND(1.0*SUM(orders)/NULLIF(SUM(checkouts),0),4) AS value FROM sales_daily WHERE device='ios' AND market IN ('Amsterdam','Berlin') AND day > date((SELECT MAX(day) FROM sales_daily),'-7 days')",
+            "check_after_days": 7,
+            "direction": "up"
+          },
+          {
+            "action": "Run a 12-day sell-out push for Madrid 'Autumn special': send a dedicated email to the Madrid list and run a Meta ad pointing at the product, paid for from Madrid's roughly €900 of unspent October budget plus early November budget. Consider a time-limited offer in the last 5 days.",
+            "why": "28.5% sold with 77% of the window gone and 12 days left. At 18 units a day about 1,813 units (≈€110k) go unsold, while regular Madrid editions sell 91–99%.",
+            "expected_impact": "Each extra 10 units a day over 12 days adds about €7.3k. Even doubling the run-rate saves roughly €13k of otherwise lost revenue.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Units of MAD-P027 sold in the last 7 days. Currently 126; target 250 or more.",
+            "metric_sql": "SELECT COALESCE(SUM(units),0) AS value FROM product_daily WHERE product_id='MAD-P027' AND day > date((SELECT MAX(day) FROM product_daily),'-7 days')",
+            "check_after_days": 7,
+            "direction": "up"
+          },
+          {
+            "action": "Pause Paris 'Video A' (PAR-META-1). Move about half its budget (≈€500 a week) to Paris 'UGC C', and use the other half for a fresh creative (see the experiment).",
+            "why": "Frequency is 5.29, CTR fell from 1.42% to 0.65%, and first-party revenue is down €9.3k in 28 days on the same spend. UGC C holds a 1.30% CTR and ROAS 5.64.",
+            "expected_impact": "Bringing that €3.9k per 28 days back to about ROAS 5.6 instead of 3.4 adds roughly €8k of revenue per 28 days.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Paris Meta first-party ROAS over the last 14 days. Currently 4.83; target about 5.5.",
+            "metric_sql": "SELECT ROUND((SELECT SUM(revenue) FROM sales_daily WHERE market='Paris' AND channel='paid:meta' AND day > date((SELECT MAX(day) FROM sales_daily),'-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Paris' AND platform='meta' AND day > date((SELECT MAX(day) FROM ad_daily),'-14 days')),3) AS value",
+            "check_after_days": 14,
+            "direction": "up"
+          },
+          {
+            "action": "Take Barcelona's daily spend back to the pre-28 Sep level (about €635 a day, roughly €4.45k a week) and cap it so October lands on its €20.9k budget. Trim TikTok, generic search and Carousel B first.",
+            "why": "The +20% spend increase added about €330 a week of paid revenue for about €850 more spend, with no change in total revenue. The market is heading about €2.6k over budget.",
+            "expected_impact": "Saves about €850 a week (≈€3.4k per 28 days) with little or no revenue loss; Barcelona paid ROAS should go back to about 6.5.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Barcelona paid first-party ROAS over the last 14 days (currently 5.75). Spend should fall while revenue holds.",
+            "metric_sql": "SELECT ROUND((SELECT SUM(revenue) FROM sales_daily WHERE market='Barcelona' AND channel LIKE 'paid:%' AND day > date((SELECT MAX(day) FROM sales_daily),'-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Barcelona' AND day > date((SELECT MAX(day) FROM ad_daily),'-14 days')),3) AS value",
+            "check_after_days": 14,
+            "direction": "up"
+          },
+          {
+            "action": "In Mexico City, pause generic search (MEX-GGL-GENERIC) and both TikTok ads (MEX-TT-1, MEX-TT-2). Keep Meta and brand search. Don't increase total spend until capacity per edition grows.",
+            "why": "These three ads spent €1,620 for about €909 of first-party revenue in 28 days (ROAS 0.41–0.89), and the market's editions are already selling out (Edition 28 at 98.8%).",
+            "expected_impact": "Saves about €1.6k per 28 days with almost no lost revenue; Mexico City paid ROAS should rise from about 2.6 towards 3.5 or more.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Mexico City paid first-party ROAS over the last 14 days. Currently 2.61.",
+            "metric_sql": "SELECT ROUND((SELECT SUM(revenue) FROM sales_daily WHERE market='Mexico City' AND channel LIKE 'paid:%' AND day > date((SELECT MAX(day) FROM sales_daily),'-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Mexico City' AND day > date((SELECT MAX(day) FROM ad_daily),'-14 days')),3) AS value",
+            "check_after_days": 14,
+            "direction": "up"
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "A new Paris Meta creative will beat the current best (UGC C) on CTR by at least 10% relative (1.30% to 1.43%) and replace fatigued Video A.",
+            "variant": "Version B is a new video creative at the same budget and audience as UGC C (version A), run as two separate ads.",
+            "metric": "Link CTR (clicks / impressions), with first-party orders per click as a secondary metric",
+            "sample_per_version": 125058,
+            "weeks_at_current_traffic": 1
+          },
+          {
+            "hypothesis": "Brand search adds only about 20% of the revenue it claims, as in the Milan pause (incremental ROAS about 4 against 20 reported).",
+            "variant": "Pause brand search for 14 days in two mid-size markets (e.g. Miami and Milan again). Keep the other markets as controls and compare total market revenue (not channel revenue) against the controls and against last year.",
+            "metric": "Total first-party market revenue during the pause versus a baseline from control markets and the same markets last year",
+            "sample_per_version": 14,
+            "weeks_at_current_traffic": 2
+          }
+        ],
+        "questions_for_owner": [
+          "What was released or changed on the checkout or payment provider on 6–7 Oct? Are Amsterdam and Berlin on a different payment setup (e.g. iDEAL, Klarna, a local Apple Pay configuration) from the other markets?",
+          "What is the gross margin per order? Without it we can't say whether TikTok (first-party ROAS 2.8) and generic search (about 2.2) make money.",
+          "Did the London email programme change around 28 Sep (more sends, new flows, a discount)? Email revenue doubled the same week paid social revenue fell.",
+          "Who decided to raise Barcelona spend from 28 Sep, and against which goal?",
+          "Can Madrid 'Autumn special' get its own ad set and email, and is a time-limited discount allowed for it?",
+          "Can Mexico City editions get more capacity? Paid demand there is limited by capacity, not by budget."
+        ]
+      }
+    }
+  ],
+  "mean_cost_usd": 0.88
+}

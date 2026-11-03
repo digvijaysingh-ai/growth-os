@@ -1,0 +1,84 @@
+# AI visibility for the Olist case study: does an AI assistant bring Olist up when Brazilian sellers ask for help?
+name = "Olist and alternatives for small sellers in Brazil"
+max_searches = 3
+
+[[questions]]
+id = "best_platform"
+text = "Qual a melhor plataforma para uma loja pequena começar a vender em marketplaces no Brasil?"
+[[questions]]
+id = "multi_marketplace"
+text = "Como uma pequena loja pode vender no Mercado Livre, Amazon e Shopee ao mesmo tempo sem perder o controle do estoque?"
+[[questions]]
+id = "integrator"
+text = "Quais são os melhores integradores de marketplaces para pequenas empresas no Brasil em 2026?"
+[[questions]]
+id = "no_website"
+text = "Tenho uma loja física pequena e não tenho site. Qual a forma mais fácil de começar a vender online?"
+[[questions]]
+id = "erp"
+text = "Qual sistema de gestão (ERP) é bom para pequenos lojistas que vendem em vários marketplaces?"
+[[questions]]
+id = "branded_olist"
+text = "Vale a pena usar a Olist para vender em marketplaces? Quais as alternativas?"
+branded = true
+
+[[brands]]
+name = "Olist"
+aliases = ["Olist"]
+domains = ["olist.com"]
+[[brands]]
+name = "Tiny ERP"
+aliases = ["Tiny ERP", "Tiny"]
+domains = ["tiny.com.br"]
+[[brands]]
+name = "Bling"
+aliases = ["Bling"]
+domains = ["bling.com.br"]
+[[brands]]
+name = "Nuvemshop"
+aliases = ["Nuvemshop"]
+domains = ["nuvemshop.com.br"]
+[[brands]]
+name = "Anymarket"
+aliases = ["Anymarket", "ANYMARKET"]
+domains = ["anymarket.com.br"]
+[[brands]]
+name = "Plugg.to"
+aliases = ["Plugg.to", "Pluggto"]
+domains = ["plugg.to"]
+[[brands]]
+name = "Hub2b"
+aliases = ["Hub2b"]
+domains = ["hub2b.com.br"]
+[[brands]]
+name = "Ideris"
+aliases = ["Ideris"]
+domains = ["ideris.com.br"]
+[[brands]]
+name = "Mercado Livre"
+aliases = ["Mercado Livre", "Mercado Libre"]
+domains = ["mercadolivre.com.br"]
+[[brands]]
+name = "Shopee"
+aliases = ["Shopee"]
+domains = ["shopee.com.br"]
+[[brands]]
+name = "Magalu"
+aliases = ["Magalu", "Magazine Luiza"]
+domains = ["magazineluiza.com.br", "magalu.com"]
+[[brands]]
+name = "Magis5"
+aliases = ["Magis5", "Magis 5"]
+domains = ["magis5.com.br"]
+[[brands]]
+name = "Shopify"
+aliases = ["Shopify"]
+domains = ["shopify.com", "shopify.com.br"]
+[[brands]]
+name = "Tray"
+aliases = ["Tray"]
+domains = ["tray.com.br"]
+[[brands]]
+name = "Amazon"
+aliases = ["Amazon"]
+domains = ["amazon.com.br"]

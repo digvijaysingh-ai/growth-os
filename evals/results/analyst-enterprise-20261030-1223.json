@@ -1,0 +1,581 @@
+{
+  "when": "2026-10-30T12:23:42",
+  "scenario": "enterprise",
+  "score": 1.0,
+  "runs": [
+    {
+      "seed": 7,
+      "turns": 9,
+      "queries": 13,
+      "comparisons": 9,
+      "cost_usd": 1.41,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "fr_mobile_form",
+          "pass": true,
+          "reason": "The memo states 'France: the form is broken on mobile since about the week of 14 September', with mobile submit/start falling from 52.5% to 22.6%, errors jumping from week 38, 'French desktop is fine' and 'every other market is flat'."
+        },
+        {
+          "criterion": "de_ad_quality",
+          "pass": true,
+          "reason": "The memo says 'Germany: leads from the 'Before and after' ad (DE2) stopped qualifying from week 38' (31.5% to 4.2%), notes that click-through rate, form completion and contact speed are unchanged, and that DE1/DE3 are normal."
+        },
+        {
+          "criterion": "it_slow_followup",
+          "pass": true,
+          "reason": "The memo reports that Italian leads contacted within 2 h fell from 33–44 to 6–15 a week from week 35, average first contact rose to 36–45 h, the qualified rate fell from 55.3% to 33.7%, and no other market changed."
+        },
+        {
+          "criterion": "nl_tiny_trap",
+          "pass": true,
+          "reason": "The memo never mentions /nl/oferta-b and only lists NL among markets that 'moved by only a few leads each', so it presents no winner."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": true,
+          "reason": "The only non-planted market discussed is Portugal, in a low-confidence finding that calls its drop 'likely noise after correcting for 10 markets'; the other markets are called stable."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The recommendations only reallocate spend ('Keep the total budget unchanged', move DE2 budget to DE1/DE3) and never raise total spend."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each of the four recommendations names a concrete near-term action (fix the FR mobile form, cut and investigate DE2, fix IT routing, shift 30% of budget) and gives a specific how_to_measure metric with thresholds."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Rate comparisons are hedged to match their evidence: Portugal's p=0.04 is called 'likely noise', the Italy speed link is flagged 'observational' with medium confidence, and the concept comparison is rated medium."
+        }
+      ],
+      "memo": {
+        "headline": "Spend was flat, but qualified leads fell from 1,049 to 946 (-10%), and three problems inside three markets explain most of it: the French form fails on mobile since mid-September, leads from the German \"Before and after\" ad almost stopped qualifying, and Italian leads have been contacted slowly since late August.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "There are 28-day periods of about 2,000 leads and 30,000 sessions, and 6 months of history. All three problems hold up after correcting for the number of markets or ads scanned. Limits: (1) Won deals for leads from the last 1–2 weeks are not final yet (average time to win is about 7.5 days), so the drop in won deals (227 vs 248) is overstated. (2) The link between contact speed and qualification is observational: leads called fast may simply have been better leads. (3) Nothing in the hub explains the German Before-and-after ad (DE2) problem. Its delivery, site behaviour and contact speed are all unchanged, so only the team can say what changed. (4) Smaller swings in PT, BE and AT are within noise."
+        },
+        "kpis": [
+          {
+            "name": "Spend",
+            "value": "11,140 EUR",
+            "previous": "11,118 EUR",
+            "note": "Flat. Split almost evenly across the three ad concepts (about 3,700 EUR each)."
+          },
+          {
+            "name": "Leads (all channels)",
+            "value": "1,992",
+            "previous": "2,066",
+            "note": "-3.6%. Nearly all of the drop is France (181 vs 250)."
+          },
+          {
+            "name": "Blended cost per lead",
+            "value": "5.59 EUR",
+            "previous": "5.38 EUR",
+            "note": "Well under the 10 EUR target. Leads include organic search, so paid-only cost per lead is higher; by ad it runs 5.6–12.8 EUR."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "946 (47.5% of leads)",
+            "previous": "1,049 (50.8%)",
+            "note": "-103. Germany alone is -42, driven by DE2."
+          },
+          {
+            "name": "Won",
+            "value": "227",
+            "previous": "248",
+            "note": "Recent leads are still closing, so treat this as provisional."
+          },
+          {
+            "name": "Blended cost per qualified",
+            "value": "11.78 EUR",
+            "previous": "10.60 EUR",
+            "note": "+11%, because spend was flat while qualified leads fell."
+          },
+          {
+            "name": "Form errors",
+            "value": "497",
+            "previous": "412",
+            "note": "France went from 99 to 200 errors; every other market is flat."
+          }
+        ],
+        "findings": [
+          {
+            "title": "France: the form is broken on mobile since about the week of 14 September",
+            "evidence": "On French mobile, the share of started forms that get submitted fell from 52.5% (167/318) to 22.6% (69/305). That holds after correcting for 10 markets scanned (p≈0). Weekly form errors in France jumped from 10–18 to 45–54 starting in week 38, and stayed there. French desktop is fine (112/139 vs 83/119, which is noise after correction). Both paid and search traffic on /fr/ are hit (search: 66 submits from 153 starts). Leads in France fell from 250 to 181 on the same traffic (4,455 vs 4,516 sessions). At the old mobile rate, about 90 more leads would have come in this period.",
+            "confidence": "high"
+          },
+          {
+            "title": "Germany: leads from the 'Before and after' ad (DE2) stopped qualifying from week 38",
+            "evidence": "DE2 leads that became qualified fell from 31.5% (34/108) to 4.2% (5/118). That holds after correcting for 30 ads scanned (p≈0). It is the same in all four sectors (after 14 Sep: bar 2/38, clinic 1/39, hair salon 6/54, shop 7/39, against 27–47 per sector before). Nothing upstream changed: click-through rate is 1.13% vs 1.11%, cost per click 0.30 EUR, engaged time about 40 s, the landing page is still /de/, and the form completion rate held. Contact speed is not the cause either: 30 of 60 DE2 leads still in 'Contacted' were reached within 2 h. 53 DE2 leads were marked Lost this period. DE2 spent 638 EUR for 5 qualified leads (about 128 EUR each), against about 15 EUR each for DE2 over its lifetime. Germany as a market fell from 52.7% to 40.4% qualified, which holds after correction. The other German ads, DE1 and DE3, are normal.",
+            "confidence": "high"
+          },
+          {
+            "title": "Italy: leads have been contacted slowly since late August, and qualification fell with it",
+            "evidence": "In Italy, leads contacted within 2 h fell from 33–44 a week to 6–15 a week from week 35 (24–30 Aug). Average time to first contact went from about 14–22 h to about 36–45 h. No other market changed (all at 16–25 h). Italy's qualified rate was 55.3% (179/324) in weeks 30–34 and 33.7% (168/499) in weeks 35–42, which holds after correction. Since 24 Aug, Italian leads reached within 2 h qualified at 80.6% (83/103), against 25.4% (116/456) for slower ones. This is observational, but it matches the business-wide pattern: 74% of leads reached within 2 h qualify, against 23% of those reached after 24 h. Compared with the previous period alone, Italy's drop (36.9% to 30.4%) is not significant, because the damage started before that period began.",
+            "confidence": "high"
+          },
+          {
+            "title": "'Before and after' is the cheapest ad concept per qualified lead and per win, and its leads close just as well",
+            "evidence": "Lifetime figures excluding DE2: 'Before and after' costs 12.46 EUR per qualified lead and 51.74 EUR per win. 'Owner story' costs 19.62 and 80.98 EUR; 'Prices carousel' costs 18.95 and 70.09 EUR. The share of qualified leads that end up won is the same (Owner story 24.2% vs Before and after 24.1%; no detectable difference). So the gap comes from cheaper clicks (0.30 EUR vs about 0.48–0.55 EUR), not from worse leads. The pattern repeats in all 10 markets. This period spend was split evenly: 3,690 / 3,712 / 3,738 EUR.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The other markets are stable",
+            "evidence": "Portugal's qualified rate fell from 57.6% to 45.5% (80/139 to 66/145). That is p=0.04 before correction but likely noise after correcting for 10 markets. BE, AT, IE, NL, PL and ES moved by only a few leads each. Too little data to call any of them changed. Confirming a shift of Portugal's size would take about 270 leads per period, roughly two periods of Portuguese volume.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the French mobile form this week. Reproduce the error on a phone at /fr/ (look for validation such as phone or postcode format, a required field, a consent checkbox or a script error), using whatever was deployed around 14–20 September as the starting point.",
+            "why": "Half of the French mobile visitors who start the form are now lost to errors. This hits both paid and search traffic, so all French spend and SEO is losing leads.",
+            "expected_impact": "About 90 extra leads per 28 days at the old 52.5% mobile completion rate. At France's current rate of about 54% qualified, that is roughly 45 more qualified leads per period at zero extra spend.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Weekly French mobile errors per form start back under about 15%, and submits per start back above 50% (it was 22.6% this period)."
+          },
+          {
+            "action": "Find out what changed for DE2 around 14 September (ad text or offer, audience, placements, or how sales tags these leads). Meanwhile, cut DE2's budget by at least half and move it to DE1 and DE3.",
+            "why": "DE2 now costs about 128 EUR per qualified lead, against about 15 EUR before. Clicks, site behaviour and contact speed are unchanged, so the leads themselves (or how they are judged) changed, and only the team can see why.",
+            "expected_impact": "Moving about 320 EUR per period to DE1 and DE3 (about 18–19 EUR per qualified lead over their lifetime) should bring roughly 15 more qualified leads than DE2 would at its current rate. Fixing the root cause would bring back about 30 qualified leads per period.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Weekly DE2 qualified share (4% now, 31% before). Germany's cost per qualified lead."
+          },
+          {
+            "action": "Bring Italian first contact back under 2 hours: check who covers Italian leads since late August (absence, new rep, language coverage, routing rule) and fix staffing or routing.",
+            "why": "Italy's qualified rate fell from 55% to 34% exactly when fast contacts dropped from about 40 to about 8 a week. Leads reached within 2 h qualify about three times as often.",
+            "expected_impact": "If Italy returns to its pre-August 55% on about 250 leads per period, that is roughly 50 more qualified leads per period (75 this period). The link is observational, so treat this as an upper bound.",
+            "effort": "M",
+            "confidence": "medium",
+            "how_to_measure": "Weekly share of Italian leads contacted within 2 h (now about 10%, previously about 60%) and Italy's qualified rate."
+          },
+          {
+            "action": "Move part of each market's 'Owner story' budget to 'Before and after', for example 30% in every market except Germany, as a reversible shift. Keep the total budget unchanged.",
+            "why": "Across all markets, 'Before and after' delivers qualified leads at 12.46 EUR against 19.62 EUR, and its leads close just as well.",
+            "expected_impact": "About 1,100 EUR per period moved from about 19.6 to about 12.5 EUR per qualified lead would bring roughly 30 more qualified leads per period, if costs hold as budget grows. Watch for rising costs or ad fatigue.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Cost per qualified lead by concept and by market, every 2 weeks. Undo the shift if the 'Before and after' cost per qualified lead rises above about 17 EUR."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "If DE2's lead quality collapsed because of the ad set itself (audience or learning drift) rather than the creative, a fresh copy will qualify at the old rate of about 30% while the original stays at about 4%.",
+            "variant": "Duplicate DE2 as a new ad with the same creative and landing page /de/, in a new ad set with the original audience settings, at half of DE2's budget. Version A is the current DE2.",
+            "metric": "Lead-to-qualified rate (demo sent)",
+            "sample_per_version": 30,
+            "weeks_at_current_traffic": 2
+          },
+          {
+            "hypothesis": "Since the site is cookieless, a second French landing page with a shorter, mobile-first form (run as a separate French 'Before and after' ad) will beat the fixed current form on mobile submits per session.",
+            "variant": "Run after the bug fix. Ad B points to /fr/ with a 3-field form; ad A points to the fixed current /fr/. Split French 'Before and after' budget 50/50.",
+            "metric": "Mobile form submits per form start",
+            "sample_per_version": 250,
+            "weeks_at_current_traffic": 7
+          }
+        ],
+        "questions_for_owner": [
+          "What was deployed or changed on the French site or form around 14–20 September (form plugin, validation, consent banner, translations)?",
+          "Did anything change for the German 'Before and after' ad around 14 September: ad text or offer, audience, placements, or the way sales tags or disqualifies these leads? 53 of its leads were marked Lost this period.",
+          "Who handles Italian leads, and did coverage change around 24 August (holiday, departure, routing)?",
+          "Can sales log a lost reason for lost leads? That would let us tell low-intent leads apart from sales-handling problems next time."
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "turns": 10,
+      "queries": 18,
+      "comparisons": 10,
+      "cost_usd": 1.54,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "fr_mobile_form",
+          "pass": true,
+          "reason": "The memo's first finding says France's mobile form on /fr/ has been broken since about 20 Sep, with mobile submit/start falling from 261/350 to 77/343 and 234 form errors; it calls desktop 'directional only' and notes no other market is affected."
+        },
+        {
+          "criterion": "de_ad_quality",
+          "pass": true,
+          "reason": "The memo's second finding says DE2 'Before and after' 'still brings in leads, but almost none get a demo, starting mid-September' (41/104 → 5/106), with submits unchanged at 104 → 106."
+        },
+        {
+          "criterion": "it_slow_followup",
+          "pass": true,
+          "reason": "The memo's third finding says that since about 31 Aug Italian leads called within 2 h fell from 59.7% to 13.8% and qualification fell from 55.1% to 32.2%, and that other markets still call about 60% within 2 h."
+        },
+        {
+          "criterion": "nl_tiny_trap",
+          "pass": true,
+          "reason": "The memo says the /nl/oferta vs /nl/oferta-b pages 'had 22 and 17 sessions, far too little to judge' and asks the owner about it, noting 'At 17 sessions it cannot be judged yet.'"
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": true,
+          "reason": "The memo calls PL 'directional only, p_adj 0.69' and says AT, BE, ES, IE, NL and PT 'changed by only a few leads', all under a low-confidence finding titled 'Other market moves this period are noise'; the medium-confidence creative finding only describes ad cost levels across markets, not a change in any one market."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The recommendations only reallocate budget (DE2 → DE1/DE3, Owner story → other creatives) and explicitly say 'Keep total spend flat.'"
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation names a concrete step (fix the FR mobile form, restore Italy's 2 h calling, cut DE2, set up alerts, shift creative budget) and has a specific how_to_measure metric and target."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Confidence wording matches the evidence: France desktop is 'directional only (p=0.06)', PL is 'directional only', the NL pages are 'far too little to judge', and the creative comparison says 'treat it as descriptive' with low confidence on the related recommendation."
+        }
+      ],
+      "memo": {
+        "headline": "Spend and traffic held steady, but three problems inside single markets cut qualified leads by 11% (1,014 → 902): France's mobile form has been failing since about 20 Sep, the German \"Before and after\" ad now brings in leads that almost never get a demo, and Italy's sales team stopped calling leads quickly at the end of August.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "There is enough volume to be confident about the three main problems. France's mobile form went from 261 submits out of 350 starts to 77 out of 343. The DE2 ad went from 41 qualified out of 104 leads to 5 out of 106. Italy went from 276 qualified out of 501 leads to 161 out of 500. All three stay significant after correcting for the 10 markets and 30 ads I scanned. Every other market-level change this period is noise once corrected (DE overall p_adj 0.25, PL p_adj 0.69, IT period-on-period p_adj 1.0). Won deals for October are understated because those leads have had less time to close (average 7.5 days to win), so treat won counts as provisional. The link between contact speed and qualification is observational: reps may call promising leads first, which would inflate the gap."
+        },
+        "kpis": [
+          {
+            "name": "Ad spend",
+            "value": "11,016.87 EUR",
+            "previous": "11,167.64 EUR",
+            "note": "Flat (-1.4%). No agent actions this period."
+          },
+          {
+            "name": "Leads (all channels, site forms)",
+            "value": "1,854",
+            "previous": "1,998",
+            "note": "-7%. France alone lost 139 leads (275 → 136). meta_form_leads = 0: every lead comes through the website."
+          },
+          {
+            "name": "Blended spend per lead",
+            "value": "5.94 EUR",
+            "previous": "5.59 EUR",
+            "note": "Well under the 10 EUR target overall. France is the only market above target: 11.97 EUR, up from 5.94."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "902",
+            "previous": "1,014",
+            "note": "-11%. Qualification rate 48.7% vs 50.8%."
+          },
+          {
+            "name": "Spend per qualified lead",
+            "value": "12.21 EUR",
+            "previous": "11.01 EUR",
+            "note": "DE2 is at 122.86 EUR per qualified lead this period (614.32 EUR / 5)."
+          },
+          {
+            "name": "Won deals",
+            "value": "220",
+            "previous": "256",
+            "note": "Won value 110,000 vs 128,000 EUR. October leads are still maturing, so some of this gap will close."
+          },
+          {
+            "name": "Spend per won deal",
+            "value": "50.08 EUR",
+            "previous": "43.62 EUR",
+            "note": "Provisional, for the same maturity reason."
+          },
+          {
+            "name": "Form errors / form starts",
+            "value": "495 / 2,769 (17.9%)",
+            "previous": "373 / 2,846 (13.1%)",
+            "note": "Almost all of the increase is French mobile (189 errors on 274 mobile starts this period)."
+          }
+        ],
+        "findings": [
+          {
+            "title": "France: the mobile form on /fr/ has been broken since about 20 Sep, cutting French leads in half",
+            "evidence": "Market-level submit/start fell from 275/431 (63.8%) to 136/384 (35.4%), significant after correcting for 10 markets. Mobile only, before vs after 20 Sep: 261/350 (74.6%) vs 77/343 (22.4%), with 234 form errors. Desktop over the same dates: 103/136 vs 93/142, directional only (p=0.06). Traffic and form starts barely moved (4,358 → 4,277 sessions). Search visitors to /fr/ are hit too (46 submits from 135 starts). Daily data shows errors jumping from 20 Sep onward. French qualification of the leads that do get through is normal (75/136, 55%). At the old mobile rate, this period's 274 mobile starts would have produced about 204 submits instead of 64, so roughly 140 leads were lost.",
+            "confidence": "high"
+          },
+          {
+            "title": "Germany: the DE2 \"Before and after\" ad still brings in leads, but almost none get a demo, starting mid-September",
+            "evidence": "DE2 lead→qualified fell from 41/104 (39.4%) to 5/106 (4.7%), significant after correcting for 30 ads. Weekly: 9 qualified out of 24 leads in week 37, 3/17 in week 38, then 0/25, 0/23, 2/22 and 3/36. Everything upstream is unchanged: CTR 1.15% → 1.19%, mobile sessions 1,152 → 1,134, submits 104 → 106. Contact speed is not the cause: 70 of 106 DE2 leads were reached within 2 h. The drop hits all four sectors equally. DE1 (36/55) and DE3 (41/77) are normal. Germany's market-level drop (186/359 → 146/337) is not significant on its own (p_adj 0.25); it is entirely DE2. The data does not show why. A changed audience or placement, or junk/bot submissions, are the likely suspects.",
+            "confidence": "high"
+          },
+          {
+            "title": "Italy: since about 31 Aug, leads are contacted much later and qualify far less often",
+            "evidence": "Share of Italian leads called within 2 h: 299/501 (59.7%) from 6 Jul to 30 Aug vs 69/500 (13.8%) from 31 Aug to 25 Oct. Average time to first contact went from about 19–24 h to about 41 h. Lead→qualified over the same windows: 276/501 (55.1%) vs 161/500 (32.2%). Both changes are significant after correcting for 10 markets. Every other market still calls about 60% of leads within 2 h. Because the break predates both comparison periods, Italy looks stable period on period (90/261 vs 71/239, no detectable difference), so the standard weekly comparison hides it. Italian ads and traffic are normal (239 leads at 5.74 EUR each), but spend per qualified lead is 19.32 EUR vs 10.42 in Spain.",
+            "confidence": "high"
+          },
+          {
+            "title": "Leads called within 2 hours qualify at three and a half times the rate of slower ones",
+            "evidence": "This period: 732/1,018 (71.9%) qualified when contacted within 2 h vs 170/836 (20.3%) when slower, significant. Earlier periods show the same gap: outside Italy since 31 Aug, 72.0% vs 20.6%. Inside Italy, 82.6% (n=69) vs 24.1% (n=431). Caveat: this is observational. Reps may prioritise leads that look promising, which would inflate the gap.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Creative mix: \"Before and after\" is the cheapest ad everywhere except DE2",
+            "evidence": "All time, \"Before and after\" ads cost 5.35–6.20 EUR per lead and 10.97–15.35 EUR per qualified lead. \"Owner story\" ads cost 8.56–12.26 EUR per lead (FR1 12.26, NL1 12.02, PT1 11.66 are above the 10 EUR target). Spend is split about equally across the three ads in every market. I did not run per-ad significance tests for this, so treat it as descriptive.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Other market moves this period are noise",
+            "evidence": "PL qualification 113/176 → 90/165: directional only, p_adj 0.69. DE market-level: p_adj 0.25, explained by DE2. AT, BE, ES, IE, NL and PT changed by only a few leads. The /nl/oferta vs /nl/oferta-b pages (desktop, direct traffic) had 22 and 17 sessions, far too little to judge.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the mobile form on /fr/ this week. Reproduce it on iOS and Android phones, look at what changed around 20 Sep (field validation, phone or postcode format, consent checkbox, script deploy), and confirm a real test submission reaches the CRM.",
+            "why": "189 of the 274 French mobile form starts this period ended in errors. Mobile submit/start fell from 74.6% to 22.4% while traffic held, so the FR budget (1,627.52 EUR/period) now buys leads at 11.97 EUR, double the old rate.",
+            "expected_impact": "About 140 more French leads per 4 weeks, back to the previous ~275. At France's 55% qualification rate, that is roughly 75 more demos sent, with no extra spend. Search traffic to /fr/ recovers as well.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Daily FR mobile form_errors/form_starts in web_sessions should fall back to about 14% (48/350 before 20 Sep), and submit/start should return to about 70%+ within a week of the fix."
+          },
+          {
+            "action": "Get Italy's sales team back to calling leads within 2 hours. Find out what changed around 31 Aug (rep leaving or on holiday, routing rule, notification broken) and assign cover or route Italian leads to the shared queue.",
+            "why": "Italy's within-2h contact share fell from 59.7% to 13.8% and qualification fell from 55.1% to 32.2% at the same time, while ad performance was unchanged. Everywhere else, leads called within 2 h qualify about 72% of the time vs about 20% for slower ones.",
+            "expected_impact": "If Italy returns to its July–August qualification rate on about 239 leads per period, that is roughly 60 more demos sent per 4 weeks (from 71 to about 130) at zero media cost.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Weekly IT share of leads with hours_to_contact ≤ 2 (target ≥ 55%) and IT lead→qualified rate (target ≥ 50%) in v_qualified."
+          },
+          {
+            "action": "Cut DE2 \"Before and after\" to minimum budget (or pause it) and move its ~615 EUR per period to DE3 and DE1. In parallel, check the DE2 ad set in Ads Manager for changes around 14–20 Sep (audience, Advantage+ placements, Audience Network, URL or UTM), and sample a few DE2 leads in the CRM for junk patterns.",
+            "why": "DE2 produced 5 qualified leads from 106 this period: 122.86 EUR per qualified lead vs 15.51 for DE3 and 17.24 for DE1. Its clicks and form fills look normal, which points to lower-quality traffic or spam rather than a site problem.",
+            "expected_impact": "At DE3's rate, the same budget would buy roughly 35–40 qualified leads instead of 5. It also frees the German sales team from about 100 dead leads per period.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Germany's qualified count and spend per qualified lead next period. If DE2 is kept on a small budget for diagnosis, its lead→qualified rate should rise from about 5% back toward the ~39% it had before September."
+          },
+          {
+            "action": "Set up an alert that flags any market where weekly form errors/form starts exceeds 25%, or the within-2h contact share drops below 40%, and send it to the marketing and sales leads.",
+            "why": "Both the France and Italy problems ran for 4–8 weeks before being caught. Italy's problem is invisible in the standard period-on-period comparison because it started before the comparison window.",
+            "expected_impact": "Catches the next break within a week instead of a month.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "The alert fires on the historical France (from 20 Sep) and Italy (from 31 Aug) data when backtested."
+          },
+          {
+            "action": "Once DE2 is resolved, gradually shift budget within each market from \"Owner story\" toward \"Before and after\" and \"Prices carousel\", starting with FR1, NL1 and PT1, which are above the 10 EUR target. Keep total spend flat.",
+            "why": "\"Before and after\" ads have the lowest cost per lead and per qualified lead all time in every market. Budget is currently split equally across the three ads.",
+            "expected_impact": "Lower blended spend per qualified lead. The size is not quantified because I did not test per-ad differences.",
+            "effort": "S",
+            "confidence": "low",
+            "how_to_measure": "Spend per qualified lead per market, period on period, with compare_rates on lead→qualified before shifting more."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "Calling a lead within 2 hours causes higher qualification, rather than reps simply calling their best leads first.",
+            "variant": "Italy, after the staffing fix: alternate incoming leads (odd/even lead number). Version B gets a guaranteed call within 2 h; version A gets the normal queue.",
+            "metric": "Lead → qualified (demo sent) rate per arm.",
+            "sample_per_version": 95,
+            "weeks_at_current_traffic": 3.2
+          },
+          {
+            "hypothesis": "A refreshed German \"Before and after\" ad, with the pre-September audience and placements restored, brings back lead quality while keeping the low cost per lead.",
+            "variant": "Version B is a duplicate DE2 ad set with manual placements (Feed/Stories only) and the original audience. Version A is the current DE2 at equal budget. Run it only if the Ads Manager check does not reveal an obvious change to simply revert.",
+            "metric": "Lead → qualified rate per ad (sized to detect 5% → 25%).",
+            "sample_per_version": 49,
+            "weeks_at_current_traffic": 3.8
+          }
+        ],
+        "questions_for_owner": [
+          "What changed on the French site or form around 20 Sep (deploy, new field, consent tool, phone validation)?",
+          "Did anything change in the DE2 ad set around 14–20 Sep (audience, placements, Advantage+ settings, budget optimisation, destination URL)? Do the DE2 leads look like junk or spam in the CRM?",
+          "Who handles Italian leads, and did anything change on that team or in lead routing around 31 Aug?",
+          "What is /nl/oferta-b, and who is sending direct traffic to it? Is it an intended test? At 17 sessions it cannot be judged yet."
+        ]
+      }
+    },
+    {
+      "seed": 31,
+      "turns": 9,
+      "queries": 18,
+      "comparisons": 9,
+      "cost_usd": 1.38,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "fr_mobile_form",
+          "pass": true,
+          "reason": "The first finding states FR mobile completion fell \"61.1% (195/319) → 28.1% (85/303)\" from about 20 Sep, desktop was \"unchanged at 70.9% vs 70.4%\" and \"Other markets show no rise in errors.\""
+        },
+        {
+          "criterion": "de_ad_quality",
+          "pass": true,
+          "reason": "The DE finding says DE2 leads held (107 vs 108) while \"lead → qualified fell from 37.4% (40/107) to 4.6% (5/108)\" from about 20 Sep, and that \"The problem is this one ad, not Germany.\""
+        },
+        {
+          "criterion": "it_slow_followup",
+          "pass": true,
+          "reason": "The IT finding states the share contacted within 2 h fell \"from 57–62% (May–Aug) to 10% in Sep\" starting the week of 31 Aug, and that qualification fell from 52.5% to 26.4%."
+        },
+        {
+          "criterion": "nl_tiny_trap",
+          "pass": true,
+          "reason": "The owner question notes 22 and 13 sessions and calls it \"far too little data to judge either page\", so oferta-b is not presented as a winner."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": true,
+          "reason": "The medium-confidence finding is titled \"Every other market is stable\"; it calls the PT rise \"only directional\" and says the BE dip is \"within normal variation\"."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The only budget recommendation moves DE2 budget to DE1 and DE3 \"at the same total spend\", and no recommendation raises total spend."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation names concrete steps (fix the form, cover the IT inbox, pause DE2, add alerts) and gives a how_to_measure with metrics and targets."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Small or non-significant comparisons are hedged (PT \"only directional\", DE market \"not significant after correction\", NL \"far too little data\"), and the speed effect is flagged as \"observational\" and partly selection."
+        }
+      ],
+      "memo": {
+        "headline": "Spend, traffic and lead volume held steady, but three separate breakdowns are wasting money: the French mobile form has been failing since about 20 Sep, Italian leads have been contacted about twice as slowly since 31 Aug, and DE \"Before and after\" leads stopped qualifying around 20 Sep.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "All three problems are large, start abruptly and pass significance tests after correcting for the number of segments scanned: FR mobile form completion 61% → 28% (n≈300 form starts per period), IT qualification 52% → 26% (n≈250 leads per month), DE2 qualification 37% → 5% (n≈108 leads per period). The data shows where and when each one started, not why, so the causes need answers from the owner (see questions). The link between contact speed and qualification is observational. Sales may reach the most promising leads first, so the true effect of speed is probably smaller than the 25% vs 73% gap. Won deals in this period are close to complete, because the average time to win is about 7.6 days, but leads from the last week are still closing."
+        },
+        "kpis": [
+          {
+            "name": "Spend",
+            "value": "11,118 EUR",
+            "previous": "11,040 EUR",
+            "note": "Flat (+0.7%)."
+          },
+          {
+            "name": "Leads (web form submits)",
+            "value": "1,917",
+            "previous": "2,011",
+            "note": "-94. Nearly all of the drop is in FR (290 → 180)."
+          },
+          {
+            "name": "Cost per lead",
+            "value": "5.80 EUR",
+            "previous": "5.49 EUR",
+            "note": "Well under the 10 EUR target at account level. The CPL target hides the problems, which happen after the lead."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "966",
+            "previous": "1,034",
+            "note": "-68. Driven by FR (169 → 104), DE2 (40 → 5) and IT, which has been stuck at about 27% since September."
+          },
+          {
+            "name": "Cost per qualified lead",
+            "value": "11.51 EUR",
+            "previous": "10.68 EUR",
+            "note": "+8%."
+          },
+          {
+            "name": "Won",
+            "value": "244",
+            "previous": "239",
+            "note": "Flat. The most recent cohort still has a few days left to close."
+          },
+          {
+            "name": "Form error rate (errors / starts)",
+            "value": "17.8% (514/2,885)",
+            "previous": "14.4% (413/2,859)",
+            "note": "All of the rise is FR mobile. Other markets are flat (mobile 210 vs 214 errors)."
+          }
+        ],
+        "findings": [
+          {
+            "title": "FR: the mobile form broke around 20 Sep and is losing about half of French mobile leads",
+            "evidence": "FR form completion (submits/starts) fell from 64.0% (290/453) to 41.1% (180/438). The drop is significant after correcting for 10 markets. All of it is on mobile: 61.1% (195/319) → 28.1% (85/303), significant. Desktop is unchanged at 70.9% (95/134) vs 70.4% (95/135), no difference. Mobile errors on /fr/ from paid Meta went 63 → 141, and from search 29 → 59. Daily data shows the jump starting on 2026-09-20 (7 errors on 9 starts, against 0–3 a day before). It has lasted every week since, at about 48–61 errors a week. Form starts are steady at about 100–120 a week, so ads and the landing page are fine and the failure is at the submit step. At the old mobile rate, FR would have had about 100 more leads this period. Other markets show no rise in errors.",
+            "confidence": "high"
+          },
+          {
+            "title": "IT: lead contact speed collapsed from 31 Aug, and qualification halved with it",
+            "evidence": "The share of IT leads contacted within 2 h went from 57–62% (May–Aug) to 10% in Sep and 12.4% in Oct. Average time to first contact went from about 20 h to 42–44 h. The break is in the week of 2026-08-31: 4 fast contacts out of 59 leads, against 29 of 53 the week before. IT lead → qualified went from 52.5% (138/263, Aug) to 26.4% (64/242, Oct), significant after correction. This period IT runs at 27.6% (74/268) against 54.1% (892/1,649) for the other 9 markets, also significant. Ads and the website are not the cause: IT CPL is fine and leads 268 vs 234. In the other markets over the last 8 weeks, leads contacted within 2 h qualified at 72.9% (1,526/2,093) against 24.7% (329/1,333) for slower contact. Within IT, fast-contacted leads qualify at 75.4% (43/57). The brief's period-over-period table hides this because the previous period was already broken.",
+            "confidence": "high"
+          },
+          {
+            "title": "DE: the 'Before and after' ad (DE2) brings leads that no longer qualify, from about 20 Sep",
+            "evidence": "DE2 lead → qualified fell from 37.4% (40/107) to 4.6% (5/108), significant even after correcting for all 30 ads. Weekly data: 9–20 qualified a week up to the week of 14 Sep, then 0, 1, 1, 0 and 3 from the week of 21 Sep. DE1 (32/62) and DE3 (29/58) are normal. Everything upstream is unchanged: CTR 1.18% vs 1.08%, CPC 0.30 EUR, landing /de/ only, engagement about 40 s per session, and the same sector mix. Contact speed is also unchanged (89 of 144 contacted within 2 h since 20 Sep). Leads are being reached quickly and then marked lost or left at 'Contactado' (lost 70 of 144 since 20 Sep, against 40 of 176 before). DE2 cost 622 EUR this period for 5 qualified leads (about 124 EUR each), against about 20 EUR (DE1) and 22 EUR (DE3). DE as a market (50.1% → 42.4% qualified) is not significant after correction. The problem is this one ad, not Germany.",
+            "confidence": "high"
+          },
+          {
+            "title": "Every other market is stable",
+            "evidence": "PT qualified rate rose from 50.4% (62/123) to 61.1% (96/157), but that is only directional once corrected for 10 markets (about 335 leads per period would be needed to confirm it). BE leads fell 126 → 95 and won fell 16 → 8, and ES, NL, PL, AT and IE show only small moves. All of these are within normal variation at these volumes, so they should be treated as stable.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Across all markets, 'Before and after' is the cheapest creative per qualified lead",
+            "evidence": "All-time cost per qualified for 'Before and after' runs from 9.87 EUR (AT2) to 14.76 EUR (NL2), and 10.95 EUR in ES2. 'Owner story' runs 16.52–25.40 EUR and 'Prices carousel' 16.18–21.86 EUR. DE2 was in line with this until 20 Sep, which suggests something changed for that one ad, not the creative concept.",
+            "confidence": "medium"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the French mobile form today. Reproduce the submit on /fr/ on iOS and Android, and check whatever was deployed or changed around 19–20 Sep (validation rules, phone or postcode format, consent checkbox, captcha). Until it is fixed, add a fallback (WhatsApp or call button, or a simpler form) on French mobile.",
+            "why": "Since 20 Sep, mobile completion has been 28% against 61% before. Desktop and every other market are unaffected, so the cause is a specific bug.",
+            "expected_impact": "Restores about 100 leads per 4 weeks in FR. At FR's roughly 58% qualified rate, that is about 55–60 more qualified leads with no change in spend.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Daily FR mobile form_errors/form_starts back to the earlier 10–20% range, and completion back above 55%, within a week of the fix."
+          },
+          {
+            "action": "Restore contact within 2 h for Italian leads: find out what changed on 31 Aug (rep left, holidays, routing rule), then reassign or cover the IT inbox. Add an alert for any IT lead not contacted within 2 h.",
+            "why": "IT fast-contact share dropped from about 60% to about 12%, and qualification halved (52% → 26%). In every other market, leads contacted within 2 h qualify about 3 times as often.",
+            "expected_impact": "If IT returns to its May–Aug rate of about 52%, that is about 65 more qualified leads per 4 weeks on current IT spend (268 leads). The real gain may be smaller, because the speed effect is partly selection.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Weekly IT share contacted within 2 h (target above 55%) and IT lead → qualified (target above 45%), tracked by week of lead creation."
+          },
+          {
+            "action": "Pause or sharply cut DE2 ('DE · Before and after') until the cause is found, and move its budget to DE1 and DE3 within the DE campaign. In parallel, ask the German sales team why DE2 leads have been lost since 20 Sep (wrong expectations from the ad, offer or price mismatch, spam or fake submits, routing).",
+            "why": "Since about 20 Sep, DE2 has spent 622 EUR this period for 5 qualified leads (about 124 EUR each), while DE1 and DE3 deliver at about 20–22 EUR. Clicks, landing page and contact speed are unchanged, so the problem sits between the ad promise or lead quality and the sales conversation.",
+            "expected_impact": "Moving about 620 EUR at DE1/DE3 rates gives roughly 25–30 qualified leads instead of 5, at the same total spend.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "DE cost per qualified and DE qualified count per week. DE1 and DE3 CPL should stay under 12 EUR as their budgets grow."
+          },
+          {
+            "action": "Add a weekly alert on per-market and per-ad lead → qualified rate and form error rate, comparing each week with that segment's trailing 8 weeks.",
+            "why": "All three problems were invisible on CPL, which stayed under target throughout. IT has been broken for 8 weeks and does not show up in period-over-period comparisons.",
+            "expected_impact": "Catches the next breakage within about 1 week instead of about 4–8.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Count of weeks between a breakage starting and it being flagged."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "Something in what the DE2 ad now promises, or in who it reaches, produces leads that sales cannot qualify. A refreshed copy of the 'Before and after' creative will qualify at the level of the earlier DE2 (about 37%) instead of 5%.",
+            "variant": "Launch a new ad with fresh 'Before and after' creative and copy, matching the other markets' versions, in the DE campaign. Run it against the current DE2 at equal small budgets, with both pointing to /de/.",
+            "metric": "Lead → qualified (demo sent) rate per ad",
+            "sample_per_version": 24,
+            "weeks_at_current_traffic": 2
+          }
+        ],
+        "questions_for_owner": [
+          "What was deployed or changed on the French site or form around 19–20 Sep (form fields, validation, consent or captcha, a mobile layout change)?",
+          "What changed in the Italian sales team or lead routing at the end of August (a rep leaving, holidays, a new inbox or CRM rule)? Who covers IT leads now?",
+          "Did anything change on the DE2 ad around 20 Sep (audience, placement, copy, offer, Advantage+ settings), or in how German sales handle leads from that ad? What reasons does sales give for the DE2 leads marked lost?",
+          "Who launched /nl/oferta and /nl/oferta-b, and for what? They received 22 and 13 direct sessions; /nl/oferta had 0 form starts against 10 for /nl/oferta-b. That is far too little data to judge either page."
+        ]
+      }
+    }
+  ],
+  "mean_cost_usd": 1.44
+}

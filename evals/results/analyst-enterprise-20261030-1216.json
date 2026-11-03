@@ -1,0 +1,398 @@
+{
+  "when": "2026-10-30T12:16:09",
+  "scenario": "enterprise",
+  "score": 0.812,
+  "runs": [
+    {
+      "seed": 23,
+      "turns": 8,
+      "queries": 11,
+      "comparisons": 5,
+      "cost_usd": 1.06,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "fr_mobile_form",
+          "pass": true,
+          "reason": "The memo's finding 'France: the mobile form broke on 20 Sep' shows FR mobile submit rate falling from 73.8% to 22.4%, mobile errors rising and desktop 'barely moved', so it is France-specific and mobile-specific."
+        },
+        {
+          "criterion": "de_ad_quality",
+          "pass": false,
+          "reason": "The memo treats Germany only as a borderline qualified-rate dip 'partly a maturity effect' (low confidence) and never ties it to the 'DE · Before and after' ad; it even recommends shifting more budget to Before and after in every market."
+        },
+        {
+          "criterion": "it_slow_followup",
+          "pass": true,
+          "reason": "The memo states that the IT share of leads contacted within 2h fell from about 60% to 39/285 and 30/211 from around 29–31 Aug, and that the IT qualified rate fell to 29.7%, correctly attributed to Italy."
+        },
+        {
+          "criterion": "nl_tiny_trap",
+          "pass": true,
+          "reason": "The memo only asks whether /nl/oferta-b is an intentional test, noting 'only 17 direct sessions this period, too few to read'."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": false,
+          "reason": "The medium-confidence 'other markets' finding flags PL as 'the exception… at 90 vs 113' and IE as 'worth checking'; both are claimed changes or problems in noise-only markets."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The budget shift explicitly keeps 'total spend unchanged', and the memo suggests cutting FR spend; nothing proposes raising total spend."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation is a concrete action with a specific how_to_measure, for example 'Daily FR mobile form_submits / form_starts… back above 70%' and 'Weekly IT share of leads with hours_to_contact ≤ 2'."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Confidence wording matches the evidence: the DE comparison is called 'borderline (p=0.025)… treat it as directional', the NL page 'too few to read', and strong claims rest on large samples with significance quoted."
+        }
+      ],
+      "memo": {
+        "headline": "Two markets have specific, fixable problems. France's mobile form has been failing since 20 Sep, which cut FR leads from 275 to 136. Italy has been contacting leads slowly since about 29 Aug, which cut its lead-to-demo rate to 30% against 51% in the other markets. Together they explain most of the period's 112 lost qualified leads.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "The FR and IT problems are large, start on clear dates and pass significance tests with wide margins (p≈0). FR mobile submit rate: n=572 before vs 343 after. IT vs the other markets: n=239 vs 1,615 leads. The DE dip is borderline (p=0.025) and partly a maturity effect, so treat it as directional. Won counts for the last 1–2 weeks are incomplete because deals take about 7.5 days to close. All data is synthetic."
+        },
+        "kpis": [
+          {
+            "name": "Meta spend",
+            "value": "11,016.87 EUR",
+            "previous": "11,167.64 EUR",
+            "note": "Flat (-1.4%). No campaign changes were logged."
+          },
+          {
+            "name": "Leads (all channels)",
+            "value": "1,854",
+            "previous": "1,998",
+            "note": "-7%. The FR drop (275→136) accounts for almost all of it."
+          },
+          {
+            "name": "Paid Meta leads / cost per lead",
+            "value": "1,262 / 8.73 EUR",
+            "previous": "1,342 / 8.32 EUR",
+            "note": "Still under the 10 EUR target overall. FR is at 18.09 EUR (1,628 EUR spend / 90 paid leads)."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "902",
+            "previous": "1,014",
+            "note": "-11%. Paid cost per qualified lead rose from 16.95 to 18.70 EUR (589 vs 659 qualified)."
+          },
+          {
+            "name": "Won",
+            "value": "220",
+            "previous": "256",
+            "note": "The last week's leads have not had time to close (about 7.5 days to win), so part of this gap will close."
+          },
+          {
+            "name": "Form errors / submit rate per form start",
+            "value": "495 / 67.0%",
+            "previous": "373 / 70.2%",
+            "note": "FR alone logged 203 errors this period (90 the period before)."
+          }
+        ],
+        "findings": [
+          {
+            "title": "France: the mobile form broke on 20 Sep and is still broken",
+            "evidence": "FR mobile submits per form start fell from 73.8% (422/572, Aug 1 to Sep 19) to 22.4% (77/343, from Sep 20). compare_rates: different at 95%, p≈0. Mobile errors went from 76 to 234. FR desktop barely moved (163/216 = 75% before, 93/142 = 65% after). FR weekly submits went from 78–85 to 25–42, while sessions held at about 1,000–1,180 a week. Period totals: FR leads 136 vs 275, form errors 203 vs 90. Paid cost per lead is 18.09 EUR, the only market above target. At the old rate, roughly 176 more mobile leads would have come in since 20 Sep. FR leads that do submit still qualify normally (75/136 = 55%), so the loss is at the form, not in lead quality.",
+            "confidence": "high"
+          },
+          {
+            "title": "Italy: contact speed collapsed around 29–31 Aug, and the demo rate fell with it",
+            "evidence": "Share of IT leads contacted within 2h: 159–169 a month (about 60%) through August, then 39/285 in September and 30/211 in October. Average time to contact went from about 18–22h to 41.7h this period. Lead-to-qualified this period: IT 29.7% (71/239) vs the other 9 markets 51.5% (831/1,615). compare_rates: different at 95%, p≈0. Before the break IT qualified 47–57% of leads a month. Across all leads, those contacted within 2h qualify at 73.0% (5,657/7,754) vs 21.4% (1,185/5,545) when contact takes over 24h, also significant. Leads that are contacted fast may also be better leads, so treat the size as an upper bound. Even so, IT's own before-and-after break points to the cause. If IT qualified at the other markets' rate, it would have had about 123 demos instead of 71. IT ad metrics are normal: cost per lead 8.63 EUR (1,372 EUR / 159 paid leads).",
+            "confidence": "high"
+          },
+          {
+            "title": "Germany: qualified rate dipped, but part of this is timing",
+            "evidence": "DE lead-to-qualified was 43.3% (146/337) vs 51.8% (186/359) the period before. compare_rates: different at 95%, but only just (p=0.025). Most of the dip is in the last two weeks (23/67 and 39/100). Those cohorts have had less time to get a demo (about 40–46h on average). DE contact speed is normal (219/337 within 2h). Watch this; it does not need action yet.",
+            "confidence": "low"
+          },
+          {
+            "title": "The 'Before and after' creative is the cheapest route to qualified leads and won deals in every market",
+            "evidence": "All time, at about 24k EUR each: Before and after costs 5.88 EUR per lead, 12.63 per qualified and 51.48 per won (465 won). Owner story costs 10.69 / 19.23 / 76.68 (314 won). Prices carousel costs 9.26 / 18.78 / 72.91 (330 won). Owner story leads qualify more often: 55.6% (1,252/2,253) vs 46.6% (1,896/4,068) for Before and after, significant at 95%. But Before and after gets about 80% more clicks for the same money, which more than offsets that. Before and after has the lowest cost per qualified lead in all 10 markets.",
+            "confidence": "high"
+          },
+          {
+            "title": "The other markets (ES, NL, PL, PT, BE, AT, IE) are stable and under target",
+            "evidence": "Paid cost per lead this period: AT 6.88, IE 7.55, PL 7.70, BE 7.91, NL 7.96, ES 8.16, PT 9.02 EUR. Their qualified counts are flat or up vs the previous period (e.g. NL 104 vs 87, AT 65 vs 54). The exception is PL, at 90 vs 113. IE has slow average contact (23.6h) and a low qualified rate (40/91) and is worth checking, but the volume is small.",
+            "confidence": "medium"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the French mobile form today. Reproduce a submission on /fr/ on a phone, check what changed around 19–20 Sep (validation, field format, consent or a script), and ship a fix. Until it is fixed, consider cutting FR Meta spend by about half, or pointing FR ads to a working fallback contact path.",
+            "why": "Since 20 Sep, 7 in 10 FR mobile form starts end in an error, and FR leads halved while spend stayed at 1,628 EUR. Desktop works, so the cause is specific to mobile.",
+            "expected_impact": "Should recover about 130–140 leads per 4 weeks in FR (back to about 275), roughly 70 more demos at FR's 55% qualify rate. FR cost per lead should fall from about 18 to about 6–9 EUR.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Daily FR mobile form_submits / form_starts in web_sessions, back above 70%. FR form_errors back to about 20 a week."
+          },
+          {
+            "action": "Restore same-day, under-2-hour first contact for Italian leads. Find out what changed at the end of August (rep leaving, routing rule, Italian-speaking cover) and reassign or reroute IT leads to covered reps right away.",
+            "why": "Only 14% of IT leads (34/239) were contacted within 2h this period, vs about 60% before September. IT's demo rate fell from about 50% to 30%. Market-wide, fast contact goes with roughly three times the demo rate.",
+            "expected_impact": "About 50 more IT demos per 4 weeks (71 → about 120), with no extra spend. That is on the order of 10+ more won deals, using IT's historic win rate.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Weekly IT share of leads with hours_to_contact ≤ 2 (target ≥ 55%) and IT qualified/leads (target ≥ 50%), in v_market_daily / v_qualified."
+          },
+          {
+            "action": "Inside each market, move about 20% of the Owner story budget onto Before and after, keeping total spend unchanged. Prices carousel stays as it is.",
+            "why": "Before and after has the lowest cost per qualified lead in every market (12.63 vs 19.23 EUR all time) and the lowest cost per won (51.48 vs 76.68 EUR). The shift is easy to reverse.",
+            "expected_impact": "If the efficiency holds at the margin, this gives several percent more qualified leads for the same spend. Watch for frequency or fatigue on Before and after.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Cost per qualified lead by ad in v_ad_funnel, week over week. Also watch Before and after cost per click and its qualify rate (currently 46.6%)."
+          },
+          {
+            "action": "Add a daily alert per market for (a) form errors / form starts above 25% and (b) share of leads contacted within 2h below 40%.",
+            "why": "Both problems ran for 5–8 weeks before this memo. A simple threshold would have caught each within 2–3 days.",
+            "expected_impact": "Protects the gains from the first two fixes and limits how long the next break goes unnoticed.",
+            "effort": "M",
+            "confidence": "medium",
+            "how_to_measure": "The alert fires on a back-test against FR around 20 Sep and IT around 31 Aug."
+          },
+          {
+            "action": "Re-check Germany's qualified rate next period, once the October cohorts have matured, before taking any action.",
+            "why": "The DE dip is borderline (p=0.025) and concentrated in the newest leads.",
+            "expected_impact": "Avoids acting on noise.",
+            "effort": "S",
+            "confidence": "low",
+            "how_to_measure": "DE qualified/leads for 28 Sep–25 Oct leads, re-measured after 2 more weeks."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "Adding one qualifying line to 'Before and after' (e.g. who it is for, or a starting price) raises its lead-to-demo rate from 46.6% towards Owner story's 55.6%, without losing the low cost per click. That would cut cost per qualified lead further.",
+            "variant": "Version B is a duplicate of the Before and after ad in each market with the qualifying line added to copy and headline, sending traffic to the same landing page. Run it as a separate ad, since the site is cookieless. Split the Before and after budget 50/50 between A and B.",
+            "metric": "Lead-to-qualified rate (demo sent / leads), with cost per qualified lead as the decision metric.",
+            "sample_per_version": 488,
+            "weeks_at_current_traffic": 7
+          }
+        ],
+        "questions_for_owner": [
+          "What changed on the French site or form around 19–20 Sep (a deploy, new field, consent banner, phone-number validation)? Who can fix it this week?",
+          "What happened to the Italian sales cover at the end of August (holiday, someone leaving, routing change)? Is there a rep who can take IT leads within 2 hours now?",
+          "Should FR Meta spend be paused or reduced until the mobile form is confirmed working?",
+          "Is the /nl/oferta-b page an intentional test? It had only 17 direct sessions this period, too few to read.",
+          "Do you agree to shifting about 20% of Owner story budget to Before and after inside each market, with total spend unchanged?"
+        ]
+      }
+    },
+    {
+      "seed": 31,
+      "turns": 12,
+      "queries": 19,
+      "comparisons": 6,
+      "cost_usd": 1.71,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "fr_mobile_form",
+          "pass": true,
+          "reason": "The finding \"France: the mobile web form has been broken since about 20 Sep\" reports a mobile submit rate of 75.6% before vs 27.6% after, with 261 errors. It also notes that \"French desktop is unaffected\" and that all of the error increase comes from France."
+        },
+        {
+          "criterion": "de_ad_quality",
+          "pass": true,
+          "reason": "The finding \"DE 'Before and after' (DE2): leads keep coming but have almost stopped qualifying since 21 Sep\" gives 40/107 vs 5/108 qualified with lead volume unchanged. It adds that the other DE ads are fine and no other '2' ad shows the drop."
+        },
+        {
+          "criterion": "it_slow_followup",
+          "pass": true,
+          "reason": "The Italy finding says \"sales reply much later since about 1 Sep\" (151/263 contacted within 2 h in August vs about 10% after, 42.3 h average). It also says the qualified rate fell to 27.6% vs 54.1% elsewhere."
+        },
+        {
+          "criterion": "nl_tiny_trap",
+          "pass": true,
+          "reason": "The memo states \"The /nl/oferta-b page has only 13 sessions\" and never calls it a winner. It only proposes a properly sized test (1,700 per version) and asks the owner about the page."
+        },
+        {
+          "criterion": "no_false_alarms",
+          "pass": false,
+          "reason": "The medium-confidence finding \"Best and worst markets\" claims \"Portugal improved: leads 123 → 157 and qualified 62 → 96\", which is a change claimed in a noise-only market."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "Every budget recommendation moves spend between ads or creatives \"at the same total spend\", and none raises total spend."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation names concrete steps (roll back the FR form, restore 2 h contact in IT, pause or move DE2 budget, shift 25% of creative budget, add alerts) and has a how_to_measure with targets."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Rate comparisons carry p-values that match the wording: Belgium (p=0.31) is called \"probably noise\" at low confidence, the creative comparison (p=0.04) is medium, and nothing small-sample is called proven."
+        }
+      ],
+      "memo": {
+        "headline": "Three market-specific breakdowns cost about 140 qualified leads this period: France's mobile form has failed since about 20 Sep, Italy's first contact slowed from about 1 Sep, and DE \"Before and after\" still brings leads but almost none qualify since 21 Sep. On cost per lead, all three look fine or only slightly off target.",
+        "data_sufficiency": {
+          "verdict": "solid",
+          "explanation": "Each of the three main problems is based on hundreds of leads or form starts, and every compare_rates check returned 'different (95% confidence)' with p≈0. The calls on smaller markets are weaker. Belgium's drop in won deals (16 to 8) is not a detectable difference (p=0.31; about 810 leads per period would be needed to tell). The /nl/oferta-b page has only 13 sessions. Won counts for the last week of the period are not final yet, because deals take about 7.7 days on average to close. The ad-level 'leads' figure counts only leads that have an ad_id. The market totals in the brief also include search leads, but spend is Meta only."
+        },
+        "kpis": [
+          {
+            "name": "Meta spend (EUR)",
+            "value": "11,118",
+            "previous": "11,040",
+            "note": "Flat (+0.7%); split across 10 markets × 3 ads"
+          },
+          {
+            "name": "Paid (Meta) leads",
+            "value": "1,245",
+            "previous": "1,327",
+            "note": "-6%; most of the drop is France (paid leads down with the broken mobile form)"
+          },
+          {
+            "name": "Paid cost per lead (EUR)",
+            "value": "8.93",
+            "previous": "8.32",
+            "note": "Still under the 10 EUR target overall. France is at 13.27 and NL at 10.48 this period"
+          },
+          {
+            "name": "Paid qualified (demo sent)",
+            "value": "583",
+            "previous": "646",
+            "note": "-10%. Cost per qualified rose from 17.09 to 19.07 EUR"
+          },
+          {
+            "name": "All leads (incl. search/direct)",
+            "value": "1,917",
+            "previous": "2,011",
+            "note": "-4.7%"
+          },
+          {
+            "name": "All qualified",
+            "value": "966",
+            "previous": "1,034",
+            "note": "Qualified rate 50.4% vs 51.4%"
+          },
+          {
+            "name": "Won deals",
+            "value": "244",
+            "previous": "239",
+            "note": "Flat. The last week's leads have not had time to close yet"
+          },
+          {
+            "name": "Form error rate (errors / starts)",
+            "value": "17.8% (514/2,885)",
+            "previous": "14.4% (413/2,859)",
+            "note": "All of the increase comes from France (218 errors vs 110)"
+          }
+        ],
+        "findings": [
+          {
+            "title": "France: the mobile web form has been broken since about 20 Sep",
+            "evidence": "Before 20 Sep, 75.6% of French mobile form starts ended in a submit (411/544). Since then it is 27.6% (108/392), with 261 errors (compare_rates: different, p≈0). French desktop is unaffected (148/214 before vs 127/175 after). The daily data shows mobile errors jumping on 20–21 Sep. France total leads fell from 290 to 180, qualified from 169 to 104 and won from 42 to 25. Paid cost per lead went to 13.27 EUR, above the 10 EUR target. Search visitors to /fr/ are hit too: 130 starts and 56 submits this period. Lead quality has not changed: 104 of the 180 leads qualified (58%).",
+            "confidence": "high"
+          },
+          {
+            "title": "Italy: sales reply much later since about 1 Sep, and the qualified rate halved",
+            "evidence": "In August, 151 of 263 Italian leads were contacted within 2 h. From 1 Sep onward almost none were: September 25/250, October 30/242, and this period 33/268. Average time to first contact is 42.3 h, against 15–22 h in other markets. Italy qualified 27.6% of leads (74/268) against 54.1% in the other 9 markets (892/1,649; different, p≈0). Contact speed is the likely cause. Outside Italy this period, leads reached within 2 h qualified at 72.4% (731/1,010) and slower ones at 25.2% (161/639; different, p≈0). Inside Italy it is the same pattern: 22/33 fast vs 52/235 slow. Italy's monthly qualified leads fell from 138 (Aug) to 79 (Sep) and 64 (Oct). Lead volume did not fall (268 vs 234), so the ads are not the problem.",
+            "confidence": "high"
+          },
+          {
+            "title": "DE \"Before and after\" (DE2): leads keep coming but have almost stopped qualifying since 21 Sep",
+            "evidence": "DE2 qualified 37.4% of leads last period (40/107) and 4.6% this period (5/108; different, p≈0). Week by week: 15–20 qualified per week until 14 Sep, then 0/36, 1/31, 1/20, 0/21 and 3/36. The drop hits all four sectors, and contact speed is normal (64 of 108 within 2 h), so this is lead quality, not sales follow-up. Spend (622 EUR), clicks (2,096) and cost per lead look normal, so the CPL target hides the problem. The other Germany ads are fine: DE1 32/62 and DE3 29/58 qualified. No other '2' ad shows the drop. Germany's paid cost per qualified is the worst of all markets at 28.93 EUR. There are no agent actions logged, so whatever changed on DE2 was not recorded in the hub.",
+            "confidence": "high"
+          },
+          {
+            "title": "The \"Before and after\" creative wins the most deals per euro in every market",
+            "evidence": "All-time: 'Before and after' cost 51.53 EUR per won deal (24,012 EUR, 466 won), 'Prices carousel' 74.01 and 'Owner story' 82.05 (24,122 EUR, 294 won). Its leads close a bit less often: 11.4% won per lead vs 13.2% for Owner story (466/4,076 vs 294/2,232; different, p=0.04). Its clicks are much cheaper, though: 80,006 clicks vs 43,741 for the same spend. Budget is split evenly across the three creatives today.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Best and worst markets on paid cost per qualified and per won deal",
+            "evidence": "This period, best: IE 12.07 per qualified / 33.0 per won, PT 13.66 / 47.0, ES 14.71 / 60.9. Worst: DE 28.93 (because of DE2), IT 28.66 / 200.6 per won (contact speed), FR 23.50 (form). Portugal improved: leads 123 → 157 and qualified 62 → 96.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Belgium's drop in won deals is probably noise",
+            "evidence": "Belgium won 16 deals from 126 leads last period and 8 from 95 this period. That is 12.7% vs 8.4% won per lead, which compare_rates calls 'no detectable difference' (p=0.31; about 810 leads per period would be needed to tell). Contact speed is normal (55 of 95 within 2 h). Watch it, but no action is needed yet.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the French mobile form today. Reproduce the error on a phone at /fr/, check what was deployed around 19–20 Sep (field validation, phone or postcode format, consent checkbox, translation) and roll it back. Until it is fixed, add a fallback contact option (click-to-WhatsApp or click-to-call) on French mobile pages.",
+            "why": "Since about 20 Sep only 27.6% of French mobile form starts become leads, down from 75.6%, while desktop is unaffected. Spend in France is being paid for traffic that cannot convert.",
+            "expected_impact": "Getting back to the earlier rate would recover about 110 leads per 4 weeks (France went 290 → 180). At France's current 58% qualified rate that is about 60 qualified leads, and won deals back toward last period's 42 (from 25). Paid cost per lead in France should drop from 13.27 back under 10 EUR.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Track daily form_errors/form_starts and form_submits/form_starts for France on mobile. The target is above 70% submit/start and fewer than 15% errors within a week of the fix."
+          },
+          {
+            "action": "Restore under-2-hour first contact for Italian leads. Find out what changed around 1 Sep (rep absence, routing rule, Italian-speaking cover). Then either route Italian leads to an available Italian speaker with a 2-hour response target or add an automatic WhatsApp/email reply with a booking link.",
+            "why": "Since 1 Sep, only about 10% of Italian leads are contacted within 2 h, down from about 57% in August. Leads contacted within 2 h qualify at 72% vs 25% for slower ones, and Italy's qualified rate is now 27.6% vs 54.1% elsewhere.",
+            "expected_impact": "If Italy gets back to the other markets' 61% fast-contact share, its qualified rate should move toward about 50–54%. That is roughly 60–70 more qualified leads per 4 weeks from the same spend. Won deals could return toward the 33 per month Italy had June–August (October so far: 12).",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Track the weekly share of Italian leads with hours_to_contact ≤ 2 (target above 55%) and Italy's weekly qualified/leads (target above 45%)."
+          },
+          {
+            "action": "Pause DE2 (DE · Before and after) or move its budget to DE1 and DE3 while you find out what changed around 21 Sep: audience or placement edits, a duplicated ad set, Advantage+ expansion, or a lead-form or tracking change. Then relaunch the creative as a new ad (see experiment).",
+            "why": "Since 21 Sep, DE2 has qualified 5 of 108 leads this period (previously 40/107). Its cost per lead looks fine, so it is spending about 620 EUR every 4 weeks on leads that do not qualify. The rest of Germany is healthy.",
+            "expected_impact": "About 620 EUR per period stops producing roughly 5 qualified leads (about 124 EUR each) and goes to DE1/DE3, which qualify about 50% of leads at a similar cost per lead. That should give roughly 25–35 more qualified leads per period in Germany, assuming the extra budget does not raise their costs much.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Track Germany's paid qualified per week and paid cost per qualified (now 28.93 EUR; target below 18 EUR). Also add qualified rate per ad to the weekly check, not only cost per lead."
+          },
+          {
+            "action": "In all markets except Germany, move about 25% of each 'Owner story' budget to 'Before and after'. Move it in one step and check after 2 weeks, so it is easy to reverse.",
+            "why": "'Before and after' costs 51.53 EUR per won deal against 82.05 for 'Owner story' and 74.01 for 'Prices carousel', even though its leads close slightly less often (11.4% vs 13.2%).",
+            "expected_impact": "Moving about 2,000 EUR per period (roughly 25% of Owner story spend) at the all-time rates would add about 10–15 won deals per period at the same total spend. Cheaper clicks may not last at higher spend, so treat this as an upper bound.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Track cost per qualified and cost per won by creative and market over the next 4 weeks against this period. Reverse the shift if 'Before and after' cost per qualified rises by more than 30%."
+          },
+          {
+            "action": "Add qualified rate and contact speed per market and ad to the weekly alerts, next to cost per lead (for example: alert if any ad's qualified rate falls below 25% over 20 or more leads, or a market's within-2h contact share falls below 40%).",
+            "why": "All three of this period's problems went unnoticed for 4–8 weeks, and two of them (DE2 and Italy) did not show up in cost per lead at all.",
+            "expected_impact": "Problems like these get caught within about a week instead of a month. Each one cost roughly 30–70 qualified leads per period.",
+            "effort": "M",
+            "confidence": "medium",
+            "how_to_measure": "Measure the days from when a break starts to when someone acts on it, and look for alerts that fire with no real problem behind them over the next period."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "The DE2 creative itself is not the problem; something on the ad setup changed around 21 Sep. A fresh copy of the same creative with the original German targeting will get back to about 37% qualified per lead.",
+            "variant": "Version A: existing DE2. Version B: a new ad with the same 'Before and after' creative, the original targeting and placements, and Advantage+ audience expansion turned off. Split DE2's budget 50/50. (The site is cookieless, so the two versions run as separate ads.)",
+            "metric": "Qualified rate (demo sent / leads) per ad",
+            "sample_per_version": 24,
+            "weeks_at_current_traffic": 2
+          },
+          {
+            "hypothesis": "The /nl/oferta-b offer page turns paid NL visitors into form starts at a higher rate than /nl/ (7.3% now: 144 starts from 1,967 sessions).",
+            "variant": "A second NL 'Before and after' ad that sends visitors to /nl/oferta-b instead of /nl/, with NL paid budget split evenly between the two ads.",
+            "metric": "Form starts per session, then qualified leads per session",
+            "sample_per_version": 1700,
+            "weeks_at_current_traffic": 7
+          }
+        ],
+        "questions_for_owner": [
+          "What was changed on the French site around 19–20 Sep (form fields, validation, consent text, a plugin or a deploy)?",
+          "Who handled Italian leads before 1 Sep, and did that change (holiday, departure, new routing rule)? Is there an Italian speaker who can reply within 2 hours?",
+          "Was anything changed on DE2 around 21 Sep (audience, placements, Advantage+ expansion, budget or ad set duplication)? Nothing is logged in agent_actions.",
+          "Should the 10 EUR target stay on cost per lead? Cost per qualified (about 17–19 EUR paid this period) or cost per won would have caught DE2 and Italy. Would you accept a cost-per-qualified target instead?",
+          "Is /nl/oferta-b a planned offer page we can send paid traffic to, and what does it change compared with /nl/?"
+        ]
+      }
+    }
+  ],
+  "mean_cost_usd": 1.39
+}

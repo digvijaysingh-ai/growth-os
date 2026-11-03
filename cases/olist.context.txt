@@ -1,0 +1,15 @@
+Olist is a Brazilian marketplace platform that signs up merchants to sell through it. This hub holds its real B2B sales funnel:
+8,000 marketing qualified leads (merchants who filled a form after landing on one of Olist's landing pages) from June 2017 to May 2018,
+and the 842 that became closed deals by November 2018.
+- utm_source is the acquisition channel; landing is the landing page id. stage 'Ganado' = closed deal, 'MQL' = not closed.
+- sdr = the rep who qualified the lead, owner = the sales rep who closed it, both anonymous ids.
+- Owner, sector (business segment), lead_type, profile and business_type exist only for closed deals.
+- value_after_90d = what the merchant sold on Olist (item prices, BRL) in its first 90 days after signing. It is NULL when those 90 days run past the end of the order data, never 0 for that reason.
+- There are no spend figures, no contact timestamps and no website data.
+- The period compared is May 2018 against April 2018. Leads from recent months have had less time to close.
+Goal: more closed deals, and more merchants who actually sell, for the same marketing and sales effort.
+Listening data: 3,000 written customer reviews of orders sold by Olist merchants, classified by theme (voice_items, voice_themes).
+voice_items.segment is the marketing channel through which the reviewed merchant was originally acquired (from the B2B funnel),
+or 'merchant not from funnel' for merchants who joined another way (a random sample of those, as a baseline). All 1,764 written
+reviews of funnel-acquired merchants are included. Use this to check whether channels that bring valuable merchants also bring
+merchants whose customers are unhappy.

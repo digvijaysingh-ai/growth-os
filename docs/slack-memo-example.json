@@ -1,0 +1,83 @@
+{
+  "text": "Spend was flat, but qualified leads fell from 1,049 to 946 (-10%), and three problems inside three markets explain most of it: the French form fails on mobile since mid-September, leads from the German \"Before and after\" ad almost stopped qualifying, and Italian leads have been contacted slowly sinc",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "Growth memo · Demo Group, 10 markets (synthetic)"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "28 Sep – 25 Oct 2026 · data: *solid*"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Spend was flat, but qualified leads fell from 1,049 to 946 (-10%), and three problems inside three markets explain most of it: the French form fails on mobile since mid-September, leads from the German \"Before and after\" ad almost stopped qualifying, and Italian leads have been contacted slowly since late August.*"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*1. Fix the French mobile form this week. Reproduce the error on a phone at /fr/ (look for validation such as phone or postcode format, a required field, a consent checkbox or a script error), using whatever was deployed around 14–20 September as the starting point.*\n💶 About 90 extra leads per 28 days at the old 52.5% mobile completion rate. At France's current rate of about 54% qualified, that is roughly 45 more qualified leads per period at zero extra spend.\n🟢 high confidence · effort S · check in 14 days · tracked as #41"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*2. Find out what changed for DE2 around 14 September (ad text or offer, audience, placements, or how sales tags these leads). Meanwhile, cut DE2's budget by at least half and move it to DE1 and DE3.*\n💶 Moving about 320 EUR per period to DE1 and DE3 (about 18–19 EUR per qualified lead over their lifetime) should bring roughly 15 more qualified leads than DE2 would at its current rate. Fixing the root cause would bring back about 30 qualified leads per period.\n🟢 high confidence · effort S · check in 14 days · tracked as #42"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*3. Bring Italian first contact back under 2 hours: check who covers Italian leads since late August (absence, new rep, language coverage, routing rule) and fix staffing or routing.*\n💶 If Italy returns to its pre-August 55% on about 250 leads per period, that is roughly 50 more qualified leads per period (75 this period). The link is observational, so treat this as an upper bound.\n🟡 medium confidence · effort M · check in 14 days · tracked as #43"
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Review and approve"
+          },
+          "url": "https://example.com/approvals",
+          "style": "primary"
+        },
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Open console"
+          },
+          "url": "https://djcrafted.com/growth-os/"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Agents propose, people decide. Nothing changes until someone approves it."
+        }
+      ]
+    }
+  ]
+}

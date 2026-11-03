@@ -1,0 +1,5 @@
+An anonymised advertiser's Facebook campaigns (public Kaggle dataset "Sales conversion optimization"): 1,143 real ads in 3 campaigns.
+Each ad targets one age band, one gender and one interest (a numeric id; interest names are not available).
+conversions = people who enquired about the product; approved = people who went on to buy. There are no dates, so there is no
+previous period: analyse the whole dataset and leave the KPI 'previous' values as 'n/a'. The currency is not given; call it 'spend units'.
+Goal: more buyers (approved) for the same total spend.

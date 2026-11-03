@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- growth-os check. Replace REPO with the absolute path of this repo, copy to ~/Library/LaunchAgents/, then:
+     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.growthos.check.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.growthos.check</string>
+  <key>ProgramArguments</key><array><string>REPO/.venv/bin/growth-os</string><string>check</string></array>
+  <key>WorkingDirectory</key><string>REPO</string>
+  <key>StartInterval</key><integer>3600</integer>
+  <key>StandardOutPath</key><string>REPO/state/check.log</string>
+  <key>StandardErrorPath</key><string>REPO/state/check.log</string>
+</dict>
+</plist>

@@ -1,0 +1,615 @@
+{
+  "when": "2026-10-30T11:17:19",
+  "score": 1.0,
+  "runs": [
+    {
+      "seed": 7,
+      "turns": 7,
+      "queries": 13,
+      "comparisons": 6,
+      "cost_usd": 0.62,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "mobile_form_errors",
+          "pass": true,
+          "reason": "The finding 'The mobile form is broken or too hard to complete' cites mobile at 139 errors on 202 starts with 29% completion, against desktop at 9 errors and 73% completion."
+        },
+        {
+          "criterion": "clicky_ad_low_quality",
+          "pass": true,
+          "reason": "The finding 'The before/after reel brings clicks that rarely qualify' gives 9002 a 9% qualification rate, the lowest, against 62.5% for 9001, and notes it brought the most sessions (443). It does not quote CPC explicitly, but the direction is right."
+        },
+        {
+          "criterion": "speed_to_lead",
+          "pass": true,
+          "reason": "The memo states '41 of 55 leads (75%) contacted within 2 h got a demo, against 17 of 81 (21%) contacted after more than 24 h.'"
+        },
+        {
+          "criterion": "traffic_up_leads_flat",
+          "pass": true,
+          "reason": "The KPIs show sessions 522 → 812 'mostly from 9002' while leads held at 22, and finding 1 says 9002's extra traffic 'is not converting' (form start rate 6.9% → 0.2%)."
+        },
+        {
+          "criterion": "tiny_sample_trap",
+          "pass": true,
+          "reason": "The memo says '/oferta-b looks promising, but it has almost no traffic yet', with low confidence and 'too little data to tell', and only proposes a proper A/B test."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "Recommendation 4 says explicitly 'Don't raise total spend', and the experiment keeps the total budget unchanged."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Every recommendation is a concrete step the owner can take this week (cut 9002, test and fix the mobile form, contact leads within 2 h, shift budget modestly, launch the test), and each has a specific how_to_measure metric."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Where compare_rates said 'too little data to tell', the memo labels the findings medium or low confidence and says 'Treat them as strong signals, not proof'; it never claims proof on small samples."
+        }
+      ],
+      "memo": {
+        "headline": "Spend rose 69% (124.49 → 210.30 EUR) with no increase in leads (22 both weeks). Almost all of the extra money went to \"Reel: before and after\", which tripled to 127.67 EUR and brought 443 visits but just 1 form start and 1 lead, so the first job this week is to cut it back and find out why.",
+        "data_sufficiency": {
+          "verdict": "directional",
+          "explanation": "There are 6 weeks of data (14 Sep–25 Oct) and 136 leads in total. Site-level patterns have enough volume to call: mobile vs desktop form completion, how fast leads are contacted, and paid vs search form starts. All three passed compare_rates at 95%. Comparisons between individual ads use small lead counts, and compare_rates said 'too little data to tell' even where p-values were near 0. That covers the 9002 vs 9001 qualification rate (2/22 vs 15/24) and 9002's drop in form starts this week. Treat them as strong signals, not proof. This week's qualified count (7) will probably rise: 10 of this week's 22 leads are still at 'Contactado', and a demo usually goes out 33–80 h after the lead arrives. /oferta vs /oferta-b has only 15 sessions in total and settles nothing yet. The data is synthetic."
+        },
+        "kpis": [
+          {
+            "name": "Ad spend",
+            "value": "210.30 EUR",
+            "previous": "124.49 EUR",
+            "note": "+69%. The whole rise came from ad 9002 (41.24 → 127.67 EUR). The agent log has no action recorded for it."
+          },
+          {
+            "name": "Leads (all channels)",
+            "value": "22",
+            "previous": "22",
+            "note": "Flat even though spend rose. Leads not tied to an ad went 12 → 16; ad leads went 10 → 6."
+          },
+          {
+            "name": "Cost per lead, paid ads only",
+            "value": "35.05 EUR (210.30 / 6)",
+            "previous": "12.45 EUR (124.49 / 10)",
+            "note": "3.5× the 10 EUR target. Blended across all leads it is 9.56 EUR (prev 5.66)."
+          },
+          {
+            "name": "Qualified leads (demo sent)",
+            "value": "7",
+            "previous": "12",
+            "note": "Still incomplete: 10 of this week's leads are at 'Contactado'. Ads gave 4 (all from 9001), vs 5 last week."
+          },
+          {
+            "name": "Cost per qualified lead (blended)",
+            "value": "30.04 EUR",
+            "previous": "10.37 EUR",
+            "note": "Spend divided by all qualified leads."
+          },
+          {
+            "name": "Won",
+            "value": "1",
+            "previous": "4",
+            "note": "The win came from 9001 (owner story)."
+          },
+          {
+            "name": "Sessions",
+            "value": "812",
+            "previous": "522",
+            "note": "+290, mostly from 9002 (145 → 443 sessions)."
+          },
+          {
+            "name": "Form completion (submits / starts)",
+            "value": "22/57 = 39%",
+            "previous": "22/49 = 45%",
+            "note": "30 form errors on 57 starts. Mobile: 8 submits from 39 starts; desktop: 14 from 18."
+          },
+          {
+            "name": "Leads first contacted within 2 h",
+            "value": "7 of 22",
+            "previous": "11 of 22",
+            "note": "Average time to first contact rose from 22.7 h to 34.1 h."
+          }
+        ],
+        "findings": [
+          {
+            "title": "Ad 9002's budget tripled and the extra traffic is not converting",
+            "evidence": "9002 spent 41–46 EUR a week for 5 weeks, then 127.67 EUR in the week of 19–25 Oct, about 15–20 EUR a day instead of 5–7. Its sessions went 145 → 443, but form starts went 10 → 1, with a single lead and 0 qualified. Engagement per session was unchanged (37.2 s vs 38.0 s) and about half of visitors still scrolled past the midpoint. So people are reading the page but not reaching or opening the form. Form start rate fell from 6.9% to 0.2%. compare_rates puts p≈0 but its verdict is 'too little data to tell'; it is still a consistent daily pattern, with 0 form starts on 6 of the 7 days. agent_actions has no entry for this change.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The before/after reel brings clicks that rarely qualify; the owner-story reel brings leads that do",
+            "evidence": "All time: 9002 has 22 leads, 2 qualified (9%), and 169.76 EUR per qualified lead. 9001 has 24 leads, 15 qualified (62.5%), 4 won, and 22.12 EUR per qualified lead. 9003 has 12 leads, 4 qualified, 41.68 EUR per qualified lead. compare_rates on 9002 vs 9001 qualification: p=0.0002, but verdict 'too little data to tell', because 9002 has only 2 qualified leads; it estimates about 12+ leads per arm to confirm.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The mobile form is broken or too hard to complete",
+            "evidence": "All time, mobile has 202 form starts, 139 form errors and 59 submits (29%). Desktop has 105 starts, 9 errors and 77 submits (73%). compare_rates: different at 95% confidence. This week: mobile 39 starts → 8 submits; desktop 18 → 14. 71% of sessions this week were on mobile (575 of 812).",
+            "confidence": "high"
+          },
+          {
+            "title": "Leads contacted within 2 hours qualify far more often, and contact got slower this week",
+            "evidence": "All time, 41 of 55 leads (75%) contacted within 2 h got a demo, against 17 of 81 (21%) contacted after more than 24 h. compare_rates: different at 95% confidence. This could be partly because better leads get called first, but the gap is large. This week only 7 of 22 leads were contacted within 2 h and 15 waited more than 24 h. Average time to first contact rose from 22.7 h to 34.1 h.",
+            "confidence": "high"
+          },
+          {
+            "title": "Meta traffic starts the form far less often than search traffic",
+            "evidence": "Homepage this week: paid:meta 15 form starts from 559 sessions (2.7%); search 23 from 139 (16.5%). compare_rates: different at 95% confidence. Most of the gap is 9002's traffic. Search also gave 11 of the 22 form submits.",
+            "confidence": "high"
+          },
+          {
+            "title": "/oferta-b looks promising, but it has almost no traffic yet",
+            "evidence": "Since 22 Oct, all direct traffic: /oferta 0 form starts from 9 sessions; /oferta-b 5 starts and 1 submit from 6 sessions. compare_rates: too little data to tell.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Today, bring 'Reel: before and after' (9002) back to its old level of about 6 EUR a day, or pause it while you check its destination URL. Make sure the link still goes to the homepage with the form and the 'Pide tu demo' button working, and test it on a phone.",
+            "why": "It took about 86 EUR more than usual this week and returned 1 lead and 0 qualified. Visitors still read the page for the same time but stopped starting the form, which points to a changed link or broken page, or a new audience that doesn't fit. Across all time it costs 169.76 EUR per qualified lead, against 22.12 for 9001.",
+            "expected_impact": "Saves about 80–90 EUR a week. At last week's 9002 spend, paid cost per lead should go back toward about 12 EUR instead of 35 EUR, without losing any qualified leads.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "9002's daily spend goes back to about 6 EUR. If the link is fixed, form starts per 9002 session go back to about 5–7% (10 from 145 before). Paid cost per lead next week is under 15 EUR."
+          },
+          {
+            "action": "Fix the mobile form. On a phone, fill it in with common mistakes (phone format, required fields, keyboard type) to find which field causes the errors. Then cut it to the minimum fields and add the WhatsApp button next to it as a fallback.",
+            "why": "On mobile, 139 errors on 202 starts and only 29% completion; on desktop, 73%. Mobile is 71% of traffic. If mobile completed like desktop, this week's 39 mobile starts would have been about 28 submits instead of 8.",
+            "expected_impact": "If mobile completion reaches 50% instead of 29%, that is about 8 more form leads a week at this week's form start volume, at no extra cost.",
+            "effort": "M",
+            "confidence": "high",
+            "how_to_measure": "Mobile form_errors / form_starts and form_submits / form_starts, the week before vs the week after the fix (from 69% errors and 29% completion now)."
+          },
+          {
+            "action": "Call or WhatsApp every new web lead within 2 hours during working hours. Turn on a phone notification for new leads and block two short slots a day to reply.",
+            "why": "75% of leads contacted within 2 h qualified, against 21% after 24 h, and this week 15 of 22 leads waited more than 24 h. Of all the levers here, this one costs nothing.",
+            "expected_impact": "If half of the slow leads had become fast ones this week, at the observed rates that is roughly 3–4 more demos sent a week. This is an estimate: some of the gap may be because better leads get called first.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Share of leads with hours_to_contact ≤ 2 (7/22 this week) and the qualified rate of the week's leads, checked 5 days later."
+          },
+          {
+            "action": "Don't raise total spend. Any budget freed from 9002 can go to 'Reel: owner story' (9001), but only modestly, about +2 EUR a day, and only after rec 1 is done.",
+            "why": "9001 has the best qualified-lead cost (22.12 EUR) and 4 of the 5 wins from ads. Its spend has held at about 54–59 EUR a week, so it is untested at higher budgets. The one sharp budget jump we have (9002) went badly.",
+            "expected_impact": "Small: maybe 1 extra qualified lead a week if 9001 keeps its rate at higher spend.",
+            "effort": "S",
+            "confidence": "low",
+            "how_to_measure": "9001's weekly cost per qualified lead stays under about 30 EUR after the increase."
+          },
+          {
+            "action": "Run the /oferta-b landing page test below, using duplicate ads.",
+            "why": "Meta visitors start the form at 2.7%, against 16.5% from search. A landing page built for ad traffic could close part of that gap. The early /oferta-b numbers are too small to judge.",
+            "expected_impact": "If /oferta-b doubles or triples paid form starts, that would mean several more leads a week at the same spend.",
+            "effort": "M",
+            "confidence": "low",
+            "how_to_measure": "Form starts per session for each ad pair, after about 280 sessions per version."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "Meta visitors who land on /oferta-b, a page built around the offer with the form near the top, start the form much more often than visitors who land on the homepage (2.7% of paid sessions this week).",
+            "variant": "Duplicate each active ad (9001, 9003, and 9002 at its normal budget). Point the copy at /oferta-b and keep the original pointing at /. Split each ad's budget 50/50 so the total doesn't change. Ship the mobile form fix to both pages first, or neither, so the form doesn't skew the result.",
+            "metric": "Form starts per session, by landing page (paid:meta only). Track submits and qualified leads too, but only as a secondary check.",
+            "sample_per_version": 280,
+            "weeks_at_current_traffic": 2
+          }
+        ],
+        "questions_for_owner": [
+          "Who raised the budget on 'Reel: before and after' around 19 Oct, and why? The agent log has nothing. Did its link, audience or placement change at the same time?",
+          "Is the mobile form known to have validation problems, such as phone number format or required fields? 69% of mobile form starts hit an error.",
+          "Who handles first contact with leads, and what slowed it down this week? Average time to first contact went from 22.7 h to 34.1 h.",
+          "What is /oferta-b, where are its direct visits coming from, and is it ready for paid traffic?",
+          "Most of this week's leads (16 of 22) didn't come through an ad, and only 3 qualified so far. Did anything change in search or organic posts?"
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "turns": 7,
+      "queries": 13,
+      "comparisons": 5,
+      "cost_usd": 0.62,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "mobile_form_errors",
+          "pass": true,
+          "reason": "The finding 'The mobile form is losing about three in four people who start it' gives 119 errors on 199 mobile starts and 25% completion, against 69% on desktop with 11 errors, which is the right direction."
+        },
+        {
+          "criterion": "clicky_ad_low_quality",
+          "pass": true,
+          "reason": "The memo says ad 9002 'Reel: before and after' drove the most sessions ('433 visits') but 'has never produced a qualified lead' (0/16), the lowest qualified share; it does not explicitly say its clicks are cheapest, but the high-traffic, low-quality direction is right."
+        },
+        {
+          "criterion": "speed_to_lead",
+          "pass": true,
+          "reason": "The finding 'Leads contacted within 2 hours qualify about five times as often' cites 71.7% vs 14.3% reaching demo for within-2h vs after-24h contact."
+        },
+        {
+          "criterion": "traffic_up_leads_flat",
+          "pass": true,
+          "reason": "The KPIs show sessions up 54% (512→791) while leads fell 21→14 and form start rate halved, and the memo attributes this to 9002 traffic ('The whole drop comes from 9002 traffic')."
+        },
+        {
+          "criterion": "tiny_sample_trap",
+          "pass": true,
+          "reason": "The memo says /oferta-b had 7 sessions, which is 'Far too little to judge', rated low confidence, and only proposes an A/B experiment for it."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The memo explicitly says 'Do not raise total spend until the mobile form is fixed' and 'Do not move the freed money elsewhere this week.'"
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation (cut 9002 to about €6/day, contact leads within 2h with an alert, fix the mobile form validation, keep 9001 flat) is concrete for this week and has a specific how_to_measure metric."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Confidence wording follows the evidence: the 9001 vs 9002 gap is labelled medium confidence with 'compare_rates says too little data to tell', the speed-to-lead result is flagged as a correlation, and /oferta-b is marked low confidence."
+        }
+      ],
+      "memo": {
+        "headline": "Spend on the \"Reel: before and after\" ad (9002) almost tripled this week (€44.01 → €122.89), with no logged agent action. That brought 433 visits but only 1 lead and 0 qualified. As a result, total spend rose 59% while leads fell from 21 to 14 and qualified leads fell from 9 to 5.",
+        "data_sufficiency": {
+          "verdict": "directional",
+          "explanation": "Volumes are small: 14 leads and 5 qualified this week, and 109 leads over all time. Three findings pass the significance test. First, the drop in form starts on ad 9002 (7.5% → 1.2%, p<0.001). Second, mobile vs desktop form completion (25% vs 69%). Third, qualified rate by contact speed (72% vs 14%). The ad-quality gap (9001 at 7/12 qualified vs 9002 at 0/16) is very large, but compare_rates says there is too little data to tell. Per-ad weekly numbers (1–2 leads) are noise on their own. The data is synthetic (sync_log note)."
+        },
+        "kpis": [
+          {
+            "name": "Ad spend",
+            "value": "€203.99",
+            "previous": "€128.65",
+            "note": "+59%. Almost all of the increase is ad 9002 (€44.01 → €122.89). Ads 9001 and 9003 stayed flat."
+          },
+          {
+            "name": "Sessions",
+            "value": "791",
+            "previous": "512",
+            "note": "+54%. Ad 9002 sessions went from 159 to 433."
+          },
+          {
+            "name": "Form start rate (form starts / sessions)",
+            "value": "4.6% (36/791)",
+            "previous": "9.6% (49/512)",
+            "note": "Without ad 9002 it is 8.7% (31/358) vs 10.5% (37/353), no detectable difference. The whole drop comes from 9002 traffic."
+          },
+          {
+            "name": "Leads",
+            "value": "14",
+            "previous": "21",
+            "note": "Paid (Meta) leads: 5 vs 10. Organic and direct: 9 vs 11."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "5",
+            "previous": "9",
+            "note": "Only 1 of this week's 5 came from paid ads (9001)."
+          },
+          {
+            "name": "Cost per lead, paid only (ad spend / Meta site leads)",
+            "value": "€40.80 (203.99/5)",
+            "previous": "€12.87 (128.65/10)",
+            "note": "Target is €10. We are 4× over target this week."
+          },
+          {
+            "name": "Cost per qualified lead, blended (ad spend / all qualified leads)",
+            "value": "€40.80 (203.99/5)",
+            "previous": "€14.29 (128.65/9)",
+            "note": "Flattering, because organic qualified leads cost no ad money"
+          },
+          {
+            "name": "Won",
+            "value": "0",
+            "previous": "1",
+            "note": "Average time to win is 5–10 days, so this week's leads may still close"
+          },
+          {
+            "name": "Leads first contacted within 2 h",
+            "value": "6 of 14 (43%)",
+            "previous": "12 of 21 (57%)",
+            "note": "8 leads this week waited more than 24 h"
+          }
+        ],
+        "findings": [
+          {
+            "title": "Ad 9002's budget jump bought low-intent traffic",
+            "evidence": "Daily spend on 9002 went from about €5–7 (Oct 12–18) to €15.6–19.6 from Oct 19 onward. The agent_actions table has no entry, so the change was manual or outside the agent. Sessions went from 159 to 433, but form starts fell from 12 to 5. Form start rate fell from 7.5% to 1.2% (compare_rates: different at 95% confidence, p<0.001). The result was 1 lead and 0 qualified for €122.89 this week.",
+            "confidence": "high"
+          },
+          {
+            "title": "Ad 9002 has never produced a qualified lead",
+            "evidence": "All time: €333.86 spent, 16 leads, 0 qualified (11 still 'Contactado', 5 'Perdido'). Ad 9001 'owner story': €324.29, 12 leads, 7 qualified, 4 won (€46.33 per qualified). Ad 9003 'prices': €169.27, 9 leads, 2 qualified, 1 won (€84.64 per qualified). 9001 vs 9002 qualified rate is 58% vs 0% (p=0.0004), but compare_rates says too little data to tell, because 9002 has zero qualified leads.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The mobile form is losing about three in four people who start it",
+            "evidence": "All time on mobile: 199 form starts, 119 form errors, 50 submits (25% completion). On desktop: 86 starts, 11 errors, 59 submits (69%). Different at 95% confidence (p<0.001). This week mobile had 23 starts, 16 errors and 6 submits. 70% of sessions are mobile (557/791 this week).",
+            "confidence": "high"
+          },
+          {
+            "title": "Leads contacted within 2 hours qualify about five times as often",
+            "evidence": "All time: 38 of 53 leads (71.7%) first contacted within 2 h reached demo, vs 8 of 56 (14.3%) contacted after 24 h (compare_rates: different, p<0.001). This is a correlation: hotter leads may get called faster. Even so, the gap is very large. This week 8 of 14 leads waited more than 24 h.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The rest of the funnel was stable",
+            "evidence": "Without ad 9002, form start rate was 8.7% (31/358) vs 10.5% (37/353) the week before (no detectable difference, p=0.41). Ads 9001 and 9003 spend and clicks were flat (€51.83 vs €55.60 and €29.27 vs €29.04).",
+            "confidence": "medium"
+          },
+          {
+            "title": "The /oferta and /oferta-b pages have almost no traffic",
+            "evidence": "Since Oct 22: /oferta 9 sessions (2 starts, 1 submit), /oferta-b 7 sessions (2 starts, 2 submits). All traffic is direct, with no ad pointing at either page. Far too little to judge.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Put ad 9002 'Reel: before and after' back to its old budget of about €6/day, or pause it. Keep the other ads as they are. Do not move the freed money elsewhere this week.",
+            "why": "The extra spend since Oct 19 brought 1 lead and 0 qualified. Form start rate on its traffic collapsed from 7.5% to 1.2%, and it has 0 qualified from 16 leads all time.",
+            "expected_impact": "Saves about €80/week (€122.89 this week vs €44.01 the week before) with almost no loss of leads. Paid cost per lead should go back to around last week's €12.87.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Next week: 9002 spend, form start rate and leads, plus total paid cost per lead vs this week's €40.80."
+          },
+          {
+            "action": "Contact every new lead within 2 hours (phone or WhatsApp). Turn on an instant alert for every form submit.",
+            "why": "71.7% of leads contacted within 2 h reached demo, vs 14.3% of those contacted after 24 h. This week 8 of 14 leads waited more than 24 h.",
+            "expected_impact": "If even half of the >24 h leads moved into the 2 h window, about 2–3 more qualified leads a week at zero ad cost. This rests on a correlation, so it is not guaranteed.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Weekly share of leads with hours_to_contact ≤ 2, and the qualified rate of those leads."
+          },
+          {
+            "action": "Fix the mobile form. Fill it in on a phone yourself, find which field causes the errors (likely phone format or a required field), loosen that validation and cut the form to the essential fields.",
+            "why": "Mobile completion is 25% (50/199) vs 69% on desktop (59/86), with 119 errors. Mobile is 70% of traffic.",
+            "expected_impact": "Bringing mobile completion even to 50% would roughly double mobile submits: this week's 23 mobile starts would give about 11–12 submits instead of 6.",
+            "effort": "M",
+            "confidence": "high",
+            "how_to_measure": "Mobile form_errors / form_starts and form_submits / form_starts, week over week."
+          },
+          {
+            "action": "Keep 9001 'Reel: owner story' running at its current budget as the main ad. Do not raise total spend until the mobile form is fixed and contact speed improves.",
+            "why": "9001 is the only ad with a solid qualified history (7 qualified, 4 won, €46.33 per qualified), but per-ad samples are small. Raising budget on 9002 showed that more spend can bring worse traffic.",
+            "expected_impact": "Protects the source of most paid qualified leads. Gives no added lift by itself.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "9001 cost per qualified each week. Revisit the budget once it has about 10 more leads."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "A focused offer page with a shorter form turns paid visits into form starts better than the home page.",
+            "variant": "Duplicate ad 9001 'owner story' with the same creative and budget split 50/50. Version A links to / (home). Version B links to /oferta-b.",
+            "metric": "Form start rate (form starts / sessions) on paid traffic. Use submits as a secondary metric.",
+            "sample_per_version": 225,
+            "weeks_at_current_traffic": 3
+          }
+        ],
+        "questions_for_owner": [
+          "Who raised the budget on ad 9002 on Oct 19? There is no agent action logged, and the targeting may have widened too.",
+          "What do people see when the mobile form shows an error? Can you fill it in on your phone and send a screenshot?",
+          "Can someone be on call to reply to new leads within 2 hours, including evenings and weekends?",
+          "What are /oferta and /oferta-b, and is /oferta-b ready to receive paid traffic for a test?",
+          "11 of 9002's leads are still in 'Contactado'. Are they still being followed up, or should they be marked as lost?"
+        ]
+      }
+    },
+    {
+      "seed": 31,
+      "turns": 6,
+      "queries": 10,
+      "comparisons": 7,
+      "cost_usd": 0.55,
+      "hard": {
+        "memo_handed_in": true,
+        "used_statistics": true
+      },
+      "grades": [
+        {
+          "criterion": "mobile_form_errors",
+          "pass": true,
+          "reason": "The finding 'The mobile form loses most of the people who start it' cites 29% mobile vs 68% desktop start-to-submit and 122 vs 10 errors, and the top recommendation is to fix the mobile form."
+        },
+        {
+          "criterion": "clicky_ad_low_quality",
+          "pass": true,
+          "reason": "The memo names ad 9002 ('Reel: before and after') as having the cheapest clicks (0.233 vs 0.563 EUR) and most sessions (440), but only 1 of 23 leads qualified (4.3% vs 50% for 9001)."
+        },
+        {
+          "criterion": "speed_to_lead",
+          "pass": true,
+          "reason": "The finding 'Leads contacted within 2 hours are 4x more likely to get a demo' reports 72% vs 18% for leads contacted after 24 h, and a recommendation follows from it."
+        },
+        {
+          "criterion": "traffic_up_leads_flat",
+          "pass": true,
+          "reason": "The headline and KPIs show sessions rising from 505 to 779 while leads fell from 19 to 16, and the memo attributes the extra traffic to ad 9002, which 'gets clicks but not leads'."
+        },
+        {
+          "criterion": "tiny_sample_trap",
+          "pass": true,
+          "reason": "The memo says /oferta vs /oferta-b has 'no signal yet' on 13 sessions at low confidence, and only proposes a properly sized test after the form fix."
+        },
+        {
+          "criterion": "no_budget_increase",
+          "pass": true,
+          "reason": "The memo recommends to 'Keep total weekly spend at or below last week's ~127 EUR' and not to move the 9002 savings elsewhere yet."
+        },
+        {
+          "criterion": "actionable",
+          "pass": true,
+          "reason": "Each recommendation (fix the mobile form, contact leads within 2 h, cut 9002, cap spend) is a concrete action for this week with a specific how_to_measure metric."
+        },
+        {
+          "criterion": "honest_uncertainty",
+          "pass": true,
+          "reason": "Comparisons the tool flagged as 'too little data to tell' (9002 lead quality, paid conversion this week) get medium confidence with the caveat quoted, and 'significant/high' wording is kept for the large-sample comparisons; the one borderline phrase, the title 'Paid traffic converted much worse this week', is still caveated in its own evidence."
+        }
+      ],
+      "memo": {
+        "headline": "Spend rose 65% (126.66 → 208.77 EUR) but leads fell from 19 to 16 and qualified leads from 11 to 8: almost all the extra money went to the \"before and after\" Reel, which brought 1 lead and 0 qualified, while a broken mobile form and slow follow-up keep losing the leads we already pay for.",
+        "data_sufficiency": {
+          "verdict": "directional",
+          "explanation": "One week is small: 16 leads, 8 qualified, 3 paid leads. Week-on-week changes per ad are too small to settle, and compare_rates said 'too little data to tell' for paid-vs-search conversion and for this week vs last week on paid traffic. Even so, the p-values were low and the samples needed to confirm are modest: 183 and 335 sessions per arm. Two patterns are solid because they hold across all six weeks: the mobile form fails (200 mobile form starts vs 82 desktop) and contact speed matters (57 vs 57 leads). Ad 9002's poor lead quality (1 qualified out of 23 leads) is strong but still flagged as too little data (p=0.0009, about 14 leads per ad needed). The /oferta vs /oferta-b pages have 13 sessions between them and tell us nothing yet."
+        },
+        "kpis": [
+          {
+            "name": "Spend",
+            "value": "208.77 EUR",
+            "previous": "126.66 EUR",
+            "note": "+65%. Almost all of the increase is ad 9002 (45.96 → 127.73 EUR). The ads agent logged no actions, so we don't know who made this change."
+          },
+          {
+            "name": "Link clicks / sessions",
+            "value": "697 / 779",
+            "previous": "341 / 505",
+            "note": "Traffic roughly doubled, mostly cheap clicks from 9002 (0.23 EUR per click vs 0.56 for 9001)"
+          },
+          {
+            "name": "Form starts",
+            "value": "46",
+            "previous": "57",
+            "note": "Fewer form starts despite 54% more sessions"
+          },
+          {
+            "name": "Leads (all channels)",
+            "value": "16",
+            "previous": "19",
+            "note": "Site form submits. No Instant Form leads in either week."
+          },
+          {
+            "name": "Paid (Meta) leads",
+            "value": "3",
+            "previous": "10",
+            "note": "This week: 9001 = 2, 9002 = 1, 9003 = 0. The other 13 leads came without an ad (search, direct, social)."
+          },
+          {
+            "name": "Blended cost per lead",
+            "value": "13.05 EUR",
+            "previous": "6.67 EUR",
+            "note": "Over the 10 EUR target. Spend divided by all leads, including organic."
+          },
+          {
+            "name": "Cost per paid lead",
+            "value": "69.59 EUR",
+            "previous": "12.67 EUR",
+            "note": "Spend divided by leads that came from an ad. 7x the target."
+          },
+          {
+            "name": "Qualified (demo sent)",
+            "value": "8",
+            "previous": "11",
+            "note": "Only 2 came from ads (both 9001). Blended cost per qualified lead went from 11.51 to 26.10 EUR."
+          },
+          {
+            "name": "Won",
+            "value": "3",
+            "previous": "3",
+            "note": "Flat"
+          },
+          {
+            "name": "Mobile form error rate",
+            "value": "15 errors / 30 starts",
+            "previous": "23 / 43",
+            "note": "Desktop: 3 / 16 this week, 0 / 14 last week"
+          }
+        ],
+        "findings": [
+          {
+            "title": "The extra budget went to ad 9002, which gets clicks but not leads",
+            "evidence": "9002 spend went from 45.96 to 127.73 EUR and clicks from 199 to 549. Its 440 site sessions gave 5 form starts and 1 lead (0 qualified). Ad 9001 turned 77 sessions into 7 form starts and 2 leads, both qualified. Session-to-form-start rate: 9.1% for 9001 vs 1.1% for 9002; compare_rates says this difference is real at 95% confidence. All time, 9002 has spent 339.34 EUR for 1 qualified lead (339.34 per qualified) vs 42.36 for 9001 and 42.05 for 9003.",
+            "confidence": "high"
+          },
+          {
+            "title": "9002's leads rarely become demos",
+            "evidence": "All time, lead-to-qualified is 8 of 16 (50%) for 9001 vs 1 of 23 (4.3%) for 9002. p=0.0009, but compare_rates still says 'too little data to tell' because of the small counts; about 14 leads per ad would settle it. Cheap clicks (0.233 EUR per click vs 0.563 for 9001) suggest Meta is finding people who click but aren't buyers.",
+            "confidence": "medium"
+          },
+          {
+            "title": "The mobile form loses most of the people who start it",
+            "evidence": "All time, start-to-submit is 58 of 200 on mobile (29%) vs 56 of 82 on desktop (68%); compare_rates says this is real at 95% confidence. Mobile logged 122 form errors vs 10 on desktop. This week: mobile 30 starts, 15 errors, 5 submits; desktop 16 starts, 3 errors, 11 submits. The problem has been there every week since 14 Sep, and 71% of this week's sessions were on mobile (551 of 779).",
+            "confidence": "high"
+          },
+          {
+            "title": "Paid traffic converted much worse this week",
+            "evidence": "Paid session-to-submit on '/': 3 of 558 (0.5%) this week vs 10 of 276 (3.6%) last week. Search this week converted 7 of 126 (5.6%). Both comparisons came back 'too little data to tell' (p=0.0007 and p≈0). Confirming them needs about 335 and 183 sessions per arm. On mobile, paid traffic gave 0 submits from 404 sessions this week.",
+            "confidence": "medium"
+          },
+          {
+            "title": "Leads contacted within 2 hours are 4x more likely to get a demo",
+            "evidence": "All time: 41 of 57 leads (72%) contacted within 2 h were qualified, vs 10 of 57 (18%) contacted after more than 24 h; compare_rates says this is real at 95% confidence. This week, 9 of 16 leads waited more than 24 h (3 qualified), and 7 were contacted within 2 h (5 qualified).",
+            "confidence": "high"
+          },
+          {
+            "title": "The /oferta vs /oferta-b pages started on 22 Oct, but there's no signal yet",
+            "evidence": "Only direct traffic so far: /oferta 0 submits from 7 sessions, /oferta-b 3 from 6. compare_rates says too little data to tell.",
+            "confidence": "low"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Fix the mobile form this week. Submit it on a phone yourself, check which field throws the error (validation, keyboard type, required fields, consent checkbox), and cut it to the minimum fields.",
+            "why": "Mobile start-to-submit is 29% vs 68% on desktop (n=200 vs 82, significant), with 122 mobile errors so far. 71% of sessions are mobile, so every channel, organic included, loses leads here.",
+            "expected_impact": "If mobile reached the desktop rate, this week's 30 mobile starts would have given about 20 submits instead of 5. That is a rough upper bound; even halfway would add several leads a week at no extra spend.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Mobile form_errors / form_starts and form_submits / form_starts in web_sessions, week over week. Target error rate under 10%, close to desktop."
+          },
+          {
+            "action": "Contact every new lead within 2 hours. Turn on an instant notification for new leads and block two check-in times a day.",
+            "why": "72% of leads contacted within 2 h got a demo vs 18% of those contacted after 24 h (57 leads in each group, significant). This week 9 of 16 leads waited more than 24 h.",
+            "expected_impact": "If this week's 9 slow leads had converted like the fast ones, that would mean about 3 more qualified leads a week, with no spend.",
+            "effort": "S",
+            "confidence": "high",
+            "how_to_measure": "Share of leads with hours_to_contact ≤ 2 and qualified rate per week (v_qualified)."
+          },
+          {
+            "action": "Cut ad 9002 ('Reel: before and after') back to last week's level (~46 EUR/week) or pause it. Do not move the savings elsewhere until the mobile form is fixed. After that, put part of it on 9001 ('Reel: owner story').",
+            "why": "9002 took 127.73 of this week's 208.77 EUR and returned 1 lead and 0 qualified. All time it costs 339.34 EUR per qualified lead vs 42.36 for 9001. Its session-to-form-start rate is 1.1% vs 9.1% for 9001 (significant).",
+            "expected_impact": "Saves about 80 EUR/week while losing at most about 1 low-quality lead. Cost per paid lead should fall back toward last week's 12.67 EUR.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Cost per paid lead and cost per qualified lead per ad in v_ad_funnel next week."
+          },
+          {
+            "action": "Keep total weekly spend at or below last week's ~127 EUR until the form fix and follow-up speed are in place. Find out where the spend increase came from.",
+            "why": "The extra 82 EUR this week bought more sessions but fewer leads and fewer qualified leads. No agent action explains the increase.",
+            "expected_impact": "Stops paying for traffic the form can't convert.",
+            "effort": "S",
+            "confidence": "medium",
+            "how_to_measure": "Weekly spend vs paid leads and paid qualified leads."
+          }
+        ],
+        "experiments": [
+          {
+            "hypothesis": "The /oferta-b landing page turns paid visitors into form submits better than the home page '/'. Paid session-to-submit is 2.5% today (48 of 1,935 all time); we want to detect a doubling to 5%. Start only after the mobile form fix, so the test isn't swamped by form errors.",
+            "variant": "Duplicate the paid ad(s) into two copies with the same creative and budget. Version A links to '/', version B links to '/oferta-b'.",
+            "metric": "Form submits per paid session, per version (web_sessions by landing and ad_id).",
+            "sample_per_version": 905,
+            "weeks_at_current_traffic": 3.2
+          }
+        ],
+        "questions_for_owner": [
+          "Who increased the budget this week (total 126.66 → 208.77 EUR, mostly ad 9002)? Was it a manual change or did Meta's campaign budget shift it to the cheapest-click ad? Is the campaign optimizing for link clicks rather than leads?",
+          "Have you tried submitting the contact form on a phone? Which field or message causes the error?",
+          "Who handles first contact with new leads, and can they commit to replying within 2 hours on working days?",
+          "What are /oferta and /oferta-b, and where is their direct traffic coming from (QR code, a link you shared)? Should we point paid ads at them?",
+          "Leads from ads have qualified less often than organic web leads (13 of 48 vs 38 of 66 all time). Is the ad audience reaching the right sectors?"
+        ]
+      }
+    }
+  ],
+  "mean_cost_usd": 0.6
+}

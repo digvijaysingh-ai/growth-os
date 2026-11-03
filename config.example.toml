@@ -1,0 +1,54 @@
+# Copy to config.toml (git-ignored) and adjust. Secrets live in .env, never here.
+
+[account]
+name = "Example Studio"
+currency = "EUR"
+# what one lead is worth paying for; every rule below is expressed against it
+target_cpl = 10.0
+# days of data each hourly check looks at
+lookback_days = 7
+timezone = "Europe/Madrid"
+
+[guards]
+# an ad is not judged before it has had this much spend and reach (Meta's learning phase)
+min_spend = 5.0
+min_impressions = 800
+# never propose pausing the last active ad of a campaign: that would stop the campaign
+keep_min_active_per_campaign = 1
+
+# Each rule can be switched off. Only "pause" is ever proposed; the owner approves every change.
+[rules.cpl_over_target]
+enabled = true
+# pause when cost per first-party lead is above this multiple of target_cpl
+multiple = 3.0
+
+[rules.no_leads_after_spend]
+enabled = true
+# pause when an ad spent this multiple of target_cpl and brought no lead at all
+multiple = 3.0
+
+[rules.low_ctr]
+enabled = true
+# link-click CTR (%) below this after min_impressions × 2 impressions
+min_ctr_pct = 0.6
+
+[rules.fatigue]
+enabled = true
+# average times each person saw the ad, with leads drying up
+max_frequency = 3.5
+
+[report]
+# Claude writes the summary paragraph; without credentials the report is sent with the numbers only
+use_claude = true
+model = "claude-opus-5-5"
+
+[analyst]
+# the weekly growth memo on top of the ads report; about 0.60 USD a week with claude-opus-5-5
+enabled = true
+# anything the analyst should know that the data can't tell it
+context = "Small web studio selling a fixed-price website, paid once. Leads come from Meta ads (Instant Forms and website) and from the website form; a lead is qualified once a demo has been sent."
+
+[notify]
+# Slack: set SLACK_WEBHOOK_URL in .env to post the weekly memo and ad proposals; these are the buttons' targets
+approvals_url = "https://example.com/admin/ads.php"
+console_url = "https://example.com/growth-os/"

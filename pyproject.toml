@@ -1,0 +1,22 @@
+[project]
+name = "growth-os"
+version = "0.1.0"
+description = "Marketing data hub with agents that analyse the funnel and ads, propose changes for human approval and write a weekly growth memo."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["anthropic>=1.0"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=2.3"]
+
+[project.scripts]
+growth-os = "growth_os.cli:main"
+growth-os-mcp = "growth_os.mcp_server:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

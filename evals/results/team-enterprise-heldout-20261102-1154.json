@@ -1,0 +1,703 @@
+{
+ "when": "2026-11-02T11:54:56",
+ "scenario": "team-enterprise",
+ "split": "heldout",
+ "commit": "d9184c7",
+ "score": 0.822,
+ "runs": [
+  {
+   "seed": 301,
+   "cost_usd": 2.78,
+   "seconds": 429,
+   "hard": {
+    "decisions": 11,
+    "executable": 10,
+    "numbers_supported_pct": 98.1,
+    "quarter_revenue_change_pct": 2.0,
+    "quarter_gross_profit_change_pct": 2.7,
+    "quarter_gross_profit_change_eur": 913735
+   },
+   "grades": [
+    {
+     "criterion": "meta_saturation",
+     "pass": false,
+     "reason": "The team names google_brand and meta_retargeting as the saturated channels and never says Meta prospecting is past diminishing returns in Barcelona, London, Berlin or Madrid."
+    },
+    {
+     "criterion": "retargeting_overclaim",
+     "pass": true,
+     "reason": "The media planner shows meta_retargeting claims a platform ROAS of 3.49 against 1.64 first-party, with model marginal ROAS lower again (0.30–0.87), and the lead cuts it portfolio-wide."
+    },
+    {
+     "criterion": "brand_search_cannibalisation",
+     "pass": true,
+     "reason": "The planner finds google_brand's marginal ROAS is 0.0–0.78 against a last-click ROAS of 9.44 and says brand search 'mostly picks up demand that would arrive anyway', though the Amsterdam pause is not cited."
+    },
+    {
+     "criterion": "demand_gap",
+     "pass": false,
+     "reason": "Madrid Beauty's capture gap is found, but it is dismissed as long-standing and 'not an obvious budget winner', and the lead adds no budget there."
+    },
+    {
+     "criterion": "weather",
+     "pass": true,
+     "reason": "The demand strategist shows rain lifts Home strongly in Berlin, London and Paris (+31–33%), and the lead sets rain rules for Paris and London Home."
+    },
+    {
+     "criterion": "payment_failure",
+     "pass": true,
+     "reason": "The team finds Android-only checkout-to-order in Barcelona and Milan falling from ~62% to ~22% from 14 Oct across all lines, and opens an engineering ticket."
+    },
+    {
+     "criterion": "sellout",
+     "pass": true,
+     "reason": "The team finds Madrid Home Edition 11 stocked at 270 units and sold out on 21 Oct with weeks left to run, and opens an ops restock ticket."
+    },
+    {
+     "criterion": "launch_behind",
+     "pass": true,
+     "reason": "Mexico City is shown at 6% of São Paulo and Miami at the same age, with trust_brand comments ('never heard of the brand') at 13%."
+    },
+    {
+     "criterion": "delivery_delays",
+     "pass": true,
+     "reason": "London shows late-delivery comments at 32% and email and SMS orders down about 35%, and the lead opens a logistics ticket."
+    },
+    {
+     "criterion": "seo_drop",
+     "pass": false,
+     "reason": "Lisbon's extra spend and falling MER are noted, but the organic search drop is never identified as the cause; the benchmark analyst says 'the problem is the extra spend' and the lead just cuts Lisbon Beauty."
+    },
+    {
+     "criterion": "creative_fatigue",
+     "pass": true,
+     "reason": "The team flags BER-BTY-META-PROSPECTING with frequency rising from 2.5 to 5.1 and CTR falling from 1.11% to 0.70%, and the lead orders a creative refresh."
+    },
+    {
+     "criterion": "seasonal_trap",
+     "pass": true,
+     "reason": "New York's dip is explicitly called seasonal and flat year over year (€96.3k vs €99.0k), with no action taken."
+    },
+    {
+     "criterion": "noise_markets",
+     "pass": true,
+     "reason": "The only Paris decision is a Home rain rule, which belongs to the planted weather situation, so no Paris noise is acted on."
+    },
+    {
+     "criterion": "right_owner",
+     "pass": true,
+     "reason": "Payments go to engineering, stock to ops and deliveries to logistics as open_tickets, and the creative refresh goes to the paid media manager by hand."
+    },
+    {
+     "criterion": "sized_in_money",
+     "pass": true,
+     "reason": "The top recommendations state monthly revenue at stake (€700k, €300k, €125–197k) and are ordered by it."
+    }
+   ],
+   "agents": [
+    {
+     "role": "growth_lead",
+     "turns": 12,
+     "tool_calls": 19,
+     "cost_usd": 0.806,
+     "seconds": 417.8,
+     "error": ""
+    },
+    {
+     "role": "benchmark_analyst",
+     "turns": 8,
+     "tool_calls": 26,
+     "cost_usd": 0.44,
+     "seconds": 143.2,
+     "error": ""
+    },
+    {
+     "role": "demand_strategist",
+     "turns": 8,
+     "tool_calls": 16,
+     "cost_usd": 0.32,
+     "seconds": 80.4,
+     "error": ""
+    },
+    {
+     "role": "customer_voice_analyst",
+     "turns": 8,
+     "tool_calls": 30,
+     "cost_usd": 0.261,
+     "seconds": 74.8,
+     "error": ""
+    },
+    {
+     "role": "media_budget_planner",
+     "turns": 8,
+     "tool_calls": 14,
+     "cost_usd": 0.438,
+     "seconds": 106.6,
+     "error": ""
+    },
+    {
+     "role": "media_budget_planner",
+     "turns": 7,
+     "tool_calls": 16,
+     "cost_usd": 0.475,
+     "seconds": 76.1,
+     "error": ""
+    },
+    {
+     "role": "stakeholder_comms",
+     "turns": 1,
+     "tool_calls": 0,
+     "cost_usd": 0.04,
+     "seconds": 11.0,
+     "error": ""
+    }
+   ],
+   "routing": [
+    {
+     "rank": 1,
+     "action": "Engineering to fix the Android checkout/payment step in Barcelona and Milan (broken since 14 Oct)",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 2,
+     "action": "Ops to restock Madrid Home Edition 11 and fix the capacity setting (270 → 8,334)",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 3,
+     "action": "Cut Madrid Home paid spend 40% until it is back in stock",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 4,
+     "action": "Logistics to escalate London's late deliveries with the carrier",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 5,
+     "action": "Apply the mix model's channel split across the whole portfolio, each line's total unchanged, with no channel moving more than 20%",
+     "approver": "Leadership",
+     "risk": "high",
+     "type": "apply_mix_plan"
+    },
+    {
+     "rank": 6,
+     "action": "Raise São Paulo Home budget by 15%",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 7,
+     "action": "Cut Lisbon Beauty budget by 20% (this funds São Paulo Home)",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 8,
+     "action": "Rain rule for Paris Home, +25%",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 9,
+     "action": "Rain rule for São Paulo Home, +25%",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 10,
+     "action": "Rain rule for London Home, +25%",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 11,
+     "action": "Refresh the creative on the fatigued Berlin Beauty Meta prospecting ad (done by hand: the ad is missing from the ads table)",
+     "approver": "Growth manager",
+     "risk": "low",
+     "type": "manual"
+    }
+   ]
+  },
+  {
+   "seed": 302,
+   "cost_usd": 2.41,
+   "seconds": 372,
+   "hard": {
+    "decisions": 11,
+    "executable": 11,
+    "numbers_supported_pct": 96.0,
+    "quarter_revenue_change_pct": 3.8,
+    "quarter_gross_profit_change_pct": 4.6,
+    "quarter_gross_profit_change_eur": 1593016
+   },
+   "grades": [
+    {
+     "criterion": "meta_saturation",
+     "pass": false,
+     "reason": "The team names Google brand search and Meta retargeting as saturated, but never flags Meta prospecting as past diminishing returns in New York, Barcelona, Madrid or London."
+    },
+    {
+     "criterion": "retargeting_overclaim",
+     "pass": true,
+     "reason": "The media planner finds Meta retargeting's platform ROAS of 3.47 is about double our own 1.59, with a modelled next-euro return mostly below 1 ('adds little'), and the lead acts by shifting budget away from it."
+    },
+    {
+     "criterion": "brand_search_cannibalisation",
+     "pass": true,
+     "reason": "The team says Google brand search 'mostly picks up demand that already exists' (next-euro return €0.02–0.87) and proposes a geo holdout including Barcelona, although it misses the past Barcelona pause."
+    },
+    {
+     "criterion": "demand_gap",
+     "pass": false,
+     "reason": "Amsterdam Gifts is mentioned only as a 'reach gap of moderate priority' and is not named as the best place to add budget; no decision funds it."
+    },
+    {
+     "criterion": "weather",
+     "pass": true,
+     "reason": "The team measures strong rain lifts for Gifts in London (+32.7%), Milan (+31.8%) and Amsterdam (+27.8%), and the lead proposes rain-triggered budget rules."
+    },
+    {
+     "criterion": "payment_failure",
+     "pass": true,
+     "reason": "The headline finding is the iOS-only checkout failure in Paris and Madrid across all lines since 10-13, with checkout-to-order falling from about 62% to 24.1%."
+    },
+    {
+     "criterion": "sellout",
+     "pass": true,
+     "reason": "The team finds Paris Gifts edition PAR-GFT-E10 sold out on 10-23, with the next edition not launching until 30 Nov."
+    },
+    {
+     "criterion": "launch_behind",
+     "pass": true,
+     "reason": "Miami is shown at 44% of São Paulo's revenue at the same age, with trust_brand comments at 14.5% saying customers have never heard of the brand."
+    },
+    {
+     "criterion": "delivery_delays",
+     "pass": true,
+     "reason": "The team identifies Berlin's late-delivery complaints rising since week 40 and repeat share falling from 11.79% to 8.36%."
+    },
+    {
+     "criterion": "seo_drop",
+     "pass": false,
+     "reason": "Milan's lower organic share and organic revenue are noted, but there is no link to a site change, the raised Google generic spend, or the falling MER."
+    },
+    {
+     "criterion": "creative_fatigue",
+     "pass": true,
+     "reason": "The team flags PAR-BTY-META-PROSPECTING with frequency rising from 2.03 to 5.4 and CTR falling from 1.18% to 0.84%, with CPA doubling."
+    },
+    {
+     "criterion": "seasonal_trap",
+     "pass": true,
+     "reason": "Amsterdam's October dip is explicitly called seasonal and flat year over year in several 'not problems' lists."
+    },
+    {
+     "criterion": "noise_markets",
+     "pass": true,
+     "reason": "Lisbon is called normal, and no decision acts on a Lisbon problem; it appears only as a candidate geo in the brand-search holdout test."
+    },
+    {
+     "criterion": "right_owner",
+     "pass": true,
+     "reason": "Payments, stock, deliveries and creative fatigue each go to engineering, ops, logistics or creative via open_ticket."
+    },
+    {
+     "criterion": "sized_in_money",
+     "pass": true,
+     "reason": "The top recommendations state monthly money (€1.33M, €179–644k, €67–179k, €66k) and are ordered by it, though some later items are unsized or out of order."
+    }
+   ],
+   "agents": [
+    {
+     "role": "growth_lead",
+     "turns": 12,
+     "tool_calls": 18,
+     "cost_usd": 0.844,
+     "seconds": 355.6,
+     "error": ""
+    },
+    {
+     "role": "benchmark_analyst",
+     "turns": 9,
+     "tool_calls": 28,
+     "cost_usd": 0.464,
+     "seconds": 127.7,
+     "error": ""
+    },
+    {
+     "role": "demand_strategist",
+     "turns": 8,
+     "tool_calls": 19,
+     "cost_usd": 0.357,
+     "seconds": 79.5,
+     "error": ""
+    },
+    {
+     "role": "customer_voice_analyst",
+     "turns": 8,
+     "tool_calls": 24,
+     "cost_usd": 0.214,
+     "seconds": 95.6,
+     "error": ""
+    },
+    {
+     "role": "media_budget_planner",
+     "turns": 8,
+     "tool_calls": 22,
+     "cost_usd": 0.482,
+     "seconds": 94.3,
+     "error": ""
+    },
+    {
+     "role": "stakeholder_comms",
+     "turns": 1,
+     "tool_calls": 0,
+     "cost_usd": 0.052,
+     "seconds": 15.9,
+     "error": ""
+    }
+   ],
+   "routing": [
+    {
+     "rank": 1,
+     "action": "Open a P0 ticket with engineering/payments to fix the iOS checkout/payment failure in Paris and Madrid, live since 2026-10-13.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 2,
+     "action": "Apply the marketing-mix model's channel split across the portfolio, each line's total unchanged and no channel moved by more than 30%: away from Google brand and Meta retargeting, towards YouTube, TikTok and creators.",
+     "approver": "Leadership",
+     "risk": "high",
+     "type": "apply_mix_plan"
+    },
+    {
+     "rank": 3,
+     "action": "Ticket to ops/logistics: restock Paris Gifts now. Bring forward the next edition (due 30 Nov, capacity 11,053) or add stock to the current one, and resolve the 358-capacity vs 867-units anomaly.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 4,
+     "action": "Notify finance about October pacing: London €66.5k and Milan €22k over budget, Mexico City and Miami €193k under. Hold London to €360k in November, and release the new-market underspend only against a ramp-up plan.",
+     "approver": "Growth manager",
+     "risk": "low",
+     "type": "notify"
+    },
+    {
+     "rank": 5,
+     "action": "Ticket to logistics for the Berlin late deliveries; affected customers get a proactive status update.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 6,
+     "action": "Raise New York Home's budget by 15%.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 7,
+     "action": "Cut Amsterdam Beauty's budget by 25% to fund New York Home.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 8,
+     "action": "Rain rule for London Gifts: +30% upper-funnel spend on days with rain in the forecast.",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 9,
+     "action": "Rain rule for Milan Gifts: +30% upper-funnel spend on days with rain in the forecast.",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 10,
+     "action": "Ticket to creative: replace the fatigued Paris Beauty Meta prospecting creative (ad PAR-BTY-META-PROSPECTING) and cap frequency at about 2.5.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 11,
+     "action": "A/B test trust signals on Miami product pages: reviews, press logos, guarantee and returns badge.",
+     "approver": "Growth manager",
+     "risk": "low",
+     "type": "launch_ab_test"
+    }
+   ]
+  },
+  {
+   "seed": 303,
+   "cost_usd": 2.24,
+   "seconds": 331,
+   "hard": {
+    "decisions": 15,
+    "executable": 14,
+    "numbers_supported_pct": 98.3,
+    "quarter_revenue_change_pct": 2.7,
+    "quarter_gross_profit_change_pct": 3.9,
+    "quarter_gross_profit_change_eur": 1272505
+   },
+   "grades": [
+    {
+     "criterion": "meta_saturation",
+     "pass": false,
+     "reason": "The reallocation names Google brand and Meta retargeting as the overfunded channels; Meta prospecting is never called saturated (mROAS below 1) in Madrid, New York, Berlin and Lisbon, and the planner even lists it at 0.75–2.73."
+    },
+    {
+     "criterion": "retargeting_overclaim",
+     "pass": true,
+     "reason": "The planner finds Meta retargeting claims 3.41 ROAS against 1.55 first-party and a model marginal return of about 0.1–1.65, and the lead moves money out of it portfolio-wide."
+    },
+    {
+     "criterion": "brand_search_cannibalisation",
+     "pass": true,
+     "reason": "The team states Google brand's last-click ROAS of 8.95 is credited with demand that would arrive anyway, with a model marginal return of 0–1.4, though the Paris pause test is not mentioned."
+    },
+    {
+     "criterion": "demand_gap",
+     "pass": true,
+     "reason": "Madrid Fashion drops is identified as capturing only 72% of its search demand, with the largest gap and an unsaturated next-euro return of 2.74, and the lead raises its budget by 30%."
+    },
+    {
+     "criterion": "weather",
+     "pass": true,
+     "reason": "Rain lifts Gifts in London (+33.1%), Berlin (+30.5%) and Amsterdam (+27.8%), and the lead adds rain rules for Berlin and Amsterdam Gifts."
+    },
+    {
+     "criterion": "payment_failure",
+     "pass": true,
+     "reason": "iOS-only checkout-to-order in London and Barcelona falls from about 62% to 22% from 14 Oct across all lines, which is correctly identified."
+    },
+    {
+     "criterion": "sellout",
+     "pass": true,
+     "reason": "Berlin Home edition E10 is found sold out on 23 Oct with weeks still to run."
+    },
+    {
+     "criterion": "launch_behind",
+     "pass": true,
+     "reason": "Mexico City is found at 5% of Miami and São Paulo at the same age, with trust_brand comments saying customers don't know the brand."
+    },
+    {
+     "criterion": "delivery_delays",
+     "pass": true,
+     "reason": "Lisbon late-delivery comments rise to 30% from the week of 5 Oct, and email orders fall 33%."
+    },
+    {
+     "criterion": "seo_drop",
+     "pass": true,
+     "reason": "New York organic search sessions fall from 607k to 462k because of broken Google links, and the planner notes New York's Google generic spend rose from €50.8k to €78.1k."
+    },
+    {
+     "criterion": "creative_fatigue",
+     "pass": true,
+     "reason": "New York Home Meta prospecting frequency rises from 2.03 to 5.11 and clicks per 1,000 views fall from 11.8 to 6.5."
+    },
+    {
+     "criterion": "seasonal_trap",
+     "pass": true,
+     "reason": "Berlin's 25% fall is explicitly called seasonal because it matches last year's 21% fall."
+    },
+    {
+     "criterion": "noise_markets",
+     "pass": false,
+     "reason": "The lead cuts Amsterdam Beauty by 20% based on its low marginal return from a poorly fitting model (r2 0.53), which acts on a non-planted issue in the noise market."
+    },
+    {
+     "criterion": "right_owner",
+     "pass": true,
+     "reason": "Payments go to engineering, stock to ops, the site to SEO and deliveries to logistics as tickets, and the creative goes to the paid media manager."
+    },
+    {
+     "criterion": "sized_in_money",
+     "pass": true,
+     "reason": "The top decisions state monthly money at stake (€1.5M, €360k, €188k) and are broadly ranked by it."
+    }
+   ],
+   "agents": [
+    {
+     "role": "growth_lead",
+     "turns": 11,
+     "tool_calls": 14,
+     "cost_usd": 0.817,
+     "seconds": 317.6,
+     "error": ""
+    },
+    {
+     "role": "benchmark_analyst",
+     "turns": 8,
+     "tool_calls": 23,
+     "cost_usd": 0.322,
+     "seconds": 98.8,
+     "error": ""
+    },
+    {
+     "role": "demand_strategist",
+     "turns": 8,
+     "tool_calls": 15,
+     "cost_usd": 0.305,
+     "seconds": 68.0,
+     "error": ""
+    },
+    {
+     "role": "customer_voice_analyst",
+     "turns": 8,
+     "tool_calls": 26,
+     "cost_usd": 0.256,
+     "seconds": 75.9,
+     "error": ""
+    },
+    {
+     "role": "media_budget_planner",
+     "turns": 7,
+     "tool_calls": 18,
+     "cost_usd": 0.496,
+     "seconds": 110.5,
+     "error": ""
+    },
+    {
+     "role": "stakeholder_comms",
+     "turns": 1,
+     "tool_calls": 0,
+     "cost_usd": 0.047,
+     "seconds": 13.0,
+     "error": ""
+    }
+   ],
+   "routing": [
+    {
+     "rank": 1,
+     "action": "Raise a P1 incident with engineering to fix iOS checkout and payment in London and Barcelona.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 2,
+     "action": "Apply the mix model's channel reallocation across the portfolio, each line's total unchanged, with no channel moved by more than 25%.",
+     "approver": "Leadership",
+     "risk": "high",
+     "type": "apply_mix_plan"
+    },
+    {
+     "rank": 3,
+     "action": "Ask ops/merch to restock Berlin Home or bring edition E11 forward.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 4,
+     "action": "Cut Berlin Home paid spend by 40% until it has stock again.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 5,
+     "action": "Ask SEO to fix broken Google landing URLs in New York.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 6,
+     "action": "Raise Madrid Fashion drops spend by 30%, funded by the Lisbon and Amsterdam Beauty cuts below.",
+     "approver": "Leadership",
+     "risk": "high",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 7,
+     "action": "Cut Lisbon Beauty spend by 20% to help fund Madrid Fashion drops.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 8,
+     "action": "Cut Amsterdam Beauty spend by 20% to help fund Madrid Fashion drops.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_line_budget"
+    },
+    {
+     "rank": 9,
+     "action": "Cut Milan paid spend by 15% to bring it back to budget.",
+     "approver": "Growth manager",
+     "risk": "medium",
+     "type": "change_budget"
+    },
+    {
+     "rank": 10,
+     "action": "Replace the fatigued creative on New York Home Meta prospecting and add a frequency cap (manual: the ad_id in ad_daily did not match the ads table).",
+     "approver": "Growth manager",
+     "risk": "low",
+     "type": "manual"
+    },
+    {
+     "rank": 11,
+     "action": "Add a rain rule for Berlin Gifts: +30% upper-funnel spend on rainy days.",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 12,
+     "action": "Add a rain rule for Amsterdam Gifts: +30% on rainy days.",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 13,
+     "action": "Add a rain rule for São Paulo Home: +20% on rainy days.",
+     "approver": "Paid media manager",
+     "risk": "low",
+     "type": "weather_rule"
+    },
+    {
+     "rank": 14,
+     "action": "Ask logistics to fix late deliveries in Lisbon.",
+     "approver": "Product / engineering owner",
+     "risk": "low",
+     "type": "open_ticket"
+    },
+    {
+     "rank": 15,
+     "action": "Ask the CRM manager to audit Lisbon email: sends, deliverability and flows.",
+     "approver": "Growth manager",
+     "risk": "low",
+     "type": "notify"
+    }
+   ]
+  }
+ ],
+ "mean_cost_usd": 2.48
+}

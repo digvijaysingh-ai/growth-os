@@ -1,0 +1,270 @@
+{
+ "mode": "leave_one_out",
+ "hub": "enterprise-7.sqlite",
+ "from": "2026-11-02",
+ "days": 91,
+ "inputs": {
+  "team_json": "team-enterprise-7.json",
+  "team_sha256": "ab08202244fa7f859173e43fb8e5dc6cd3c6828e38e2ff2371564426db76443f",
+  "outcomes_json": "outcomes-enterprise-7.json",
+  "outcomes_sha256": "2999e9bda24faaa4e8b02920ca62fbc192679ba985af8e0dcdc3a3f8ecd32d46",
+  "priced_ids": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   9,
+   10,
+   11
+  ],
+  "all_approved_gross_profit": 1323479
+ },
+ "baseline_gross_profit": 33886304,
+ "complete": true,
+ "runs": [
+  {
+   "left_out": 1,
+   "change": {
+    "revenue": 2076043,
+    "spend": -103127,
+    "gross_profit": 1134506,
+    "orders": 33134,
+    "new_customers": 11332
+   },
+   "change_pct": {
+    "revenue": 2.4,
+    "spend": -1.1,
+    "gross_profit": 3.3
+   },
+   "with_decisions": {
+    "revenue": 87778314,
+    "spend": 9520354,
+    "gross_profit": 35020810,
+    "mer": 9.22,
+    "orders": 1464813,
+    "new_customers": 411759,
+    "cac": 23.12
+   }
+  },
+  {
+   "left_out": 2,
+   "change": {
+    "revenue": 361189,
+    "spend": -155119,
+    "gross_profit": 325150,
+    "orders": 4907,
+    "new_customers": 1227
+   },
+   "change_pct": {
+    "revenue": 0.4,
+    "spend": -1.6,
+    "gross_profit": 1.0
+   },
+   "with_decisions": {
+    "revenue": 86063460,
+    "spend": 9468362,
+    "gross_profit": 34211454,
+    "mer": 9.09,
+    "orders": 1436586,
+    "new_customers": 401654,
+    "cac": 23.57
+   }
+  },
+  {
+   "left_out": 3,
+   "change": {
+    "revenue": 2312636,
+    "spend": -90863,
+    "gross_profit": 1240328,
+    "orders": 36945,
+    "new_customers": 12824
+   },
+   "change_pct": {
+    "revenue": 2.7,
+    "spend": -0.9,
+    "gross_profit": 3.7
+   },
+   "with_decisions": {
+    "revenue": 88014907,
+    "spend": 9532618,
+    "gross_profit": 35126632,
+    "mer": 9.23,
+    "orders": 1468624,
+    "new_customers": 413251,
+    "cac": 23.07
+   }
+  },
+  {
+   "left_out": 4,
+   "change": {
+    "revenue": 2793807,
+    "spend": 50127,
+    "gross_profit": 1343620,
+    "orders": 44990,
+    "new_customers": 15673
+   },
+   "change_pct": {
+    "revenue": 3.3,
+    "spend": 0.5,
+    "gross_profit": 4.0
+   },
+   "with_decisions": {
+    "revenue": 88496078,
+    "spend": 9673608,
+    "gross_profit": 35229924,
+    "mer": 9.15,
+    "orders": 1476669,
+    "new_customers": 416100,
+    "cac": 23.25
+   }
+  },
+  {
+   "left_out": 5,
+   "change": {
+    "revenue": 2286682,
+    "spend": -140096,
+    "gross_profit": 1281451,
+    "orders": 37047,
+    "new_customers": 12446
+   },
+   "change_pct": {
+    "revenue": 2.7,
+    "spend": -1.5,
+    "gross_profit": 3.8
+   },
+   "with_decisions": {
+    "revenue": 87988953,
+    "spend": 9483385,
+    "gross_profit": 35167755,
+    "mer": 9.28,
+    "orders": 1468726,
+    "new_customers": 412873,
+    "cac": 22.97
+   }
+  },
+  {
+   "left_out": 6,
+   "change": {
+    "revenue": 2499430,
+    "spend": -65110,
+    "gross_profit": 1315328,
+    "orders": 40448,
+    "new_customers": 13791
+   },
+   "change_pct": {
+    "revenue": 2.9,
+    "spend": -0.7,
+    "gross_profit": 3.9
+   },
+   "with_decisions": {
+    "revenue": 88201701,
+    "spend": 9558371,
+    "gross_profit": 35201632,
+    "mer": 9.23,
+    "orders": 1472127,
+    "new_customers": 414218,
+    "cac": 23.08
+   }
+  },
+  {
+   "left_out": 7,
+   "change": {
+    "revenue": 2416328,
+    "spend": -103127,
+    "gross_profit": 1305682,
+    "orders": 38684,
+    "new_customers": 13221
+   },
+   "change_pct": {
+    "revenue": 2.8,
+    "spend": -1.1,
+    "gross_profit": 3.9
+   },
+   "with_decisions": {
+    "revenue": 88118599,
+    "spend": 9520354,
+    "gross_profit": 35191986,
+    "mer": 9.26,
+    "orders": 1470363,
+    "new_customers": 413648,
+    "cac": 23.02
+   }
+  },
+  {
+   "left_out": 9,
+   "change": {
+    "revenue": 2427111,
+    "spend": -109426,
+    "gross_profit": 1319154,
+    "orders": 38905,
+    "new_customers": 13215
+   },
+   "change_pct": {
+    "revenue": 2.8,
+    "spend": -1.1,
+    "gross_profit": 3.9
+   },
+   "with_decisions": {
+    "revenue": 88129382,
+    "spend": 9514055,
+    "gross_profit": 35205458,
+    "mer": 9.26,
+    "orders": 1470584,
+    "new_customers": 413642,
+    "cac": 23.0
+   }
+  },
+  {
+   "left_out": 10,
+   "change": {
+    "revenue": 2438376,
+    "spend": -106615,
+    "gross_profit": 1321299,
+    "orders": 39076,
+    "new_customers": 13278
+   },
+   "change_pct": {
+    "revenue": 2.8,
+    "spend": -1.1,
+    "gross_profit": 3.9
+   },
+   "with_decisions": {
+    "revenue": 88140647,
+    "spend": 9516866,
+    "gross_profit": 35207603,
+    "mer": 9.26,
+    "orders": 1470755,
+    "new_customers": 413705,
+    "cac": 23.0
+   }
+  },
+  {
+   "left_out": 11,
+   "change": {
+    "revenue": 2431083,
+    "spend": -109450,
+    "gross_profit": 1320118,
+    "orders": 38998,
+    "new_customers": 13266
+   },
+   "change_pct": {
+    "revenue": 2.8,
+    "spend": -1.1,
+    "gross_profit": 3.9
+   },
+   "with_decisions": {
+    "revenue": 88133354,
+    "spend": 9514031,
+    "gross_profit": 35206422,
+    "mer": 9.26,
+    "orders": 1470677,
+    "new_customers": 413693,
+    "cac": 23.0
+   }
+  }
+ ],
+ "note": "SIMULATED: synthetic business; each run approves every decision except one and shares every random draw with the all-approved run, so its difference from that run is the decision left out."
+}

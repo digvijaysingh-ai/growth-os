@@ -1,0 +1,3 @@
+# Reviewed false positives for scripts/publish_scan.py, one per line: <rule> <file> <reason>
+persona dist/es/proyectos/growth-os/index.html Spanish verb "Lee" (reads) in the customer voice analyst's description, not a person
+local-path tests/test_publish_scan.py deliberate fake paths that prove the scan catches local paths

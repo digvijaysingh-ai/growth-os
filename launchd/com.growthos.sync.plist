@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- growth-os sync, every day at 06:30. Replace REPO with the absolute path of this repo, copy to ~/Library/LaunchAgents/, then:
+     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.growthos.sync.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.growthos.sync</string>
+  <key>ProgramArguments</key><array><string>REPO/.venv/bin/growth-os</string><string>sync</string></array>
+  <key>WorkingDirectory</key><string>REPO</string>
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>6</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardOutPath</key><string>REPO/state/sync.log</string>
+  <key>StandardErrorPath</key><string>REPO/state/sync.log</string>
+</dict>
+</plist>

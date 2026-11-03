@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth OS Console</title>
+<meta name="description" content="Growth OS: a decision-and-action layer for marketing. Agents read the funnel, test their claims and propose; people decide.">
+<style>
+:root{
+  --bg:#070a12;--bg2:#0b1020;--ink:#eef1f8;--muted:#a3abbe;--faint:#6f7890;
+  --glass:rgba(255,255,255,.055);--glass-2:rgba(255,255,255,.085);--stroke:rgba(255,255,255,.11);--stroke-2:rgba(255,255,255,.2);
+  --accent:#8ea8ff;--accent-2:#c39bff;--accent-soft:rgba(142,168,255,.14);
+  --good:#5ee0a6;--good-soft:rgba(94,224,166,.13);--bad:#ff8f87;--bad-soft:rgba(255,143,135,.14);--warn:#ffd27a;--warn-soft:rgba(255,210,122,.13);
+  --line:rgba(255,255,255,.08);--shadow:0 1px 0 rgba(255,255,255,.06) inset,0 20px 50px -20px rgba(0,0,0,.6);
+  --blob1:rgba(88,112,255,.38);--blob2:rgba(176,108,255,.28);--blob3:rgba(40,200,170,.18);
+  --sans:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+:root[data-theme="light"]{
+  --bg:#eef1f7;--bg2:#f6f7fb;--ink:#121726;--muted:#4f586d;--faint:#7a8296;
+  --glass:rgba(255,255,255,.62);--glass-2:rgba(255,255,255,.78);--stroke:rgba(20,30,60,.08);--stroke-2:rgba(20,30,60,.16);
+  --accent:#3550d8;--accent-2:#7a3fd6;--accent-soft:rgba(53,80,216,.1);
+  --good:#127a4c;--good-soft:rgba(18,122,76,.1);--bad:#c0322a;--bad-soft:rgba(192,50,42,.1);--warn:#8a5a00;--warn-soft:rgba(176,120,0,.12);
+  --line:rgba(20,30,60,.07);--shadow:0 1px 0 rgba(255,255,255,.8) inset,0 18px 40px -22px rgba(30,40,90,.35);
+  --blob1:rgba(110,140,255,.35);--blob2:rgba(190,140,255,.3);--blob3:rgba(80,210,190,.22)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#eef1f7;--bg2:#f6f7fb;--ink:#121726;--muted:#4f586d;--faint:#7a8296;
+  --glass:rgba(255,255,255,.62);--glass-2:rgba(255,255,255,.78);--stroke:rgba(20,30,60,.08);--stroke-2:rgba(20,30,60,.16);
+  --accent:#3550d8;--accent-2:#7a3fd6;--accent-soft:rgba(53,80,216,.1);
+  --good:#127a4c;--good-soft:rgba(18,122,76,.1);--bad:#c0322a;--bad-soft:rgba(192,50,42,.1);--warn:#8a5a00;--warn-soft:rgba(176,120,0,.12);
+  --line:rgba(20,30,60,.07);--shadow:0 1px 0 rgba(255,255,255,.8) inset,0 18px 40px -22px rgba(30,40,90,.35);
+  --blob1:rgba(110,140,255,.35);--blob2:rgba(190,140,255,.3);--blob3:rgba(80,210,190,.22)}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font:14.5px/1.55 var(--sans);letter-spacing:-.005em;background:var(--bg);
+  background-image:radial-gradient(1200px 700px at 8% -10%,var(--blob1),transparent 60%),radial-gradient(900px 600px at 100% 5%,var(--blob2),transparent 60%),
+  radial-gradient(900px 700px at 60% 110%,var(--blob3),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.glass{background:var(--glass);border:1px solid var(--stroke);box-shadow:var(--shadow);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+.bar-top{position:sticky;top:0;z-index:10;border-left:0;border-right:0;border-top:0;border-radius:0}
+.bar-top .in{max-width:1240px;margin:0 auto;padding:12px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 16px 72px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;font-size:16px}
+.logo{width:28px;height:28px;border-radius:9px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--good),var(--accent));box-shadow:0 0 22px -4px var(--accent)}
+.brand small{color:var(--faint);font-weight:500}
+.seg{display:inline-flex;padding:4px;border-radius:12px;gap:4px;margin-left:auto;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--muted);padding:7px 14px;border-radius:9px;font:inherit;font-size:13.5px;font-weight:550;cursor:pointer;transition:background .2s,color .2s}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-selected="true"]{background:var(--glass-2);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 4px 14px -6px rgba(0,0,0,.45);border:1px solid var(--stroke-2)}
+.icon-btn{border:1px solid var(--stroke);background:var(--glass);color:var(--muted);border-radius:10px;width:36px;height:36px;font:inherit;cursor:pointer}
+.hero{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;align-items:flex-end;margin:6px 0 22px}
+.hero h1{font-size:clamp(24px,3.2vw,34px);line-height:1.15;margin:0;letter-spacing:-.025em;font-weight:700}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:640px;margin:8px 0 0}
+.meta{color:var(--faint);font-size:12.5px;text-align:right}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;border:1px solid transparent}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.85}
+.chip.real{background:var(--good-soft);color:var(--good)}.chip.bad{background:var(--bad-soft);color:var(--bad)}.chip.good{background:var(--good-soft);color:var(--good)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}.chip.muted{background:transparent;color:var(--muted);border-color:var(--stroke-2)}.chip.muted::before{display:none}
+.grid{display:grid;gap:16px}.grid>*{min-width:0}.kpis{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.two{grid-template-columns:1fr;align-items:start}
+@media(min-width:1000px){.two{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}.card.sticky{position:sticky;top:76px}}
+.card{border-radius:18px;padding:20px;min-width:0;position:relative;transition:transform .25s ease,border-color .25s ease}
+.card.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,0) 35%,rgba(255,255,255,0) 70%,rgba(142,168,255,.18));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+@media(hover:hover){.kpi:hover,.tile:hover{transform:translateY(-2px);border-color:var(--stroke-2)}}
+.ribbon{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.pill{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border-radius:14px}
+.pill b{font-size:18px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.pill span{color:var(--muted);font-size:12.5px}
+.funnel{display:grid;gap:8px}
+.fstep{display:grid;grid-template-columns:110px 1fr 74px;gap:12px;align-items:center;font-size:13px}
+.fstep .t{height:26px;border-radius:9px;background:var(--glass-2);overflow:hidden}
+.fstep .f{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 18px -6px var(--accent)}
+.fstep .v{text-align:right;font-weight:650;font-variant-numeric:tabular-nums}.fstep .c{grid-column:2;color:var(--faint);font-size:11.5px;margin:-4px 0 2px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tile{border-radius:14px;padding:12px 14px;background:var(--glass);border:1px solid var(--stroke);transition:transform .25s ease,border-color .25s ease}
+.tile .m{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:15px}
+.tile .r{font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:6px}
+.tile .s{color:var(--faint);font-size:11.5px}
+.tile.flag{border-color:color-mix(in srgb,var(--bad) 55%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--bad) 25%,transparent),0 10px 30px -12px var(--bad);background:linear-gradient(160deg,var(--bad-soft),var(--glass))}
+.tile.up{border-color:color-mix(in srgb,var(--good) 55%,transparent);background:linear-gradient(160deg,var(--good-soft),var(--glass))}
+details.more{margin-top:14px}details.more summary{cursor:pointer;color:var(--muted);font-size:12.5px;list-style:none}details.more summary::before{content:"▸ ";}details.more[open] summary::before{content:"▾ "}
+.card h2{font-size:14px;font-weight:650;margin:0 0 3px;letter-spacing:-.005em}.card .sub{color:var(--muted);font-size:12.5px;margin:0 0 14px}
+.kpi{position:relative;overflow:hidden;padding:18px 18px 14px}
+.kpi .l{color:var(--muted);font-size:12px;font-weight:550;text-transform:uppercase;letter-spacing:.06em}
+.kpi .n{font-size:28px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:4px 0 2px}
+.kpi .spark{display:block;margin-top:8px;height:34px;width:100%}
+.delta{font-size:12.5px;font-weight:650;padding:2px 7px;border-radius:7px}.delta.up{color:var(--good);background:var(--good-soft)}.delta.down{color:var(--bad);background:var(--bad-soft)}.delta.flat{color:var(--muted);background:var(--glass-2)}
+.vs{color:var(--faint);font-size:12px;margin-left:4px}
+.section{margin-top:16px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -6px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--faint);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}tbody tr,tr{transition:background .15s}tr:hover td{background:var(--glass)}
+td.num,th.num{text-align:right}
+.memo{background:linear-gradient(160deg,var(--glass-2),var(--glass))}
+.memo h3{font-size:16.5px;line-height:1.45;margin:6px 0 12px;letter-spacing:-.01em;font-weight:650}
+.memo .item{padding:12px 0;border-top:1px solid var(--line)}.memo .item:first-of-type{border-top:0}
+.memo .item b{display:block;margin-bottom:4px;font-weight:600}.ev{color:var(--muted);font-size:13px}
+.rec > b::before{content:counter(rec,decimal-leading-zero);counter-increment:rec;display:inline-block;margin-right:8px;color:var(--accent);font-family:var(--mono);font-size:12px}
+.label{font-size:11.5px;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:16px 0 2px}
+.bar{display:grid;grid-template-columns:minmax(120px,1.3fr) 3fr 46px;gap:12px;align-items:center;font-size:13px;margin:8px 0}
+.bar .t{height:8px;background:var(--glass-2);border-radius:6px;overflow:hidden}.bar .f{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.bar .f.neg{background:linear-gradient(90deg,#ff6b6b,var(--bad))}.bar .v{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+svg text{fill:var(--faint);font-size:10.5px;font-family:var(--sans)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:6px}.legend i{display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle;border-radius:2px}
+.agents{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.agent{padding:16px;border-radius:14px;background:var(--glass);border:1px solid var(--stroke)}
+.agent h3{font-size:14px;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.agent dl{margin:0;font-size:12.5px;display:grid;grid-template-columns:auto 1fr;gap:5px 12px}.agent dt{color:var(--faint)}.agent dd{margin:0;color:var(--ink)}
+footer{margin-top:30px;color:var(--faint);font-size:12.5px}
+@media (prefers-reduced-motion:no-preference){.card,.kpi{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+@media(max-width:560px){.seg{margin-left:0;width:100%;order:3}.seg button{flex:1;padding:7px 8px;font-size:12.5px}.icon-btn{margin-left:auto}.meta{text-align:left}.kpi .n{font-size:24px}.card{padding:16px}.hero h1{font-size:26px}}
+.dec h3{font-size:15px;margin:0 0 6px;line-height:1.35}.dec-h{display:flex;gap:12px;align-items:flex-start}
+.rank{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-weight:700;background:var(--accent-soft);color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.why{color:var(--muted);margin:10px 0}.note{color:var(--muted);font-size:12.5px;margin-top:4px}
+.dl{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;margin:10px 0;font-size:13.5px}.dl dt{color:var(--faint)}.dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+code{font:12.5px var(--mono);background:var(--glass-2);padding:1px 6px;border-radius:6px}
+.act{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{font:inherit;font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:11px;border:1px solid var(--stroke-2);background:var(--glass-2);color:var(--ink);cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;box-shadow:0 8px 24px -10px var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dec.approved{border-color:color-mix(in srgb,var(--good) 50%,transparent)}.dec.rejected{opacity:.86;border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.steps{list-style:none;padding:0;margin:12px 0;display:grid;gap:6px;font-size:13.5px}.steps li{padding-left:24px;position:relative;animation:in .35s ease both}
+.steps li:nth-child(2){animation-delay:.15s}.steps li:nth-child(3){animation-delay:.3s}.steps li:nth-child(4){animation-delay:.45s}.steps li:nth-child(5){animation-delay:.6s}
+.steps li::before{position:absolute;left:0;top:0;font-weight:700}.steps li.ok::before{content:"✓";color:var(--good)}.steps li.no::before{content:"✕";color:var(--bad)}.steps li.info::before{content:"i";color:var(--accent)}
+@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.steps li{animation:none}}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:10px 0}.res>div{background:var(--glass);border:1px solid var(--stroke);border-radius:12px;padding:10px 12px}
+.res .l{display:block;color:var(--faint);font-size:11.5px}.res b{font-size:16px;font-variant-numeric:tabular-nums}.pos{color:var(--good)}.neg{color:var(--bad)}
+.rej label{display:grid;gap:6px;font-size:13px;color:var(--muted)}.rej select{font:inherit;padding:8px;border-radius:10px;background:var(--glass-2);color:var(--ink);border:1px solid var(--stroke-2)}.rej{display:grid;gap:8px;margin-top:10px}
+.cause{padding:12px 0;border-top:1px solid var(--line)}.cause:first-of-type{border-top:0}.cause .ch{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}.cause ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px}
+.finding{margin:10px 0}.finding p{margin:4px 0 0;color:var(--muted);font-size:12.5px}.lead{font-size:15px;font-weight:600;margin:0 0 8px}.assume{color:var(--muted);font-size:13px;margin:0;padding-left:18px}
+#roles{margin-left:0}[hidden]{display:none!important}
+.finding p{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px}
+.agent-card{border:1px solid var(--stroke);background:var(--glass);border-radius:14px;padding:12px;display:grid;gap:4px;font-size:12.5px;color:var(--muted)}.agent-card b{color:var(--ink);font-size:14px}
+.flist{list-style:none;padding:0;margin:10px 0;display:grid;gap:10px;font-size:13px}.flist .ev{color:var(--muted);font-size:12.5px}
+table.heat td,table.heat th{padding:6px 7px;font-size:12px}
+[hidden]{display:none!important}
+
+/* ---------- chart tokens: validated categorical order, one sequential hue, blue/red diverging around grey ---------- */
+:root{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+  --seq-lo:#1a2340;--seq-hi:#5598e7;--div-neg:#e66767;--div-mid:#383835;--div-pos:#3987e5;--critical:#d03b3b;--good-c:#0ca30c;
+  --surface:#0d1222;--text-2:#a3abbe;--muted-fill:rgba(160,170,190,.45);--grid:rgba(255,255,255,.07);--grid-strong:rgba(255,255,255,.22);--tip-bg:rgba(14,18,32,.92)}
+:root[data-theme="light"]{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+  --seq-lo:#eef3fb;--seq-hi:#1c5cab;--div-neg:#e34948;--div-mid:#f0efec;--div-pos:#2a78d6;--surface:#fcfcfb;--text-2:#52514e;--muted-fill:rgba(90,96,110,.35);
+  --grid:rgba(20,30,60,.08);--grid-strong:rgba(20,30,60,.25);--tip-bg:rgba(255,255,255,.96)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+  --seq-lo:#eef3fb;--seq-hi:#1c5cab;--div-neg:#e34948;--div-mid:#f0efec;--div-pos:#2a78d6;--surface:#fcfcfb;--text-2:#52514e;--muted-fill:rgba(90,96,110,.35);
+  --grid:rgba(20,30,60,.08);--grid-strong:rgba(20,30,60,.25);--tip-bg:rgba(255,255,255,.96)}}
+.vz{width:100%;height:auto;display:block;overflow:visible}.vz text{font-family:var(--sans)}
+.vz-grid{stroke:var(--grid);stroke-width:1}.vz-zero{stroke:var(--grid-strong);stroke-width:1.2}.vz-target{stroke:var(--text-2);stroke-width:1.2;stroke-dasharray:5 4;opacity:.8}
+.vz-ax{font-size:10.5px;fill:var(--faint)}.vz-lab{font-size:11.5px;fill:var(--muted)}.vz-val{font-size:11.5px;fill:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.vz-cell{font-size:10.5px;fill:var(--ink);font-variant-numeric:tabular-nums}.vz-cell.inv{fill:#fff}
+.vz-band{fill:var(--grid-strong);opacity:.6}.vz-hit{fill:transparent;cursor:crosshair}.vz-hit:hover{fill:var(--grid)}.vz-mapbg{fill:var(--glass);stroke:var(--stroke)}
+.vz [data-tip]:not(.vz-hit){cursor:pointer}.vz circle[data-tip]:hover,.vz rect[data-tip]:not(.vz-hit):hover{filter:brightness(1.15)}
+.vz-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:2px 0 8px}.vz-legend span{display:inline-flex;align-items:center;gap:6px}
+.vz-legend i{width:10px;height:10px;border-radius:3px;display:inline-block}.vz-legend i.tick{width:2px;height:12px;background:var(--text-2);border-radius:1px}.vz-legend i.band{width:18px;height:8px;background:var(--grid-strong);border-radius:4px}
+.vz-tip{position:fixed;left:0;top:0;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;background:var(--tip-bg);color:var(--ink);border:1px solid var(--stroke-2);
+  border-radius:12px;padding:9px 11px;font-size:12.5px;line-height:1.45;box-shadow:0 12px 32px -12px rgba(0,0,0,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);max-width:300px}
+.vz-tip i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+.vz-scroll{overflow-x:auto}.sm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}.vz.sm{background:var(--glass);border:1px solid var(--stroke);border-radius:12px;padding:4px}
+.rain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.rain{border:1px solid var(--stroke);background:var(--glass);border-radius:12px;padding:8px 10px}
+.rain>div{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}.rain span{color:var(--faint)}
+.ent{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;align-items:start}@media(max-width:980px){.ent{grid-template-columns:1fr}.side{position:static!important}}
+.side{position:sticky;top:76px;border-radius:18px;padding:14px;display:grid;gap:2px}.side-h{font-weight:650;font-size:13px;margin:2px 6px 8px}
+.side a{color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:10px;font-size:13.5px}.side a:hover{background:var(--glass-2);color:var(--ink)}
+.side-f{display:grid;gap:6px;font-size:12px;color:var(--faint);margin:12px 6px 4px}.side-f select,.row-h select{font:inherit;font-size:13px;padding:8px 10px;border-radius:10px;background:var(--glass-2);color:var(--ink);border:1px solid var(--stroke-2)}
+.side-note{font-size:11.5px;color:var(--faint);margin:10px 6px 0}
+.ent-main{min-width:0;display:grid;gap:30px}.sec{display:grid;gap:16px;scroll-margin-top:80px}.sec-h h2{font-size:22px;letter-spacing:-.02em;margin:0 0 4px}.sec-h p{margin:0;color:var(--muted);max-width:820px}
+.g2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr))}.g3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.card h3{font-size:14.5px;margin:0 0 3px;font-weight:650}.row-h{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpi-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.kpi2{padding:16px 16px 10px;border-radius:16px}.kpi2 .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.kpi2 .n{font-size:26px;font-weight:720;letter-spacing:-.03em;margin:6px 0 2px;font-variant-numeric:tabular-nums}.kpi2 .d{font-size:12px;color:var(--faint)}.kpi2 .d .up{color:var(--good)}.kpi2 .d .down{color:var(--bad)}.kpi2 .spark{width:100%;height:36px;margin-top:6px}
+.impact-hero{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;background:linear-gradient(135deg,var(--accent-soft),var(--glass))}
+.impact-hero .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}.impact-hero .big{font-size:40px;font-weight:760;letter-spacing:-.03em}.impact-hero .big small{font-size:15px;color:var(--muted);font-weight:500}
+.impact-hero .mid{font-size:15px;margin:4px 0 6px}.team-cost{display:flex;gap:12px;flex-wrap:wrap}.team-cost>div{background:var(--glass);border:1px solid var(--stroke);border-radius:14px;padding:12px 14px;display:grid;min-width:120px}
+.team-cost b{font-size:20px}.team-cost span{font-size:12px;color:var(--faint)}
+.dec-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}.note-card p{margin:6px 0 0;color:var(--muted)}
+.diagram .node rect{fill:var(--glass-2);stroke:var(--stroke-2)}.diagram .node.lead rect{fill:color-mix(in oklab,var(--s1) 22%,transparent);stroke:var(--s1)}
+.diagram .node.eng rect{fill:color-mix(in oklab,var(--s3) 18%,transparent);stroke:var(--s3)}.diagram .node.ops rect{fill:color-mix(in oklab,var(--s7) 18%,transparent);stroke:var(--s7)}
+.diagram .nt{font-size:14px;font-weight:650;fill:var(--ink)}.diagram .ns{font-size:11px;fill:var(--faint)}.diagram .edge{fill:none;stroke:var(--grid-strong);stroke-width:1.5}
+.seg button[aria-selected="true"]{white-space:nowrap}#bm{margin:0 0 12px;flex-wrap:wrap}
+/* decision deck */
+.deck-frame h3{margin:8px 0 6px}.deck-frame p{margin:4px 0;color:var(--muted)}.deck-frame .act{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.warn-line{color:var(--warn)!important;font-weight:600}
+.deck{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start;margin-top:14px}
+.deck-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.dk-card{padding:14px 16px;display:flex;flex-direction:column;gap:10px}.dk-card.rej{opacity:.9;border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.dk-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dk-top .num{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.dk-act{margin:0;font-size:14px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}.dk-act.open{display:block}
+.dk-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.money{font-weight:650;font-variant-numeric:tabular-nums}.money.pos{color:var(--good)}.money.neg{color:var(--bad)}.money.muted{color:var(--faint);font-weight:500}.money small{font-weight:400;color:var(--faint);font-size:11.5px}
+.dk-seg{display:inline-flex;border:1px solid var(--stroke-2);border-radius:10px;overflow:hidden}
+.dk-seg button{all:unset;cursor:pointer;min-height:44px;padding:0 14px;font-size:13px;color:var(--muted)}
+.dk-seg button[aria-pressed="true"].ap{background:var(--good-soft);color:var(--good)}.dk-seg button[aria-pressed="true"].rj{background:var(--bad-soft);color:var(--bad)}
+.dk-seg button:focus-visible,.dk-act:focus-visible,.deck-frame .btn:focus-visible,.dk-more:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dk-beat{margin:0;font-size:13px;color:var(--good);background:var(--good-soft);border-radius:8px;padding:6px 10px}
+.dk-note{margin:0;font-size:12.5px;color:var(--muted)}
+.deck-panel{position:sticky;top:16px;padding:18px 20px}.deck-panel .l{font-size:12px;color:var(--muted)}
+.deck-panel .big{font-size:34px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.deck-panel .big.pos{color:var(--good)}.deck-panel .big.neg{color:var(--bad)}
+.basis{display:block;font-size:13px;color:var(--muted);margin:2px 0 8px}.basis b{color:var(--ink);font-variant-numeric:tabular-nums}
+.deck-panel .kv{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}.deck-panel .kv span{color:var(--muted)}
+.dk-bars{margin-top:10px}.dk-bar{display:grid;grid-template-columns:120px 1fr 64px;gap:8px;align-items:center;font-size:12px;margin:5px 0}
+.dk-bar .lab{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dk-bar .track{height:9px}.dk-bar i{display:block;height:9px;border-radius:4px}
+.dk-bar i.pos{background:var(--good)}.dk-bar i.neg{background:var(--bad)}.dk-bar i.int{background:var(--faint)}.dk-bar .v{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.howto{margin:8px 0;font-size:12.5px;color:var(--muted)}.howto summary{cursor:pointer;color:var(--accent)}
+.dk-more{display:none}.deck-end{margin:14px 0 0;color:var(--muted);font-size:13px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+::selection{background:var(--accent-soft)}
+@media (max-width:980px){.deck{grid-template-columns:1fr}
+  .deck-panel{position:sticky;bottom:8px;top:auto;z-index:20;max-height:42vh;overflow:auto;padding:12px 16px;order:2}
+  .deck-panel .big{font-size:24px}.dk-more{display:inline-block;min-height:44px;margin:4px 0}.deck-panel .dk-detail{display:none}.deck-panel.open .dk-detail{display:block}.deck-panel.open{max-height:80vh}
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:16px">This console needs JavaScript. The case study explains the same results: <a href="https://djcrafted.com/work/growth-os/">djcrafted.com/work/growth-os</a>.</p></noscript>
+<div class="bar-top glass">
+  <div class="in">
+    <div class="brand"><span class="logo" aria-hidden="true"></span>Growth OS <small>console</small></div>
+    <nav class="seg glass" id="tabs" role="tablist" aria-label="Data set"></nav>
+    <button class="icon-btn" id="theme" type="button" aria-label="Toggle light and dark">◐</button>
+  </div>
+</div>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>From data to <span>decisions</span> to actions.</h1>
+      <p>A team of AI agents reads every source, tests each claim and proposes actions. The right person approves or rejects; approved actions run inside guardrails and are measured against what would have happened anyway. Every number on this page is computed from data at build time.</p>
+    </div>
+    <div class="meta" id="meta"></div>
+  </div>
+  <div class="ribbon" id="ribbon"></div>
+  <main id="view"></main>
+  <section class="section legacy">
+    <div class="card glass">
+      <h2>Agents</h2>
+      <p class="sub">One governance pattern for every agent: what it reads, what it may do, how it is graded, what it costs.</p>
+      <div class="grid agents" id="agents"></div>
+    </div>
+  </section>
+  <section class="section legacy">
+    <div class="card glass">
+      <h2>Evaluation history</h2>
+      <p class="sub">Synthetic data with problems planted on purpose; a separate grader checks each memo against the answer key. Failures stay in the history.</p>
+      <div class="tw"><table id="evals"></table></div>
+    </div>
+  </section>
+  <footer id="foot"></footer>
+</div>
+<script>
+const DATA = JSON.parse(document.getElementById("gos-data").textContent);
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (n, d = 0) => n == null ? "–" : Number(n).toLocaleString("en-GB", {maximumFractionDigits: d, minimumFractionDigits: d});
+const pct = n => n == null ? "–" : (n * 100).toFixed(1) + "%";
+const latest = s => DATA.evals.filter(e => e.scenario === s).slice(-1)[0];
+
+try { const t = localStorage.getItem("gos-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+$("#theme").onclick = () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const next = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("gos-theme", next); } catch (e) {}
+};
+
+function delta(now, before, goodUp = true) {
+  if (!before || now == null) return "";
+  const d = (now - before) / before; const cls = Math.abs(d) < 0.02 ? "flat" : ((d > 0) === goodUp ? "up" : "down");
+  return `<span class="delta ${cls}">${d > 0 ? "▲" : d < 0 ? "▼" : "■"} ${Math.abs(d * 100).toFixed(1)}%</span>`;
+}
+function verdictChip(v, before, now) {
+  if (!v) return "";
+  if (v.startsWith("different")) return `<span class="chip ${now < before ? "bad" : "good"}" title="significant after correcting for every market scanned">${now < before ? "▼ fell" : "▲ rose"}</span>`;
+  if (v.includes("likely noise") || v.startsWith("directional") || v.startsWith("no detectable")) return `<span class="chip muted">stable</span>`;
+  return `<span class="chip muted">${esc(v)}</span>`;
+}
+function spark(rows, key) {
+  if (!rows || rows.length < 3) return "";
+  const vals = rows.slice(-16).map(r => r[key] || 0), max = Math.max(1, ...vals), min = Math.min(...vals), W = 160, H = 34;
+  const pts = vals.map((v, i) => `${(i * W / (vals.length - 1)).toFixed(1)},${(H - 3 - (v - min) / Math.max(1, max - min) * (H - 6)).toFixed(1)}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-${key}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".35"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#g-${key})" points="0,${H} ${pts} ${W},${H}"/><polyline fill="none" stroke="var(--accent)" stroke-width="1.6" points="${pts}"/></svg>`;
+}
+function lineChart(rows, keys, colors) {
+  if (!rows || rows.length < 2) return "";
+  const W = 640, H = 200, P = {l: 52, r: 10, t: 10, b: 24};
+  const max = Math.max(1, ...rows.flatMap(r => keys.map(k => r[k] || 0)));
+  const x = i => P.l + i * (W - P.l - P.r) / (rows.length - 1), y = v => H - P.b - (v / max) * (H - P.t - P.b);
+  const lines = keys.map((k, j) => `<polyline fill="none" stroke="${colors[j]}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" points="${rows.map((r, i) => `${x(i).toFixed(1)},${y(r[k] || 0).toFixed(1)}`).join(" ")}"/>`).join("");
+  const short = v => v >= 1e6 ? (v / 1e6).toFixed(1) + "M" : v >= 1e4 ? Math.round(v / 1e3) + "k" : fmt(v);
+  const ticks = [0, .5, 1].map(f => `<text x="${P.l - 6}" y="${y(max * f) + 4}" text-anchor="end">${short(max * f)}</text><line x1="${P.l}" x2="${W - P.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/>`).join("");
+  const step = Math.ceil(rows.length / 6);
+  const labels = rows.map((r, i) => i % step || i > rows.length - 3 ? "" : `<text x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : "middle"}">${esc(String(r.week || r.month).slice(0, 7))}</text>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${keys.join(" and ")} over time">${ticks}${lines}${labels}</svg>`;
+}
+
+const eur = n => n == null ? "–" : "€" + fmt(n);
+const chg = (a, b) => (a == null || !b) ? "" : delta(a, b, true);
+function commerceKpis(c, period) {
+  const K = [["Revenue", c.now.revenue, c.before.revenue, eur, c.last_year.revenue], ["Ad spend", c.now.spend, c.before.spend, eur, null],
+             ["Paid ROAS", c.now.paid_roas, c.before.paid_roas, n => fmt(n, 2) + "×", null], ["Orders", c.now.orders, c.before.orders, n => fmt(n), c.last_year.orders],
+             ["New customers", c.now.new_customers, c.before.new_customers, n => fmt(n), c.last_year.new_customers]];
+  return `<div class="grid kpis">${K.map(([l, v, b, f, ly]) => `<div class="card kpi glass"><div class="l">${l}</div><div class="n">${f(v)}</div>${chg(v, b)}<span class="vs">vs previous ${period.days} days</span>${ly ? `<div style="margin-top:6px">${chg(v, ly)}<span class="vs">vs same period last year</span></div>` : ""}${l === "Revenue" ? spark(c.weekly, "revenue") : l === "Ad spend" ? spark(c.weekly, "spend") : ""}</div>`).join("")}</div>`;
+}
+function commerceCards(c, period) {
+  const cards = [];
+  cards.push(`<div class="card glass"><h2>Revenue per week, against the same week last year</h2><p class="sub">All 12 cities, first-party revenue, the last ${c.weekly.length} weeks (the weeks that have a year of history behind them). When both lines fall together, it's the season. When only this year falls, something changed.</p>${lineChart(c.weekly, ["revenue", "revenue_last_year"], ["var(--accent)", "var(--faint)"])}<div class="legend"><span><i style="background:var(--accent)"></i>this year</span><span><i style="background:var(--faint)"></i>last year</span></div></div>`);
+  const ms = c.markets.map(m => ({...m, yoy: m.revenue_same_period_last_year ? (m.revenue_now - m.revenue_same_period_last_year) / m.revenue_same_period_last_year : null,
+    pop: m.revenue_before ? (m.revenue_now - m.revenue_before) / m.revenue_before : null}));
+  cards.push(`<div class="card glass"><h2>Cities: last ${period.days} days</h2><p class="sub">Read revenue against last year first: a drop that happens every year is seasonality, not a problem. Paid ROAS is first-party revenue from paid channels over ad spend.</p><div class="tw"><table>
+    <tr><th>City</th><th class="num">Revenue</th><th class="num">vs previous</th><th class="num">vs last year</th><th class="num">Paid ROAS</th><th class="num">Spend</th></tr>
+    ${ms.map(m => `<tr><td><b>${esc(m.market)}</b></td><td class="num">${eur(m.revenue_now)}</td><td class="num">${m.pop == null ? "–" : delta(m.revenue_now, m.revenue_before)}</td><td class="num">${m.yoy == null ? '<span class="chip muted">new</span>' : delta(m.revenue_now, m.revenue_same_period_last_year)}</td><td class="num">${fmt(m.paid_roas_before, 2)} → <b>${fmt(m.paid_roas_now, 2)}</b></td><td class="num">${eur(m.spend_now)}</td></tr>`).join("")}
+  </table></div></div>`);
+  if (c.creatives_worst.length) cards.push(`<div class="card glass"><h2>Creatives wearing out</h2><p class="sub">Meta and TikTok ads with at least €500 spend, ranked by how much more their ROAS fell than their own city's. That removes seasonal and city-wide swings. Rising frequency with falling clicks is fatigue.</p><div class="tw"><table>
+    <tr><th>Ad</th><th class="num">Spend</th><th class="num">Frequency</th><th class="num">Click rate</th><th class="num">ROAS</th><th class="num">vs its city</th></tr>
+    ${c.creatives_worst.map(r => `<tr><td>${esc(r.market)} · ${esc(r.platform)} · <b>${esc(r.creative)}</b></td><td class="num">${eur(r.spend_now)}</td><td class="num">${fmt(r.frequency_before, 1)} → ${fmt(r.frequency_now, 1)}</td><td class="num">${pct(r.clicks_before / r.imp_before)} → ${pct(r.clicks_now / r.imp_now)}</td><td class="num">${fmt(r.roas_before, 2)} → <b>${fmt(r.roas_now, 2)}</b></td><td class="num"><span class="delta ${r.vs_city_pts < -10 ? "down" : "flat"}">${r.vs_city_pts > 0 ? "+" : ""}${fmt(r.vs_city_pts, 1)} pts</span></td></tr>`).join("")}</table></div></div>`);
+  const pacing = [...c.budget.filter(b => b.spent_pct - b.month_elapsed_pct >= 8).map(b => `<div class="tile flag"><div class="m">${esc(b.market)} <span class="chip bad">budget</span></div><div class="r">${b.spent_pct}%</div><div class="s">of the month's budget spent, ${b.month_elapsed_pct}% of the month gone</div></div>`),
+                  ...c.products.map(pr => `<div class="tile flag"><div class="m">${esc(pr.market)} <span class="chip bad">${pr.days_left} days left</span></div><div class="r">${pr.sold_pct}% sold</div><div class="s">${esc(pr.name.split(" · ")[1] || pr.name)}: ${pr.window_elapsed_pct}% of its window gone, ${eur(pr.unsold_value)} unsold</div></div>`)];
+  if (pacing.length) cards.push(`<div class="card glass"><h2>Running out of time or money</h2><p class="sub">Budgets spending ahead of the month, and time-limited products selling behind their window.</p><div class="tiles">${pacing.join("")}</div></div>`);
+  if (c.experiments.length) cards.push(`<div class="card glass"><h2>Natural experiments: what happened when a campaign was off</h2><p class="sub">A campaign that went dark is a free incrementality test. If the city's total revenue barely moves, the campaign's reported revenue would mostly have come anyway.</p>
+    ${c.experiments.map(e => `<div class="tw"><table><tr><th>${esc(e.campaign)}, off ${esc(e.off_from)} to ${esc(e.off_to)}</th><th class="num">Before</th><th class="num">While off</th><th class="num">After</th></tr>
+      <tr><td>Campaign revenue</td><td class="num">${eur(e.campaign_revenue_before)}</td><td class="num">${eur(e.campaign_revenue_during)}</td><td class="num">${eur(e.campaign_revenue_after)}</td></tr>
+      <tr><td>Organic + direct</td><td class="num">${eur(e.organic_direct_revenue_before)}</td><td class="num"><b>${eur(e.organic_direct_revenue_during)}</b></td><td class="num">${eur(e.organic_direct_revenue_after)}</td></tr>
+      <tr><td>City total</td><td class="num">${eur(e.market_revenue_before)}</td><td class="num"><b>${eur(e.market_revenue_during)}</b></td><td class="num">${eur(e.market_revenue_after)}</td></tr></table></div>`).join("")}</div>`);
+  cards.push(`<div class="card glass"><h2>What platforms claim vs what the business sees</h2><p class="sub">Platform-reported revenue against first-party sales from the same paid channels, last ${period.days} days.</p>
+    ${c.platforms.map(pl => `<div class="bar"><span>${esc(pl.platform)}</span><span class="t"><span class="f ${pl.platform_overclaim_ratio > 1.3 ? "neg" : ""}" style="display:block;width:${Math.min(100, pl.platform_overclaim_ratio / 2 * 100).toFixed(1)}%"></span></span><span class="v">${fmt(pl.platform_overclaim_ratio, 2)}×</span></div>`).join("")}
+    <p class="sub" style="margin-top:8px">1.00× means the platform agrees with first-party sales; above that, it claims credit the business can't see.</p></div>`);
+  if (c.tracker.length) cards.push(`<div class="card glass"><h2>Recommendation tracker</h2><p class="sub">Every recommendation is stored with a query that measures its metric and today's baseline. After its check date, the system re-runs the query and records whether the metric moved.</p><div class="tw"><table>
+    <tr><th>#</th><th>Recommendation</th><th>Status</th><th class="num">Baseline</th><th class="num">Check in</th></tr>
+    ${c.tracker.map(t => `<tr><td>${t.id}</td><td style="white-space:normal;min-width:260px">${esc(t.action.slice(0, 110))}${t.action.length > 110 ? "…" : ""}</td><td><span class="chip muted">${esc(t.status)}</span></td><td class="num">${t.baseline == null ? "–" : fmt(t.baseline, 2)}</td><td class="num">${t.check_after_days} days</td></tr>`).join("")}</table></div></div>`);
+  return cards;
+}
+
+function memoCard(m, label) {
+  if (!m) return "";
+  const conf = c => `<span class="chip ${c === "high" ? "good" : c === "medium" ? "" : "muted"}">${c} confidence</span>`;
+  const meta = m._meta || {};
+  return `<div class="card memo glass sticky"><h2>Analyst memo</h2>
+    <p class="sub">${esc(label)} · ${meta.turns ?? "?"} turns, ${meta.comparisons ?? "?"} statistical checks${meta.cost_usd ? `, ${meta.cost_usd} USD` : ""}. Unedited agent output.</p>
+    <h3>${esc(m.headline)}</h3>
+    <p><span class="chip warn">${esc(m.data_sufficiency.verdict.replace("_", " "))}</span> <span class="ev">${esc(m.data_sufficiency.explanation)}</span></p>
+    <div class="label">What happened</div>
+    ${m.findings.map(f => `<div class="item"><b>${esc(f.title)} ${conf(f.confidence)}</b><div class="ev">${esc(f.evidence)}</div></div>`).join("")}
+    <div class="label">What to do next</div>
+    <div style="counter-reset:rec">${m.recommendations.map(r => `<div class="item rec"><b>${esc(r.action)} <span class="chip muted">effort ${r.effort}</span> ${conf(r.confidence)}</b><div class="ev"><b style="display:inline">Impact:</b> ${esc(r.expected_impact)}<br><b style="display:inline">Measure:</b> ${esc(r.how_to_measure)}</div></div>`).join("")}</div>
+  </div>`;
+}
+
+function render(id) {
+  const v = DATA.views.find(x => x.id === id) || DATA.views[0];
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.id === v.id));
+  if (v.loop) { renderLoop(v); try { localStorage.setItem("gos-view", v.id); } catch (e) {} return; }
+  document.querySelectorAll(".legacy").forEach(function (el) { el.hidden = !!v.ent; });
+  if (v.ent) { renderEnterprise(v); try { localStorage.setItem("gos-view", v.id); } catch (e) {} return; }
+  const h = v.hub; let html = `<p><span class="chip ${v.label.startsWith("Real") ? "real" : ""}">${esc(v.label)}</span> <span class="ev" style="color:var(--muted)">${esc(v.blurb)}</span></p>`;
+  if (h.commerce) html += commerceKpis(h.commerce, h.period);
+  if (h.now && !h.commerce) {
+    const K = [["Spend", "spend", 0, true], ["Sessions", "sessions", 0, true], ["Leads", "leads", 0, true], ["Qualified", "qualified", 0, true], ["Won", "won", 0, true]]
+      .filter(([, k]) => h.now[k] || h.before[k])
+      // a funnel with no step between lead and deal (qualified == won everywhere) shows the deal count once
+      .filter(([, k]) => !(k === "qualified" && h.now.qualified === h.now.won && h.before.qualified === h.before.won));
+    html += `<div class="grid kpis">${K.map(([l, k, d, up]) => `<div class="card kpi glass"><div class="l">${l}</div><div class="n">${fmt(h.now[k], d)}</div>${delta(h.now[k], h.before[k], up)}<span class="vs">vs previous ${h.period.days} days</span>${spark(h.weekly, k)}</div>`).join("")}</div>`;
+  }
+  const left = [], right = [];
+  if (h.weekly && h.weekly.length > 3 && !h.monthly && !h.commerce) left.push(`<div class="card glass"><h2>Leads and qualified leads per week</h2><p class="sub">All markets</p>${lineChart(h.weekly, ["leads", "qualified"], ["var(--accent)", "var(--good)"])}<div class="legend"><span><i style="background:var(--accent)"></i>leads</span><span><i style="background:var(--good)"></i>qualified</span></div></div>`);
+  if (h.monthly) left.push(`<div class="card glass"><h2>Leads and closed deals per month</h2><p class="sub">${fmt(h.landing.pages)} landing pages, ${fmt(h.landing.pages_no_win)} never produced a deal</p>${lineChart(h.monthly, ["leads", "won"], ["var(--accent)", "var(--good)"])}<div class="legend"><span><i style="background:var(--accent)"></i>leads</span><span><i style="background:var(--good)"></i>closed</span></div></div>`);
+  if (h.commerce) left.push(...commerceCards(h.commerce, h.period));
+  if (h.now && h.now.sessions) {
+    const st = [["Sessions", "sessions"], ["Form starts", "form_starts"], ["Form submits", "form_submits"], ["Leads", "leads"], ["Qualified", "qualified"], ["Won", "won"]].filter(([, k]) => h.now[k]);
+    const top = h.now[st[0][1]];
+    left.push(`<div class="card glass"><h2>Funnel, last ${h.period.days} days</h2><p class="sub">Every step from visit to closed deal, with the share that moves on</p><div class="funnel">${st.map(([l, k], i) =>
+      `${i ? `<div class="fstep"><span></span><span class="c">↓ ${pct(h.now[k] / h.now[st[i - 1][1]])} continue</span></div>` : ""}<div class="fstep"><span>${l}</span><span class="t"><span class="f" style="display:block;width:${Math.max(1.5, h.now[k] / top * 100).toFixed(1)}%"></span></span><span class="v">${fmt(h.now[k])}</span></div>`).join("")}</div></div>`);
+  }
+  if (h.markets) {
+    const flagged = m => m.qualified_verdict.startsWith("different") || m.form_verdict.startsWith("different");
+    const down = m => (m.qualified_verdict.startsWith("different") && m.qualified_rate < m.qualified_rate_before) || (m.form_verdict.startsWith("different") && m.form_rate < m.form_rate_before);
+    const why = m => [m.qualified_verdict.startsWith("different") ? `qualified ${pct(m.qualified_rate_before)} → ${pct(m.qualified_rate)}` : "", m.form_verdict.startsWith("different") ? `form ${pct(m.form_rate_before)} → ${pct(m.form_rate)}` : ""].filter(Boolean).join(" · ");
+    const n = h.markets.filter(flagged).length;
+    left.push(`<div class="card glass"><h2>Markets that need attention: ${n} of ${h.markets.length}</h2>
+      <p class="sub">A market lights up only when its change survives the analyst's test, corrected for the ${h.markets.length} markets scanned. The rest is noise, so it stays quiet.</p>
+      <div class="tiles">${h.markets.slice().sort((a, b) => flagged(b) - flagged(a)).map(m => `<div class="tile ${flagged(m) ? (down(m) ? "flag" : "up") : ""}">
+        <div class="m">${esc(m.market)} ${flagged(m) ? `<span class="chip ${down(m) ? "bad" : "good"}">${down(m) ? "fell" : "rose"}</span>` : `<span class="chip muted">stable</span>`}</div>
+        <div class="r">${pct(m.qualified_rate)}</div><div class="s">${flagged(m) ? esc(why(m)) : `qualified · ${fmt(m.leads)} leads`}</div></div>`).join("")}</div>
+      <details class="more"><summary>All markets in detail</summary><div class="tw"><table>
+      <tr><th>Market</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">Qualified rate</th><th></th><th class="num">Form completion</th><th></th></tr>
+      ${h.markets.map(m => `<tr><td><b>${esc(m.market)}</b></td><td class="num">${fmt(m.spend)}</td><td class="num">${fmt(m.leads)}</td><td class="num">${pct(m.qualified_rate_before)} → ${pct(m.qualified_rate)}</td><td>${verdictChip(m.qualified_verdict, m.qualified_rate_before, m.qualified_rate)}</td><td class="num">${pct(m.form_rate_before)} → ${pct(m.form_rate)}</td><td>${verdictChip(m.form_verdict, m.form_rate_before, m.form_rate)}</td></tr>`).join("")}
+      </table></div></details></div>`);
+  }
+  if (h.channels) left.push(`<div class="card glass"><h2>Lead channels</h2><p class="sub">Close rate and what won customers sold in their first 90 days (BRL)</p><div class="tw"><table><tr><th>Channel</th><th class="num">Leads</th><th class="num">Won</th><th class="num">Close rate</th><th class="num">Days to close</th><th class="num">90-day sales per customer</th></tr>
+      ${h.channels.map(c => `<tr><td>${esc(c.channel)}</td><td class="num">${fmt(c.leads)}</td><td class="num">${fmt(c.won)}</td><td class="num">${fmt(c.close_rate_pct, 1)}%</td><td class="num">${fmt(c.avg_days_to_win, 0)}</td><td class="num">${fmt(c.avg_value_per_won_customer)}</td></tr>`).join("")}</table></div></div>`);
+  if (h.voice_themes) {
+    const mx = Math.max(...h.voice_themes.map(t => t.items));
+    left.push(`<div class="card glass"><h2>What customers say</h2><p class="sub">Themes in ${fmt(h.voice_themes.reduce((a, t) => Math.max(a, t.items), 0) ? 3000 : 0)} classified reviews (labels only, no customer text stored). Red bars average under 3 stars.</p>
+      ${h.voice_themes.map(t => `<div class="bar"><span>${esc(t.theme.replace(/_/g, " "))}</span><span class="t"><span class="f ${t.avg_rating < 3 ? "neg" : ""}" style="width:${(t.items / mx * 100).toFixed(1)}%;display:block"></span></span><span class="v">${t.share_pct}%</span></div>`).join("")}</div>`);
+    left.push(`<div class="card glass"><h2>Unhappy customers by how the merchant was acquired</h2><p class="sub">Share of negative reviews; segments with 30+ reviews</p><div class="tw"><table><tr><th>Acquired through</th><th class="num">Reviews</th><th class="num">Avg rating</th><th class="num">Negative</th></tr>
+      ${h.voice_segments.map(s => `<tr><td>${esc(s.segment)}</td><td class="num">${fmt(s.items)}</td><td class="num">${fmt(s.avg_rating, 2)}</td><td class="num">${fmt(s.negative_pct, 1)}%</td></tr>`).join("")}</table></div></div>`);
+  }
+  if (h.ai) {
+    const a = h.ai;
+    left.push(`<div class="card glass"><h2>AI visibility: who gets recommended</h2><p class="sub">${fmt(a.answers)} answers from ${esc(a.assistant)} with live web search to ${a.questions} unbranded seller questions, ${esc(a.day)}. Bars show how often each brand is mentioned; the faint band is the 95% range, because answers vary between runs.</p>
+      ${a.sov.filter(r => r.mentioned).map(r => `<div class="bar"><span>${esc(r.brand)}${r.brand === "Olist" ? ' <span class="chip">tracked</span>' : ""}</span><span class="t" style="position:relative"><span style="position:absolute;top:0;bottom:0;left:${r.ci[0]}%;width:${(r.ci[1] - r.ci[0]).toFixed(1)}%;background:var(--accent-soft)"></span><span class="f" style="position:relative;display:block;width:${r.mention_rate_pct}%"></span></span><span class="v">${r.mention_rate_pct}%</span></div>`).join("")}
+      ${a.unlisted && a.unlisted.length ? `<p class="sub" style="margin-top:12px"><b>Mentioned but not on the tracked list:</b> ${a.unlisted.map(u => `${esc(u.name)} (${u.answers}/${a.answers})`).join(", ")}</p>` : ""}
+      <p class="sub" style="margin-top:8px">Never mentioned: ${esc(a.sov.filter(r => !r.mentioned).map(r => r.brand).join(", ") || "none")}. Sites most used as sources: ${esc(a.sites.map(s => s.domain).join(", "))}.</p></div>`);
+  }
+  if (h.ads) left.push(`<div class="card glass"><h2>Ads, end to end</h2><p class="sub">Spend → clicks → leads → qualified, all time. Top ${Math.min(12, h.ads.length)} of ${h.ads.length} by spend.</p><div class="tw"><table><tr><th>Ad</th><th class="num">Spend</th><th class="num">Clicks</th><th class="num">Leads</th><th class="num">Qualified</th><th class="num">Per lead</th><th class="num">Per qualified</th></tr>
+      ${h.ads.slice(0, 12).map(a => `<tr><td>${esc(a.ad_name)}</td><td class="num">${fmt(a.spend)}</td><td class="num">${fmt(a.link_clicks)}</td><td class="num">${fmt(a.leads)}</td><td class="num">${fmt(a.qualified)}</td><td class="num">${fmt(a.cost_per_lead, 2)}</td><td class="num">${fmt(a.cost_per_qualified, 2)}</td></tr>`).join("")}</table></div></div>`);
+  right.push(memoCard(v.memo, v.label));
+  html += `<div class="grid two section"><div class="grid">${left.join("")}</div><div>${right.join("")}</div></div>`;
+  $("#view").innerHTML = html;
+  try { localStorage.setItem("gos-view", v.id); } catch (e) {}
+}
+
+// ---------- Decision loop view: inbox → approve/reject → guardrails → executed → measured vs doing nothing ----------
+const ROLE_ICON = {leadership: "◆", growth_manager: "●", channel_manager: "▲", crm_manager: "✉", product_owner: "⚙", finance: "€"};
+const signed = (n, money = true) => n == null ? "–" : (n > 0 ? "+" : n < 0 ? "−" : "±") + (money ? "€" : "") + fmt(Math.abs(n));
+function twoLines(a, b, startDay) {
+  if (!a || !b || a.length < 3) return "";
+  const W = 560, H = 150, P = {l: 46, r: 8, t: 8, b: 22};
+  const vals = a.concat(b).map(r => r.revenue || 0), max = Math.max(1, ...vals), min = Math.min(...vals) * 0.9;
+  const x = i => P.l + i * (W - P.l - P.r) / (a.length - 1), y = v => H - P.b - ((v - min) / Math.max(1, max - min)) * (H - P.t - P.b);
+  const line = (rows, col, dash) => `<polyline fill="none" stroke="${col}" stroke-width="2.2" ${dash ? 'stroke-dasharray="5 4"' : ""} stroke-linecap="round" points="${rows.map((r, i) => `${x(i).toFixed(1)},${y(r.revenue || 0).toFixed(1)}`).join(" ")}"/>`;
+  const k = a.findIndex(r => r.day >= startDay), short = v => v >= 1e4 ? Math.round(v / 1e3) + "k" : fmt(v);
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Daily revenue with and without the action">
+    ${[0, .5, 1].map(f => `<text x="${P.l - 6}" y="${y(min + (max - min) * f) + 4}" text-anchor="end">${short(min + (max - min) * f)}</text><line x1="${P.l}" x2="${W - P.r}" y1="${y(min + (max - min) * f)}" y2="${y(min + (max - min) * f)}" stroke="var(--line)"/>`).join("")}
+    ${k > 0 ? `<line x1="${x(k)}" x2="${x(k)}" y1="${P.t}" y2="${H - P.b}" stroke="var(--stroke-2)" stroke-dasharray="3 3"/><text x="${x(k) + 4}" y="${P.t + 10}">decision</text>` : ""}
+    ${line(b, "var(--faint)", true)}${line(a, "var(--good)")}
+    <text x="${P.l}" y="${H - 5}">${esc(a[0].day)}</text><text x="${W - P.r}" y="${H - 5}" text-anchor="end">${esc(a[a.length - 1].day)}</text></svg>`;
+}
+const VERDICT = {"worked": ["good", "worked"], "backfired": ["bad", "backfired"], "no clear effect": ["muted", "no clear effect"], "metric unavailable": ["muted", "metric unavailable"], "not simulated (manual)": ["muted", "manual: tracked only"], "met its metric, cost profit": ["warn", "met its metric, cost profit"], "executed; effect not simulated": ["muted", "executed · effect not simulated"]};
+function recCard(r, L) {
+  const ex = r.execution, risk = {low: "good", medium: "warn", high: "bad"}[r.risk] || "muted";
+  const will = `${esc(r.label)}: <code>${esc(ex.exec_target || "—")}</code>${ex.exec_to ? ` → <code>${esc(ex.exec_to)}</code>` : ""}${ex.exec_pct ? ` <b>${ex.exec_pct > 0 ? "+" : ""}${fmt(ex.exec_pct, 0)}%</b>` : ""}`;
+  return `<article class="card glass dec" data-id="${r.id}">
+    <div class="dec-h"><span class="rank">${r.rank}</span><div><h3>${esc(r.action)}</h3>
+      <div class="chips"><span class="chip ${risk}">${esc(r.risk)} risk</span><span class="chip muted">${ROLE_ICON[r.approver_role] || ""} ${esc(r.approver)} approves</span><span class="chip muted">${esc(r.confidence)} confidence</span>${r.markets.length ? `<span class="chip muted">${esc(r.markets.join(", "))}</span>` : ""}</div></div></div>
+    ${r.why ? `<p class="why">${esc(r.why)}</p>` : ""}
+    <dl class="dl"><dt>Will run</dt><dd>${will}${ex.exec_note ? `<div class="note">${esc(ex.exec_note)}</div>` : ""}</dd><dt>Expected</dt><dd>${esc(r.expected_impact || "–")}</dd><dt>Undo</dt><dd>${esc(r.rollback)}</dd></dl>
+    <div class="act"><button class="btn primary" data-do="approve">Approve and run</button><button class="btn" data-do="reject">Reject</button></div>
+    <div class="out" hidden></div></article>`;
+}
+function approveOut(r, L) {
+  const steps = [`<li class="ok">Approved by ${esc(L.people[r.approver_role] || r.approver)}</li>`,
+    `<li class="ok">Guardrails passed: role check${["medium", "high"].includes(r.risk) ? ", four eyes" : ""}${["change_budget", "shift_budget"].includes(r.execution.exec_type) ? ", budget caps" : ""}, kill switch off</li>`];
+  (r.execution_log || []).forEach(e => steps.push(`<li class="${e.status === "executed" ? "ok" : e.status === "manual" ? "info" : "no"}">${e.status === "manual" ? "Handed to a person: " : e.status === "executed" ? "Executed in the sandbox: " : "Blocked: "}${esc(e.detail)}</li>`));
+  (r.work_items || []).filter(w => w.closed_on).forEach(w => steps.push(`<li class="ok">${esc(w.kind)} closed ${esc(w.closed_on)}: ${esc(w.result)}</li>`));
+  const d = r.delta || {}, [vc, vt] = VERDICT[r.verdict] || ["muted", r.verdict];
+  const res = r.with ? `<div class="res"><div><span class="l">Revenue vs doing nothing</span><b class="${d.revenue >= 0 ? "pos" : "neg"}">${signed(d.revenue)}</b></div><div><span class="l">Spend</span><b>${signed(d.spend)}</b></div><div><span class="l">Gross profit after marketing</span><b class="${d.profit >= 0 ? "pos" : "neg"}">${signed(d.profit)}</b></div><div><span class="l">Orders</span><b>${signed(d.orders, false)}</b></div><div><span class="l">Its own metric</span><b>${fmt(r.without.metric, 2)} → ${fmt(r.with.metric, 2)}</b></div></div>
+    ${twoLines(r.series_with, r.series_without, L.start)}<div class="legend"><span><i style="background:var(--good)"></i>approved and executed</span><span><i style="background:var(--faint)"></i>nothing done</span><span>${esc(r.markets.join(", ") || "all markets")}, daily revenue</span></div>` : "";
+  return `<ol class="steps">${steps.join("")}<li class="ok">Measured after ${r.horizon_days} days <span class="chip ${vc}">${esc(vt)}</span></li></ol>${res}`;
+}
+function rejectOut(r, reason) {
+  const d = r.delta || {};
+  return `<ol class="steps"><li class="no">Rejected: “${esc(reason)}”</li><li class="ok">Nothing executed. The reason is stored and the next memo reads it, so it is not proposed again without new evidence.</li>
+    ${r.with ? `<li class="info">Doing nothing forgoes ${signed(d.revenue)} revenue and ${signed(-d.spend)} spend over ${r.horizon_days} days (simulated).</li>` : ""}</ol>`;
+}
+function renderLoop(v) {
+  const L = v.loop, b = L.briefs.roles, recs = L.recommendations, m = L.memo || {};
+  const sum = k => recs.reduce((a, r) => a + ((r.delta || {})[k] || 0), 0);
+  const roleTabs = Object.keys(b).map((k, i) => `<button type="button" role="tab" data-role="${k}" aria-selected="${i === 0}">${ROLE_ICON[k] || ""} ${esc(b[k].role)}</button>`).join("");
+  let html = `<p><span class="chip">${esc(v.label)}</span> <span class="ev" style="color:var(--muted)">${esc(v.blurb)}</span></p>
+  <div class="grid kpis">
+    <div class="card kpi glass"><div class="l">Decisions waiting</div><div class="n">${recs.length}</div><span class="vs">routed to ${new Set(recs.map(r => r.approver_role)).size} roles by risk</span></div>
+    <div class="card kpi glass"><div class="l">Executable by the system</div><div class="n">${recs.filter(r => r.execution.exec_type !== "manual").length}/${recs.length}</div><span class="vs">after approval, inside guardrails</span></div>
+    <div class="card kpi glass"><div class="l">If all approved</div><div class="n">${signed(sum("revenue"))}</div><span class="vs">revenue vs doing nothing, sum of each decision's effect (simulated) · profit ${signed(sum("profit"))}</span></div>
+    <div class="card kpi glass"><div class="l">MER (revenue ÷ marketing)</div><div class="n">${fmt(b.leadership.kpis.mer, 1)}×</div><span class="vs">target ${fmt(L.mer_target, 0)}× · marketing ${fmt(b.leadership.kpis.spend_pct_of_revenue, 1)}% of revenue</span></div>
+  </div>
+  <div class="grid two section"><div class="grid">
+    <div class="card glass"><h2>Decision inbox</h2><p class="sub">The analyst's recommendations, each carrying one executable action. Approve one and watch it run; reject one and see what doing nothing costs. Outcomes come from running the simulated business forward twice: once with the action, once without.</p>
+      <div class="act" style="margin:0"><button class="btn" id="approve-all" type="button">Approve all</button><button class="btn" id="reset-all" type="button">Reset</button></div></div>
+    ${recs.map(r => recCard(r, L)).join("")}
+  </div><div class="grid">
+    <div class="card glass sticky"><h2>${esc(m.headline || "Analyst memo")}</h2><p class="sub">${esc((m.data_sufficiency || {}).explanation || "")}</p>
+      ${(m.findings || []).slice(0, 6).map(f => `<div class="finding"><span class="chip ${f.confidence === "high" ? "good" : f.confidence === "medium" ? "warn" : "muted"}">${esc(f.confidence)}</span> <b>${esc(f.title)}</b><p>${esc(f.evidence)}</p></div>`).join("")}
+      <p class="sub" style="margin-top:10px">${esc(L.meta)}</p></div>
+  </div></div>
+  <section class="section card glass"><h2>Every role gets its own brief</h2><p class="sub">Computed from the same data, in the terms each person manages; pending approvals go to the right person, with reminders and escalation when they wait too long.</p>
+    <nav class="seg glass" id="roles" role="tablist" style="margin:0 0 14px">${roleTabs}</nav><div id="rolebody"></div></section>
+  <div class="grid two section"><div class="card glass"><h2>Why visitors did not buy</h2><p class="sub">Four sources: product-analytics funnel, session behaviour (rage clicks), exit survey and stock. Ranked by money at stake over 28 days; more sources agreeing means more confidence.</p>
+    ${L.whynot.map(c => `<div class="cause"><div class="ch"><b>${esc(c.market)} · ${esc(c.cause.replace(/_/g, " "))}</b><span>${c.lost_revenue_28d ? `<b class="neg">${eur(c.lost_revenue_28d)}</b>` : `<span class="chip muted">not sized</span>`}</span></div>
+      <div class="chips">${c.sources.map(s => `<span class="chip muted">${esc(s)}</span>`).join("")}<span class="chip ${c.confidence === "high" ? "good" : "warn"}">${esc(c.confidence)}</span></div>
+      <ul>${c.evidence.slice(0, 3).map(e => `<li>${esc(e)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="card glass"><h2>Unit economics against targets</h2><p class="sub">Last 28 days. MER = gross revenue ÷ all marketing spend. Red misses the target.</p>
+      <div class="tw"><table><tr><th>Market</th><th class="num">Revenue</th><th class="num">Spend</th><th class="num">MER</th><th class="num">CAC</th><th class="num">CPM</th></tr>
+      ${L.economics.map(e => `<tr><td>${esc(e.market)}</td><td class="num">${fmt(e.gross_revenue)}</td><td class="num">${fmt(e.marketing_spend)}</td><td class="num ${e.mer < L.mer_target ? "neg" : ""}">${fmt(e.mer, 1)}×</td><td class="num ${e.blended_cac > L.cac_target ? "neg" : ""}">${fmt(e.blended_cac, 1)}</td><td class="num">${fmt(e.cpm, 2)}</td></tr>`).join("")}</table></div></div></div>
+  <div class="grid two section"><div class="card glass"><h2>Attribution: four answers, one decision</h2><p class="sub">Share of credit per channel. Last click over-credits closers; platforms over-claim; the data-driven (Markov) view and switch-off tests are closer to what a channel adds.</p>
+      <div class="tw"><table><tr><th>Channel</th><th class="num">Last click (sales)</th><th class="num">Last touch (journeys)</th><th class="num">Data-driven</th><th class="num">Platform claims</th></tr>
+      ${L.attribution.map(a => `<tr><td>${esc(a.channel)}</td><td class="num">${fmt(a.last_click_pct, 1)}%</td><td class="num">${fmt(a.journeys_last_touch_pct, 1)}%</td><td class="num"><b>${fmt(a.data_driven_pct, 1)}%</b></td><td class="num">${a.platform_overclaim_x ? fmt(a.platform_overclaim_x, 2) + "× real" : "–"}</td></tr>`).join("")}</table></div></div>
+    <div class="card glass"><h2>Settle it with a holdout</h2><p class="sub">${esc(L.holdout.how)}</p>
+      <dl class="dl"><dt>Switch off</dt><dd>${esc(L.holdout.switch_off_in.join(", "))}</dd><dt>Keep on</dt><dd>${esc(L.holdout.keep_on_in.join(", "))}</dd><dt>Duration</dt><dd>${L.holdout.weeks} weeks · weekly noise ${L.holdout.weekly_noise_pct}%</dd><dt>Spend paused</dt><dd>${eur(L.holdout.weekly_spend_paused)} a week</dd></dl>
+      <p class="sub" style="margin-top:10px">Natural experiment already in the data: ${esc((L.natural[0] || {}).summary || "none")}</p></div></div>
+  <section class="section card glass"><h2>What the simulation assumes</h2><p class="sub">${esc(L.note)}</p><ul class="assume">${L.assumptions.map(a => `<li>${esc(a)}</li>`).join("")}</ul></section>`;
+  $("#view").innerHTML = html;
+  const roleBody = k => {
+    const r = b[k], wait = r.needs_your_decision || [];
+    const extra = {leadership: () => `<div class="res"><div><span class="l">Revenue 28d</span><b>${eur(r.kpis.gross_revenue_28d)}</b></div><div><span class="l">Marketing 28d</span><b>${eur(r.kpis.marketing_spend_28d)}</b></div><div><span class="l">Blended CAC</span><b>${fmt(r.kpis.blended_cac, 2)}</b></div><div><span class="l">Biggest money at stake</span><b>${r.biggest_money_at_stake.map(x => `${esc(x.market)} ${esc(x.cause.replace(/_/g, " "))}`).join(" · ") || "–"}</b></div></div>`,
+      channel_manager: () => `<div class="tw"><table><tr><th>Ad</th><th class="num">Spend</th><th class="num">CPA</th><th class="num">ROAS</th><th class="num">Platform ROAS</th></tr>${r.ads_missing_target.slice(0, 8).map(a => `<tr><td>${esc(a.ad_id)} · ${esc(a.creative)}</td><td class="num">${fmt(a.spend)}</td><td class="num">${fmt(a.cpa, 2)}</td><td class="num">${fmt(a.roas, 2)}</td><td class="num">${fmt(a.platform_roas, 2)}</td></tr>`).join("")}</table></div>`,
+      crm_manager: () => `<ul>${r.products_behind.map(p => `<li>${esc(p.name)}: ${fmt(p.sold_pct, 0)}% sold with ${fmt(p.window_elapsed_pct, 0)}% of its window gone, ${p.days_left} days left, ${eur(p.unsold_value)} unsold</li>`).join("")}</ul>`,
+      product_owner: () => `<ul>${r.problems.map(p => `<li><b>${esc(p.market)} · ${esc(p.cause.replace(/_/g, " "))}</b> ${p.lost_revenue_28d ? eur(p.lost_revenue_28d) : ""} — ${esc(p.evidence[0] || "")}</li>`).join("")}</ul>`,
+      finance: () => `<div class="tw"><table><tr><th>Market</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">Month gone</th><th class="num">Projected</th></tr>${r.budget_pacing.map(p => `<tr><td>${esc(p.market)}</td><td class="num">${fmt(p.budget)}</td><td class="num">${fmt(p.spent_pct, 0)}%</td><td class="num">${fmt(p.month_elapsed_pct, 0)}%</td><td class="num ${p.projected_pct > 100 ? "neg" : ""}">${fmt(p.projected_pct, 0)}%</td></tr>`).join("")}</table></div>`,
+      growth_manager: () => `<ul>${(r.waiting_on_others || []).map(w => `<li>#${w.id} waiting on ${esc(w.approver_role.replace(/_/g, " "))}: ${esc(w.action)}</li>`).join("")}</ul>`}[k];
+    $("#rolebody").innerHTML = `<p class="lead">${esc(r.headline || "")}</p>${wait.length ? `<p class="sub">Waiting for this role (${wait.length}): ${wait.map(w => `#${w.id} ${esc(w.action.slice(0, 70))}`).join(" · ")}</p>` : ""}${extra ? extra() : ""}`;
+  };
+  roleBody(Object.keys(b)[0]);
+  $("#roles").onclick = e => { const t = e.target.closest("button"); if (!t) return; document.querySelectorAll("#roles button").forEach(x => x.setAttribute("aria-selected", x === t)); roleBody(t.dataset.role); };
+  const decide = (card, how, reason) => {
+    const r = recs.find(x => String(x.id) === card.dataset.id), out = card.querySelector(".out");
+    out.hidden = false; card.classList.toggle("approved", how === "approve"); card.classList.toggle("rejected", how === "reject");
+    card.querySelector(".act").hidden = true;
+    out.innerHTML = how === "approve" ? approveOut(r, L) : rejectOut(r, reason);
+  };
+  $("#view").addEventListener("click", e => {
+    const btn = e.target.closest("[data-do]"); if (!btn) return;
+    const card = btn.closest(".dec");
+    if (btn.dataset.do === "approve") return decide(card, "approve");
+    if (btn.dataset.do === "reject") {
+      const out = card.querySelector(".out"); out.hidden = false;
+      out.innerHTML = `<div class="rej"><label>Why? The next memo reads this.<select>${["Not now: a promotion is running", "Disagree with the evidence", "Too risky this week", "Already handled outside the system"].map(o => `<option>${o}</option>`).join("")}</select></label><button class="btn" data-do="confirm-reject">Confirm rejection</button></div>`;
+    }
+    if (btn.dataset.do === "confirm-reject") decide(card, "reject", card.querySelector("select").value);
+  });
+  $("#approve-all").onclick = () => document.querySelectorAll(".dec").forEach(c => { if (!c.classList.contains("approved") && !c.classList.contains("rejected")) decide(c, "approve"); });
+  $("#reset-all").onclick = () => renderLoop(v);
+}
+
+// ---------- Enterprise view: the agent team, its decisions and their simulated quarterly impact ----------
+const AGENT_NAME = {growth_lead: "Growth lead", benchmark_analyst: "Benchmark analyst", demand_strategist: "Demand strategist",
+  customer_voice_analyst: "Customer voice analyst", media_budget_planner: "Media & budget planner", stakeholder_comms: "Stakeholder comms"};
+const M = n => n == null ? "–" : Math.abs(n) >= 1e6 ? "€" + (n / 1e6).toFixed(2) + "M" : Math.abs(n) >= 1e3 ? "€" + Math.round(n / 1e3) + "k" : "€" + fmt(n);
+const sM = n => n == null ? "–" : (n >= 0 ? "+" : "−") + M(Math.abs(n));
+function heatCell(v, lo, hi) {
+  if (v == null) return `<td class="num">–</td>`;
+  const t = Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
+  return `<td class="num" style="background:color-mix(in srgb, var(--good) ${Math.round(t * 38)}%, color-mix(in srgb, var(--bad) ${Math.round((1 - t) * 30)}%, transparent))">${fmt(v, 1)}</td>`;
+}
+function entDecision(d) {
+  const risk = {low: "good", medium: "warn", high: "bad"}[d.risk] || "muted", c = d.change || {};
+  return `<article class="card glass dec" data-id="${d.id}">
+    <div class="dec-h"><span class="rank">${d.rank}</span><div><h3>${esc(d.action)}</h3>
+    <div class="chips"><span class="chip ${risk}">${esc(d.risk)} risk</span><span class="chip muted">${esc(d.approver)} approves</span><span class="chip muted">${esc(d.type.replace(/_/g, " "))}</span>${d.confidence ? `<span class="chip muted">${esc(d.confidence)} confidence</span>` : ""}</div></div></div>
+    ${d.why ? `<p class="why">${esc(d.why)}</p>` : ""}
+    <dl class="dl"><dt>Will run</dt><dd><code>${esc(d.target || "—")}</code>${d.to ? ` → <code>${esc(d.to)}</code>` : ""}${d.pct ? ` <b>${d.pct > 0 ? "+" : ""}${fmt(d.pct, 0)}%</b>` : ""}${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</dd><dt>Undo</dt><dd>${esc(d.rollback)}</dd></dl>
+    <div class="act"><button class="btn primary" data-do="approve">Approve and run</button><button class="btn" data-do="reject">Reject</button></div>
+    <div class="out" hidden data-ok="${esc(JSON.stringify({exec: d.executed, c, sim: d.simulated, pct: d.change_pct}))}"></div></article>`;
+}
+function renderEnterpriseV1(v) {
+  const E = v.ent, I = E.impact, ch = I.change, cp = I.change_pct;
+  const roles = E.briefs.map((b, i) => `<button type="button" role="tab" data-i="${i}" aria-selected="${i === 0}">${esc(b.role)}</button>`).join("");
+  const mx = E.mroas, chans = E.channels, mk = Object.keys(mx);
+  let html = `<p><span class="chip">${esc(v.label)}</span> <span class="ev" style="color:var(--muted)">${esc(v.blurb)}</span></p>
+  <div class="grid kpis">
+    <div class="card kpi glass"><div class="l">Revenue, next quarter</div><div class="n pos">${sM(ch.revenue)}</div><span class="vs">${cp.revenue > 0 ? "+" : ""}${cp.revenue}% vs doing nothing (${M(I.as_is.revenue)} as-is)</span></div>
+    <div class="card kpi glass"><div class="l">Gross profit after marketing</div><div class="n pos">${sM(ch.gross_profit)}</div><span class="vs">${cp.gross_profit > 0 ? "+" : ""}${cp.gross_profit}% · spend ${cp.spend > 0 ? "+" : ""}${cp.spend}%</span></div>
+    <div class="card kpi glass"><div class="l">MER (revenue ÷ marketing)</div><div class="n">${fmt(I.as_is.mer, 2)} → ${fmt(I.with_decisions.mer, 2)}</div><span class="vs">CAC ${fmt(I.as_is.cac, 2)} → ${fmt(I.with_decisions.cac, 2)}</span></div>
+    <div class="card kpi glass"><div class="l">Agent team, per weekly run</div><div class="n">$${fmt(E.team_cost_usd, 2)}</div><span class="vs">${Math.round(E.team_seconds / 60)} min · ${E.agents.reduce((a, x) => a + x.tool_calls, 0)} tool calls · replaces ~${E.time.hours_per_week} h of team work a week (estimate)</span></div>
+  </div>
+  <p class="sub" style="margin:10px 2px 0">${esc(I.note)} Quarter from ${esc(I.from)}, ${I.days} days.</p>
+  <section class="section card glass"><h2>The team</h2><p class="sub">Each agent has one job and its own tools; all use the same engines (also available to any MCP client). The growth lead briefs the four specialists in parallel, weighs what they find and submits decisions; operations is the rule-based executor, not a model.</p>
+    <div class="agents-grid">${E.agents.map(a => `<div class="agent-card"><b>${esc(AGENT_NAME[a.role] || a.role)}</b><span>${a.turns} turns · ${a.tool_calls} tool calls · $${fmt(a.cost_usd, 2)}</span>${a.error ? `<span class="neg">${esc(a.error)}</span>` : ""}</div>`).join("")}
+      <div class="agent-card"><b>Operations</b><span>rules · executes only approved actions · audit and rollback</span></div></div>
+    ${Object.entries(E.specialists).map(([k, rs]) => rs.map(r => `<details class="more"><summary><b>${esc(AGENT_NAME[k])}</b>: ${esc(r.summary)}</summary>
+      <ul class="flist">${r.findings.map(f => `<li><span class="chip ${f.confidence === "high" ? "good" : f.confidence === "medium" ? "warn" : "muted"}">${esc(f.confidence)}</span> <b>${esc(f.market)}${f.line && f.line !== "all" ? " · " + esc(f.line) : ""}: ${esc(f.title)}</b>${f.money_at_stake_eur_per_month ? ` <span class="neg">${M(f.money_at_stake_eur_per_month)}/month</span>` : ""}<br><span class="ev">${esc(f.evidence)}</span></li>`).join("")}</ul>
+      ${r.not_problems.length ? `<p class="sub"><b>Not problems:</b> ${r.not_problems.map(esc).join(" · ")}</p>` : ""}
+      <p class="sub">Tools used: ${esc([...new Set(r.tool_calls)].join(", "))}</p></details>`).join("")).join("")}
+  </section>
+  <div class="grid two section"><div class="grid">
+    <div class="card glass"><h2>Decision inbox</h2><p class="sub">${esc(E.headline)}</p><p class="sub">Each decision runs once its owner approves it. Its figure is that decision alone over the quarter, simulated against doing nothing.</p>
+      <div class="act" style="margin:0"><button class="btn" id="approve-all" type="button">Approve all</button><button class="btn" id="reset-all" type="button">Reset</button></div></div>
+    ${E.decisions.map(entDecision).join("")}
+  </div><div class="grid">
+    <div class="card glass sticky"><h2>What each role receives</h2><p class="sub">Written by the stakeholder comms agent from the decisions and computed facts.</p>
+      <nav class="seg glass" id="roles" role="tablist" style="margin:0 0 12px">${roles}</nav><p id="rolebody" class="lead" style="font-weight:500"></p>
+      <h2 style="margin-top:16px">Revenue and marketing, by month</h2>${lineChart(E.monthly.map(r => ({...r, month: r.month})), ["revenue", "spend"], ["var(--accent)", "var(--warn)"])}
+      <div class="legend"><span><i style="background:var(--accent)"></i>revenue</span><span><i style="background:var(--warn)"></i>marketing spend</span></div></div>
+  </div></div>
+  <div class="grid two section">
+    <div class="card glass"><h2>Demand engine: potential vs captured</h2><p class="sub">Brand orders against category search interest, compared with peer markets adjusted for affluence and competition. Holdout accuracy: ${E.accuracy.mape_pct}% average error on ${E.accuracy.holdout_weeks} weeks it never saw.</p>
+      <div class="tw"><table><tr><th>Market · line</th><th class="num">Captured</th><th class="num">Gap, 8 weeks</th></tr>${E.potential.filter(p => !p.new_market).slice(0, 8).map(p => `<tr><td>${esc(p.market)} · ${esc(p.line)}</td><td class="num ${p.captured_share_of_potential_pct < 80 ? "neg" : ""}">${fmt(p.captured_share_of_potential_pct, 0)}%</td><td class="num">${M(p.gap_revenue)}</td></tr>`).join("")}</table></div>
+      <h2 style="margin-top:16px">Weather: rain lifts these lines most</h2><div class="tw"><table><tr><th>Market · line</th><th class="num">Rainy day effect</th><th class="num">95% range</th></tr>${E.rain.map(r => `<tr><td>${esc(r.market)} · ${esc(r.line)}</td><td class="num">${r.rain_effect_pct > 0 ? "+" : ""}${r.rain_effect_pct}%</td><td class="num">${r.rain_effect_range_pct.join(" to ")}%</td></tr>`).join("")}</table></div>
+      ${E.outlook.length ? `<p class="sub" style="margin-top:10px"><b>Next 14 days (real forecast):</b> ${E.outlook.slice(0, 4).map(o => `${esc(o.market)} ${esc(o.line)} ${o.rainy_days} rainy days, ${o.expected_uplift_pct > 0 ? "+" : ""}${o.expected_uplift_pct}%`).join(" · ")}</p>` : ""}</div>
+    <div class="card glass"><h2>Benchmark engine: outside the normal range</h2><p class="sub">Each market against its own last year and peers of similar profile, last 28 days.</p>
+      <div class="tw"><table><tr><th>Market</th><th>Metric</th><th class="num">Now</th><th class="num">Last year</th><th class="num">Peers</th></tr>${E.bench.map(b => `<tr><td>${esc(b.market)}</td><td>${esc(b.metric.replace(/_/g, " "))}</td><td class="num neg">${fmt(b.value, 1)}</td><td class="num">${fmt(b.same_period_last_year, 1)}</td><td class="num">${fmt(b.peer_range[0], 1)}–${fmt(b.peer_range[1], 1)}</td></tr>`).join("")}</table></div>
+      ${E.seasonal.map(b => `<p class="sub" style="margin-top:10px"><b>Not a problem:</b> ${esc(b.market)} revenue per day ${M(b.value)} vs ${M(b.previous_period)} the month before looks like a fall, but last year the same weeks were ${M(b.same_period_last_year)}: seasonal.</p>`).join("")}
+      <p class="sub"><b>Launch benchmark:</b> ${esc(E.launch_market)}, week ${E.launch.weeks_since_launch}: ${E.launch.share_of_earlier_median_pct ?? "–"}% of what earlier launches did at the same age.</p></div>
+  </div>
+  <div class="grid two section">
+    <div class="card glass"><h2>Customer voice engine</h2><p class="sub">${fmt(E.voc_count)} comments (NPS, exit survey, reviews, tickets) in 6 languages, labelled by Claude Haiku. Themes unusually frequent in a market, last 28 days.</p>
+      <div class="tw"><table><tr><th>Market · line</th><th>Theme</th><th class="num">Share</th><th class="num">Elsewhere</th></tr>${E.voc.map(g => `<tr><td>${esc(g.market)} · ${esc(g.line)}</td><td>${esc(g.theme.replace(/_/g, " "))}${g.new ? ' <span class="chip bad">new</span>' : ""}</td><td class="num neg">${g.share_pct}%</td><td class="num">${g.elsewhere_pct}%</td></tr>`).join("")}</table></div></div>
+    <div class="card glass">      <h2>What platforms claim vs first-party revenue (28 days)</h2><div class="tw"><table><tr><th>Channel</th><th class="num">Spend</th><th class="num">First-party ROAS</th><th class="num">Platform ROAS</th></tr>${E.platform.map(p => `<tr><td>${esc(p.channel.replace(/_/g, " "))}</td><td class="num">${M(p.spend)}</td><td class="num">${fmt(p.fp_roas, 2)}</td><td class="num">${fmt(p.platform_roas, 2)}</td></tr>`).join("")}</table></div></div>
+  </div>
+  <section class="section card glass"><h2>Budget engine: marginal ROAS by market and channel</h2><p class="sub">Revenue from the next euro, from the marketing-mix model (spend-weighted across lines). Green earns more than it costs; red is past saturation or mostly collects buyers who would come anyway.</p>
+      <div class="tw"><table class="heat"><tr><th>Market</th>${chans.map(c => `<th class="num">${esc(c.replace("meta_", "meta ").replace("google_", "g. ").replace(/_/g, " "))}</th>`).join("")}</tr>
+      ${mk.map(m => `<tr><td>${esc(m)}</td>${chans.map(c => heatCell(mx[m][c], 0, 4)).join("")}</tr>`).join("")}</table></div></section>
+  <section class="section card glass"><h2>Organic vs paid by market (28 days vs the 28 before)</h2><div class="tw"><table><tr><th>Market</th><th class="num">Revenue</th><th class="num">Organic</th><th class="num">Owned</th><th class="num">Paid</th><th class="num">Organic change</th><th class="num">Spend change</th><th class="num">MER</th></tr>
+    ${E.organic.map(o => `<tr><td>${esc(o.market)}</td><td class="num">${M(o.revenue)}</td><td class="num">${o.organic_pct}%</td><td class="num">${o.owned_pct}%</td><td class="num">${o.paid_pct}%</td><td class="num ${o.organic_change_pct < -10 ? "neg" : ""}">${fmt(o.organic_change_pct, 1)}%</td><td class="num">${fmt(o.spend_change_pct, 1)}%</td><td class="num">${fmt(o.mer, 1)}</td></tr>`).join("")}</table></div></section>
+  <div class="grid two section"><div class="card glass"><h2>Team time the system takes over (estimate)</h2><p class="sub">${esc(E.time.note)}</p><ul class="assume">${E.time.rows.map(r => `<li>${esc(r.task)}: <b>${r.hours_per_week} h</b>${r.basis ? ` (${esc(r.basis)})` : ""}</li>`).join("")}</ul></div>
+    <div class="card glass"><h2>What the simulation assumes</h2><ul class="assume">${E.assumptions.map(a => `<li>${esc(a)}</li>`).join("")}</ul><p class="sub" style="margin-top:8px">Sources: ${E.sources.map(s => esc(s.note)).filter(Boolean).join(" · ")}</p></div></div>`;
+  $("#view").innerHTML = html;
+  const showRole = i => { $("#rolebody").textContent = (E.briefs[i] || {}).message || ""; };
+  showRole(0);
+  if ($("#roles")) $("#roles").onclick = e => { const t = e.target.closest("button"); if (!t) return; document.querySelectorAll("#roles button").forEach(x => x.setAttribute("aria-selected", x === t)); showRole(+t.dataset.i); };
+  const decide = (card, how, reason) => {
+    const out = card.querySelector(".out"), d = JSON.parse(out.dataset.ok), c = d.c || {};
+    card.querySelector(".act").hidden = true; out.hidden = false; card.classList.toggle(how === "approve" ? "approved" : "rejected", true);
+    out.innerHTML = how === "approve" ? `<ol class="steps"><li class="info">Replay of the recorded run: what happened when the owner approved it in the sandbox</li><li class="ok">Guardrails checked: verified role, four eyes on risky changes, budget caps, kill switch</li>
+      ${(d.exec || []).map(e => `<li class="${e.status === "executed" ? "ok" : "no"}">${e.status === "executed" ? "Executed in the sandbox account: " : "Blocked: "}${esc(e.detail)}</li>`).join("")}
+      <li class="ok">Quarter simulated against doing nothing</li></ol>
+      ${d.sim ? `<div class="res"><div><span class="l">Revenue</span><b class="${c.revenue >= 0 ? "pos" : "neg"}">${sM(c.revenue)}</b></div><div><span class="l">Gross profit after marketing</span><b class="${c.gross_profit >= 0 ? "pos" : "neg"}">${sM(c.gross_profit)}</b></div><div><span class="l">Spend</span><b>${sM(c.spend)}</b></div></div>` : `<p class="sub">Executed and tracked; its effect is not simulated (see assumptions).</p>`}`
+      : `<ol class="steps"><li class="no">Rejected: “${esc(reason)}”</li><li class="ok">Nothing executed. The reason is stored and the next run reads it.</li>${d.sim ? `<li class="info">Doing nothing forgoes ${sM(c.gross_profit)} gross profit this quarter (simulated).</li>` : ""}</ol>`;
+  };
+  $("#view").addEventListener("click", e => {
+    const btn = e.target.closest("[data-do]"); if (!btn) return; const card = btn.closest(".dec");
+    if (btn.dataset.do === "approve") return decide(card, "approve");
+    if (btn.dataset.do === "reject") { const out = card.querySelector(".out"); out.hidden = false; out.innerHTML = `<div class="rej"><label>Why? The next run reads this.<select>${["Not now: a promotion is running", "Disagree with the evidence", "Too risky this quarter", "Already handled outside the system"].map(o => `<option>${o}</option>`).join("")}</select></label><button class="btn" data-do="confirm-reject">Confirm rejection</button></div>`; }
+    if (btn.dataset.do === "confirm-reject") decide(card, "reject", card.querySelector("select").value);
+  });
+  $("#approve-all").onclick = () => document.querySelectorAll(".dec").forEach(c => { if (!c.classList.contains("approved") && !c.classList.contains("rejected")) decide(c, "approve"); });
+  $("#reset-all").onclick = () => renderEnterprise(v);
+}
+
+{
+  const lastOf = (s, split) => DATA.evals.filter(x => x.scenario === s && (!split || x.split === split)).slice(-1)[0];
+  const team = lastOf("team-enterprise", "heldout"), sc = lastOf("showcase", "heldout");
+  const pills = [
+    team && [`${team.passed}/${team.criteria}`, `agent team, ${team.seeds.length} unseen businesses`],
+    sc && [`${sc.passed}/${sc.criteria}`, `analyst, ${sc.seeds.length} unseen businesses`],
+    ["0", "actions without human approval"],
+    ["3", "real public data sets, checked against source"],
+    ["real", "weather and holidays in the demand model"],
+  ].filter(Boolean);
+  $("#ribbon").innerHTML = pills.map(([b, t]) => `<div class="pill glass"><b>${esc(b)}</b><span>${esc(t)}</span></div>`).join("");
+}
+$("#meta").innerHTML = `Built ${esc(DATA.built)}<br>${DATA.views.length} data sets · ${DATA.evals.length} graded eval runs`;
+$("#tabs").innerHTML = DATA.views.map(v => `<button role="tab" data-id="${v.id}" type="button">${esc(v.title)}</button>`).join("");
+$("#tabs").onclick = e => { const b = e.target.closest("button"); if (b) { history.replaceState(null, "", "#" + b.dataset.id); render(b.dataset.id); } };
+let start = DATA.views[0].id; try { start = localStorage.getItem("gos-view") || start; } catch (e) {}
+if (location.hash && DATA.views.some(v => v.id === location.hash.slice(1))) start = location.hash.slice(1);
+addEventListener("hashchange", () => render(location.hash.slice(1)));
+setTimeout(function () { render(start); }, 0);
+
+const score = s => { const e = latest(s); return e ? `${e.passed}/${e.criteria} on seeds ${e.seeds.join(", ")}` : "–"; };
+$("#agents").innerHTML = [
+  ["Growth lead", "weekly", "Briefs the four specialists, weighs their findings, the hub (read-only SQL)", "Submits decisions; each is one catalogue action routed to its owner", "Team eval on unseen businesses"],
+  ["Benchmark analyst", "weekly", "Each market vs its last year, peers and earlier launches", "None: reports gaps", "Graded inside the team eval"],
+  ["Demand strategist", "weekly", "Category search interest, market profile, real weather, holidays, forecast", "None: reports demand gaps and outlook", "Engine holdout accuracy + team eval"],
+  ["Customer voice analyst", "weekly", "Survey, NPS, review and ticket themes (labelled by Claude Haiku)", "None: reports gaps", "Graded inside the team eval"],
+  ["Media & budget planner", "weekly", "Marketing-mix model, organic vs paid, platform claims, pacing", "None: proposes moves", "Engine checked against the simulation's truth"],
+  ["Stakeholder comms", "weekly", "Decisions and computed facts", "None: writes one message per role", "Numbers only from its input"],
+  ["Operations", "on approval", "Approved decisions", "Executes inside guardrails; audit and rollback", "Rules, not a model; unit tests"],
+].map(([n, cad, reads, may, ev]) => `<div class="card agent"><h3>${n} <span class="chip muted">${cad}</span></h3><dl><dt>Reads</dt><dd>${reads}</dd><dt>May do</dt><dd>${may}</dd><dt>Graded by</dt><dd>${ev}</dd></dl></div>`).join("");
+$("#evals").innerHTML = `<tr><th>When</th><th>Scenario</th><th>Seeds</th><th class="num">Criteria passed</th><th class="num">Mean cost (USD)</th></tr>` +
+  DATA.evals.map(e => `<tr><td>${esc(e.when.replace("T", " ").slice(0, 16))}</td><td>${esc(e.scenario)}</td><td>${e.seeds.join(", ")}</td><td class="num">${e.passed}/${e.criteria} (${Math.round(e.passed / e.criteria * 100)}%)</td><td class="num">${e.mean_cost_usd ?? "–"}</td></tr>`).join("");
+$("#foot").innerHTML = `Synthetic data and simulated outcomes are labelled as such. Real inputs: weather (Open-Meteo, CC BY 4.0), public holidays (Nager.Date), Olist marketing funnel, e-commerce and reviews (Kaggle, CC BY-NC-SA 4.0). No personal data is shown or stored.`;
+</script>
+</body>
+</html>
