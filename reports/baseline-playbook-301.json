@@ -1,0 +1,342 @@
+{
+ "decisions": {
+  "headline": "Engineering to fix the android checkout/payment step in Barcelona and Milan",
+  "data_sufficiency": {
+   "verdict": "solid",
+   "explanation": "Fixed thresholds over the hub's engines."
+  },
+  "kpis": [],
+  "findings": [
+   {
+    "title": "android checkout-to-order collapsed in Barcelona and Milan",
+    "evidence": "Barcelona 35.24% vs peers 61.91–62.11% (last year 62.01%); Milan 34.26% vs peers 61.91–62.11% (last year 61.42%)",
+    "confidence": "high"
+   },
+   {
+    "title": "Madrid Home edition sold out early",
+    "evidence": "MAD-HOM-E10 (Madrid · Home · Edition 11) sold out on 2026-10-21, edition runs to 2026-11-29, capacity 270",
+    "confidence": "high"
+   },
+   {
+    "title": "Late deliveries in London",
+    "evidence": "delivery_late 32.0% of 219 comments vs 5.4% elsewhere (was 4.9%), NPS -35.0",
+    "confidence": "high"
+   },
+   {
+    "title": "website ux complaints up in Lisbon",
+    "evidence": "website_ux 20.9% of 235 comments vs 4.1% elsewhere (was 6.5%), NPS -18.0",
+    "confidence": "low"
+   },
+   {
+    "title": "Organic search falling in Lisbon",
+    "evidence": "organic revenue -13.2% vs the period before and -21.4% vs last year, paid spend +10.2%, MER 4.82",
+    "confidence": "medium"
+   },
+   {
+    "title": "Creative fatigue on Meta prospecting, Berlin Beauty",
+    "evidence": "BER-BTY-META-PROSPECTING: frequency 2.39 → 5.11, clicks per 1,000 views 11.3 → 6.5",
+    "confidence": "high"
+   },
+   {
+    "title": "Meta prospecting past diminishing returns in Lisbon",
+    "evidence": "marginal ROAS below 1 where the mix model fits (r2 ≥ 0.6): Lisbon Gifts 0.94",
+    "confidence": "medium"
+   },
+   {
+    "title": "google_brand mostly collects buyers who would come anyway",
+    "evidence": "last-click ROAS 9.44 but model marginal ROAS median 0.27",
+    "confidence": "medium"
+   },
+   {
+    "title": "meta_retargeting claims far more than it adds",
+    "evidence": "platform ROAS 3.49 vs first-party 1.64, model marginal ROAS median 0.89",
+    "confidence": "medium"
+   },
+   {
+    "title": "Berlin Home sells more when it rains",
+    "evidence": "rain lifts orders 33.4% (95% range 30.3–36.5%)",
+    "confidence": "high"
+   },
+   {
+    "title": "London Home sells more when it rains",
+    "evidence": "rain lifts orders 31.5% (95% range 28.9–34.2%)",
+    "confidence": "high"
+   },
+   {
+    "title": "Paris Home sells more when it rains",
+    "evidence": "rain lifts orders 31.3% (95% range 28.6–34.1%)",
+    "confidence": "high"
+   },
+   {
+    "title": "Mexico City launch far behind earlier launches",
+    "evidence": "8 weeks in: €2,535/day vs earlier launches {'Miami': 36690, 'São Paulo': 50190}",
+    "confidence": "high"
+   },
+   {
+    "title": "Not a problem: New York: revenue down vs the previous 4 weeks but flat year over year (seasonal)",
+    "evidence": "New York: revenue down vs the previous 4 weeks but flat year over year (seasonal)",
+    "confidence": "medium"
+   }
+  ],
+  "recommendations": [
+   {
+    "action": "Engineering to fix the android checkout/payment step in Barcelona and Milan",
+    "why": "Barcelona 35.24% vs peers 61.91–62.11% (last year 62.01%); Milan 34.26% vs peers 61.91–62.11% (last year 61.42%)",
+    "expected_impact": "about €689,965 a month of revenue",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Barcelona' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "open_ticket",
+     "target": "engineering",
+     "note": "android checkout/payment failing in Barcelona and Milan: Barcelona 35.24% vs peers 61.91–62.11% (last year 62.01%); Milan 34.26% vs peers 61.91–62.11% (last year 61.42%)"
+    }
+   },
+   {
+    "action": "Apply the mix model's channel split across the portfolio (max ±25% per channel)",
+    "why": "the model fits well on 31 of 44 market-lines",
+    "expected_impact": "about €999,832 a month of revenue at the same spend",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 25,
+     "type": "apply_mix_plan",
+     "target": "all",
+     "note": "Move spend toward channels with higher marginal ROAS; each line's total unchanged."
+    }
+   },
+   {
+    "action": "SEO to find why organic search fell in Lisbon",
+    "why": "organic revenue -13.2% vs the period before and -21.4% vs last year, paid spend +10.2%, MER 4.82",
+    "expected_impact": "about €88,700 a month",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Lisbon' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "open_ticket",
+     "target": "seo",
+     "note": "Organic search sessions and revenue down in Lisbon (site change?): organic revenue -13.2% vs the period before and -21.4% vs last year, paid spend +10.2%, MER 4.82"
+    }
+   },
+   {
+    "action": "Logistics to fix late deliveries in London",
+    "why": "delivery_late 32.0% of 219 comments vs 5.4% elsewhere (was 4.9%), NPS -35.0",
+    "expected_impact": "about €80,316 a month of repeat revenue",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'London' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "open_ticket",
+     "target": "logistics",
+     "note": "Late deliveries in London: delivery_late 32.0% of 219 comments vs 5.4% elsewhere (was 4.9%), NPS -35.0"
+    }
+   },
+   {
+    "action": "Ops to restock Madrid Home (MAD-HOM-E10)",
+    "why": "MAD-HOM-E10 (Madrid · Home · Edition 11) sold out on 2026-10-21, edition runs to 2026-11-29, capacity 270",
+    "expected_impact": "about €8,375 a month",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Madrid' AND line = 'Home' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "open_ticket",
+     "target": "ops",
+     "note": "Sold out with weeks left: restock Madrid Home edition. MAD-HOM-E10 (Madrid · Home · Edition 11) sold out on 2026-10-21, edition runs to 2026-11-29, capacity 270"
+    }
+   },
+   {
+    "action": "Creative team to refresh the Meta prospecting creative in Berlin Beauty",
+    "why": "BER-BTY-META-PROSPECTING: frequency 2.39 → 5.11, clicks per 1,000 views 11.3 → 6.5",
+    "expected_impact": "about €7,594 a month of wasted spend",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Berlin' AND line = 'Beauty' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "open_ticket",
+     "target": "creative",
+     "note": "Creative fatigue, Berlin Beauty Meta prospecting ad: BER-BTY-META-PROSPECTING: frequency 2.39 → 5.11, clicks per 1,000 views 11.3 → 6.5"
+    }
+   },
+   {
+    "action": "Weather rule: +20% upper-funnel spend on rainy days for Berlin Home",
+    "why": "rain lifts orders 33.4% (95% range 30.3–36.5%)",
+    "expected_impact": "more orders on rainy days",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Berlin' AND line = 'Home' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 20,
+     "type": "weather_rule",
+     "target": "Berlin|Home",
+     "note": ""
+    }
+   },
+   {
+    "action": "Weather rule: +20% upper-funnel spend on rainy days for London Home",
+    "why": "rain lifts orders 31.5% (95% range 28.9–34.2%)",
+    "expected_impact": "more orders on rainy days",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'London' AND line = 'Home' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 20,
+     "type": "weather_rule",
+     "target": "London|Home",
+     "note": ""
+    }
+   },
+   {
+    "action": "Weather rule: +20% upper-funnel spend on rainy days for Paris Home",
+    "why": "rain lifts orders 31.3% (95% range 28.6–34.1%)",
+    "expected_impact": "more orders on rainy days",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Paris' AND line = 'Home' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 20,
+     "type": "weather_rule",
+     "target": "Paris|Home",
+     "note": ""
+    }
+   },
+   {
+    "action": "Tell leadership the Mexico City launch is behind and needs a trust plan",
+    "why": "8 weeks in: €2,535/day vs earlier launches {'Miami': 36690, 'São Paulo': 50190}",
+    "expected_impact": "not sized",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "the metric_sql value",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market = 'Mexico City' AND day > date((SELECT MAX(day) FROM sales_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "to_target": "",
+     "amount_pct": 0,
+     "type": "notify",
+     "target": "leadership",
+     "note": "Mexico City launch at 6.0% of earlier launches"
+    }
+   }
+  ],
+  "experiments": [],
+  "questions_for_owner": []
+ },
+ "routing": [
+  {
+   "rank": 1,
+   "action": "Engineering to fix the android checkout/payment step in Barcelona and Milan",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 2,
+   "action": "Apply the mix model's channel split across the portfolio (max ±25% per channel)",
+   "approver": "Leadership",
+   "risk": "high",
+   "type": "apply_mix_plan"
+  },
+  {
+   "rank": 3,
+   "action": "SEO to find why organic search fell in Lisbon",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 4,
+   "action": "Logistics to fix late deliveries in London",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 5,
+   "action": "Ops to restock Madrid Home (MAD-HOM-E10)",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 6,
+   "action": "Creative team to refresh the Meta prospecting creative in Berlin Beauty",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 7,
+   "action": "Weather rule: +20% upper-funnel spend on rainy days for Berlin Home",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 8,
+   "action": "Weather rule: +20% upper-funnel spend on rainy days for London Home",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 9,
+   "action": "Weather rule: +20% upper-funnel spend on rainy days for Paris Home",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 10,
+   "action": "Tell leadership the Mexico City launch is behind and needs a trust plan",
+   "approver": "Growth manager",
+   "risk": "low",
+   "type": "notify"
+  }
+ ],
+ "specialists": {},
+ "cost_usd": 0.0,
+ "seconds": 18,
+ "model": "none (rules)"
+}

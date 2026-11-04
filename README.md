@@ -155,6 +155,12 @@ flowchart LR
 
 Three kinds, each one stated for what it does and doesn't prove.
 
+**The agent team against simpler setups (held-out, 3 November 2026).** On the three businesses the team never saw, the team passed
+37/45 checks, one Claude call given every tool's output passed 35/45, and a fixed rules checklist with no model passed 39/45. Their
+simulated gross-profit gains overlap (+2.7% to +4.6%). The team does not beat the simpler setups on this benchmark: the shared engines
+and the approval loop do most of the work. A person re-graded the team's 45 checks: 41 passed against the AI grader's 37 (82%
+agreement, kappa 0.24). Details, and what this does and does not show: [docs/baselines.md](docs/baselines.md).
+
 **1. Graded against known answers, including held-out data.** Synthetic data with problems planted on purpose; a separate grader scores each memo against the answer key (`evals/analyst_eval.py`).
 
 **The headline scenario** is a consumer brand selling time-limited products online in **12 cities**, with Meta, Google and TikTok plus email, organic and direct: 60 weeks of daily data, so every number can be read against last year. Seven situations a multi-city growth team meets are planted, and two traps where the right answer is to stay quiet:
@@ -208,7 +214,7 @@ The first enterprise run across three seeds scored 21/24. Across 10 markets, som
 **Caveats, stated plainly:**
 - The fixes were scored on the seeds they were made for, so the final scores aren't independent evidence.
 - The grader is the same model family as the analyst.
-- Held-out evaluation and a check of the grader against human grading come next.
+- Held-out evaluation, a check of the grader against a person, and simpler baselines are in [docs/baselines.md](docs/baselines.md).
 
 **2. Real public data, checked against source.** The analyst was run, unchanged, on public datasets. Its key figures were then recomputed from the raw files with separate code, and every one matched ([docs/cases](docs/cases/README.md)).
 

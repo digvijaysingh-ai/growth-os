@@ -103,11 +103,12 @@ def _approve(work: Path, copy: Path, recs: list[dict], ids: set[int], start: dat
     return pol, ran
 
 
-def run(hub: Path, team_json: Path, days: int = 91, sim_dir: Path | None = None) -> dict:
+def run(hub: Path, team_json: Path, days: int = 91, sim_dir: Path | None = None, singles: bool = True) -> dict:
+    """singles=False skips pricing each decision alone and simulates only the quarter with every decision approved."""
     with _scratch(sim_dir, hub) as d:
         team, work, recs, until, start, seed = _prepare(hub, team_json, d)
         results = []
-        for r in recs:  # each decision alone: approve it in a copy, execute, simulate the quarter
+        for r in recs if singles else []:  # each decision alone: approve it in a copy, execute, simulate the quarter
             one = d / f"one-{r['id']}.sqlite"
             pol, ran = _approve(work, one, recs, {r["id"]}, start, seed)
             base = baseline(start)

@@ -1,0 +1,438 @@
+{
+ "decisions": {
+  "headline": "An iOS checkout failure in Madrid and Paris accounts for nearly all of their revenue drop: iOS checkout-to-order fell from about 62% to 35% in both cities, last year shows no such dip, and new payment complaints appeared at the same time. Together the two cities are down about €34.7k a day against the previous period, so engineering has to fix this before any budget change matters.",
+  "data_sufficiency": {
+   "verdict": "directional",
+   "explanation": "The checkout finding is solid. The drop is about 26 points on iOS in two markets, while peers and both cities last year sit near 62%, and there is an independent signal in the customer feedback (payment complaints 9.0% in Paris vs 1.1% before; 7.2% in Madrid vs 0.8% before; about 222 comments each). The budget evidence is only directional. The channel model fits well in about 30 of 44 market-lines (fit score r2 ≥0.6) but poorly in others (Paris Fashion 0.24, Paris Beauty 0.28, Madrid Fashion 0.31, Madrid Beauty 0.32, Milan Fashion 0.36). Miami's fit of about 0.99 rests on only 32 weeks, so it may be overfitted. Mexico City has no model, and the reallocation plan output was cut off after Berlin Gifts. Ad platforms claim more revenue than our own data shows (Meta retargeting ROAS 3.47 claimed vs 1.59 measured; YouTube 5.73 vs 2.98). NPS rests on 79–101 answers per market, so moves of ±10 points are within noise. The demand forecast is reliable: 8% average error, 81% of forecasts within 10%."
+  },
+  "kpis": [
+   {
+    "name": "Madrid revenue/day",
+    "value": "€49,423",
+    "previous": "€62,081",
+    "note": "-20%. Last year was €61,703, so this is not seasonal. Explained by the checkout drop."
+   },
+   {
+    "name": "Paris revenue/day",
+    "value": "€74,634",
+    "previous": "€96,713",
+    "note": "-23%. Last year was €99,967. Organic and paid revenue both fell about 21–25% while spend fell only 2%, which points to the site, not the media."
+   },
+   {
+    "name": "Madrid iOS checkout-to-order",
+    "value": "35.13%",
+    "previous": "61.85%",
+    "note": "Last year 61.77%; peers 61.7–62.3%. Android and desktop are not flagged."
+   },
+   {
+    "name": "Paris iOS checkout-to-order",
+    "value": "35.27%",
+    "previous": "61.63%",
+    "note": "Last year 61.42%. Same pattern as Madrid, which suggests one shared cause."
+   },
+   {
+    "name": "Madrid / Paris MER (revenue per € of marketing)",
+    "value": "5.70 / 7.06",
+    "previous": "7.03 / 8.97",
+    "note": "Efficiency fell because conversion broke, not because the media got worse."
+   },
+   {
+    "name": "Amsterdam revenue/day",
+    "value": "€35,151",
+    "previous": "€44,593",
+    "note": "Seasonal: last year was €35,916, and MER (4.84 vs 4.93 last year) and CPA (€26.04 vs €25.96) match last year. Not a problem."
+   },
+   {
+    "name": "Lisbon revenue/day",
+    "value": "€35,430",
+    "previous": "€35,452",
+    "note": "Below peers but flat on both the previous period and last year (€36,086). The market is simply smaller; it already captures 104–116% of its demand potential. Not a problem."
+   },
+   {
+    "name": "Berlin NPS / repeat share",
+    "value": "-48 / 8.36%",
+    "previous": "-10 / 11.79%",
+    "note": "Repeat share was 12.57% last year. Late-delivery complaints are at 27.7% vs 5.6% elsewhere."
+   },
+   {
+    "name": "Milan organic revenue share",
+    "value": "39.61%",
+    "previous": "42.69%",
+    "note": "44.75% last year. Organic revenue is -18.2% vs last year; website-usability complaints 12.6% vs 4.0%."
+   },
+   {
+    "name": "Mexico City revenue/day",
+    "value": "€38,381",
+    "previous": "€13,936",
+    "note": "New market, 8 weeks old, ramping up. At the same age it is at 27% of the median of earlier launches, and November spend is projected at only 63.6% of budget."
+   },
+   {
+    "name": "Miami revenue/day",
+    "value": "€33,710",
+    "previous": "€30,110",
+    "note": "Growing, but at 32 weeks it is at 44% of São Paulo at the same age. CPA €27.09 vs peers' €21.18."
+   }
+  ],
+  "findings": [
+   {
+    "title": "iOS checkout broken in Madrid and Paris (one shared cause)",
+    "evidence": "iOS checkout-to-order: Madrid 35.13% (previous 61.85%, last year 61.77%), Paris 35.27% (61.63%, last year 61.42%). All-device rate: Madrid 49.39% and Paris 49.32%, vs peers about 61.8%. Android and desktop show no departures. Payment complaints are new in both: Paris 9.0% (20 of 222) vs 1.1% before, Paris Home 11.7%; Madrid 7.2% (16 of 222) vs 0.8% before. Revenue/day vs previous period: Madrid -€12,658, Paris -€22,079, about €34.7k/day combined (about €1.04M a month if it continues). CPA rose: Madrid €23.84 vs €19.39, Paris €22.41 vs €17.12.",
+    "confidence": "high"
+   },
+   {
+    "title": "Spend is skewed toward low-return lower-funnel channels across the portfolio",
+    "evidence": "Extra revenue per extra € spent (marginal ROAS): Google brand search usually 0.02–0.87 and Meta retargeting 0.3–2.1, vs YouTube 2.4–9.98, TikTok 1.7–7.5 and creators 1.4–7.5. Platforms over-claim most on retargeting (3.47 claimed vs 1.59 in our own data). In the 14 good-fit lines visible in the plan (r2 0.60–0.99), the full plan is worth about €112k/week of revenue at the same budget (NY Fashion €10,824, NY Home €10,714, London Home €10,432, NY Gifts €9,636, SP Home €9,563, and so on).",
+    "confidence": "medium"
+   },
+   {
+    "title": "Miami is under-capturing demand, with a brand-trust problem",
+    "evidence": "Miami captures 69–76% of its search demand (peers about 100%). The demand gap totals €700k over 8 weeks across its 4 lines (Home €205,436, Fashion €168,732, Beauty €167,261, Gifts €158,963). Brand-trust complaints: 14.5% (33 of 228) vs 2.9% elsewhere, Beauty 16.7%. CPA €27.09 vs peers' €21.18. Revenue is 44% of São Paulo's at the same age. November spend is projected at only 81.8% of budget.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Milan organic decline with new website complaints",
+    "evidence": "Organic share 39.61% vs 44.75% last year (peers 44.6–45.0%). Organic revenue is -10.7% on the previous period and -18.2% on last year, while spend rose 5.1%. Website-usability complaints 12.6% (27 of 215) vs 4.0% elsewhere, 5.8% before; Gifts 17.0%. Organic revenue is about €560k per 4 weeks, so the gap vs last year is roughly €125k per 4 weeks.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Late deliveries in Berlin are hurting repeat purchases",
+    "evidence": "Late-delivery complaints 27.7% (62 of 224) vs 5.6% elsewhere, 6.2% before, across all 4 lines (26–29%). NPS -48 vs -10 (92 answers). Repeat share 8.36% vs 11.79% in the previous period and 12.57% last year. Revenue €1.50M per 4 weeks, so the 3.4-point drop is about €52k per 4 weeks.",
+    "confidence": "high"
+   },
+   {
+    "title": "Mexico City is underspending during its ramp-up",
+    "evidence": "November spend projected at 63.6% of the €260,000 budget (2.1% spent after 3.3% of the month). MER 8.41. At 8 weeks old it is at 27% of the median of earlier launches at the same age. It captures 72–75% of demand. There is no channel model yet.",
+    "confidence": "low"
+   },
+   {
+    "title": "Paris Gifts edition sold out with a month of the edition still to run",
+    "evidence": "PAR-GFT-E10 ('Edition 11', so the ID and name don't match) sold out on 2026-10-23. The edition ends 2026-11-29; capacity was 358 units. Paris Gifts captures 86% of demand (gap €198,997 over 8 weeks).",
+    "confidence": "medium"
+   },
+   {
+    "title": "Paris Beauty Meta prospecting ad is worn out",
+    "evidence": "Average views per person rose from 2.39 to 5.11 in 5 weeks, and clicks per 1,000 fell from 11.31 to 6.5. Spend €4,885 last week. Every other Meta prospecting ad holds at 1.9 views per person and about 12 clicks per 1,000. The ad ID from the fatigue query isn't in the ads table, so it can't be rotated automatically.",
+    "confidence": "high"
+   },
+   {
+    "title": "Amsterdam Gifts is under-captured while Amsterdam Beauty is past the point of good returns",
+    "evidence": "Amsterdam Gifts captures 78% of demand (gap €234,625 over 8 weeks), has a marginal ROAS of 1.83 (best line in Amsterdam) and a model fit of 0.944. Amsterdam Beauty has a marginal ROAS of 0.79 (lowest of all 44 lines) and already captures 104%. Gifts customers also ask for more range (13.1%, 8 of 61).",
+    "confidence": "medium"
+   },
+   {
+    "title": "Rain-sensitive Gifts and Home lines have a wet fortnight ahead",
+    "evidence": "São Paulo Gifts: rain lifts sales by 19.2% (range 13.9–24.8), 8 rainy days forecast for 2–15 Nov, about €41,549 of extra revenue expected, marginal ROAS 2.72. Rain hurts Fashion drops everywhere (-4% to -9%), so no rain rule there.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Noise and seasonal patterns, no action needed",
+    "evidence": "The Amsterdam dip matches last year (€35,151 vs €35,916 last year). Lisbon is flat on last year (its repeat share of 10.61% vs 10.98% last year is noise). NPS moves in London, New York, Mexico City and Amsterdam are within noise at about 80–100 answers. All other markets are on pace and inside their peer ranges.",
+    "confidence": "high"
+   }
+  ],
+  "recommendations": [
+   {
+    "action": "Open a P1 engineering ticket for the iOS checkout/payment failure in Madrid and Paris",
+    "why": "Since early October, iOS checkout-to-order has been about 35% in both cities against roughly 62% for peers and for both cities last year. Payment complaints are new at the same time. Both all-channel revenue and MER fell, so marketing cannot fix this.",
+    "expected_impact": "Restores about €34.7k/day of revenue (Madrid €12.7k, Paris €22.1k vs the previous period), roughly €1.04M a month, and brings MER back toward about 7.0 (Madrid) and 9.0 (Paris).",
+    "effort": "M",
+    "confidence": "high",
+    "how_to_measure": "iOS checkout-to-order rate in Madrid and Paris, daily, should return to about 61–62%. Also watch revenue per day against the previous-period baseline.",
+    "metric_sql": "SELECT 100.0*SUM(orders)/NULLIF(SUM(checkouts),0) AS value FROM funnel_daily WHERE market IN ('Madrid','Paris') AND device='ios' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 7,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "engineering",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "P1 – Markets: Madrid and Paris. iOS checkout-to-order fell to 35.13% (Madrid) and 35.27% (Paris), from 61.85% and 61.63%. Last year it was about 61.5–61.8%, and peers (Barcelona, Berlin, Milan, London, New York) are at about 62%. Android and desktop are unaffected. New payment complaints: Paris 9.0% of comments (20 of 222, vs 1.1% before), Paris Home 11.7%; Madrid 7.2% (16 of 222, vs 0.8% before). Revenue/day is down €12.7k in Madrid and €22.1k in Paris. Please check any payment-provider, Apple Pay or 3DS changes deployed to the ES/FR storefronts in late September or early October, and check iOS Safari checkout errors."
+    }
+   },
+   {
+    "action": "Apply the channel-mix model's split across the portfolio, capped at 25% per channel, keeping each line's total budget unchanged",
+    "why": "Across the well-fitting lines the model consistently shows Google brand search and Meta retargeting with low marginal returns (often under 1) and YouTube, TikTok and creators with high ones (3–10). Our own first-party data confirms the platforms over-claim retargeting. This is one portfolio decision, not a few hand-picked lines.",
+    "expected_impact": "About €112k/week of revenue (about €480k a month) at full plan in the 14 visible good-fit lines alone. With the 25% cap, expect a fraction of that in month one, with no extra spend.",
+    "effort": "M",
+    "confidence": "medium",
+    "how_to_measure": "First-party paid revenue divided by paid spend across the markets in scope, 28 days before vs after, plus branded search volume as a guardrail.",
+    "metric_sql": "SELECT SUM(revenue)*1.0/NULLIF(SUM(spend),0) AS value FROM ad_daily WHERE market <> 'Mexico City' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "apply_mix_plan",
+     "target": "all",
+     "to_target": "",
+     "amount_pct": 25,
+     "note": "Apply to lines with model fit (r2) ≥0.6, where the fit is good: New York Home/Fashion/Gifts, London Home/Fashion/Gifts/Beauty, São Paulo all 4, Barcelona Home/Fashion/Gifts, Berlin Home/Fashion/Gifts, Madrid Gifts, Paris Gifts, Lisbon Home/Fashion/Gifts, Milan Home/Gifts, Amsterdam all 4. Hold Mexico City (no model) and the poor-fit lines: Paris Fashion 0.24, Paris Beauty 0.28, Madrid Fashion 0.31, Madrid Beauty 0.32, Milan Fashion 0.36, Berlin Beauty 0.42, Paris Home 0.52, NY Beauty 0.54, Lisbon Beauty 0.54, Barcelona Beauty 0.55, Madrid Home 0.57, Milan Beauty 0.58. Apply Miami at half the cap: its 32-week fit is probably too optimistic. Each line keeps its total; no channel moves more than 25%. Needs leadership approval."
+    }
+   },
+   {
+    "action": "Test trust signals in Miami checkout (reviews, returns guarantee, secure-payment badges, US contact details)",
+    "why": "Miami captures only 69–76% of its demand (a €700k gap over 8 weeks), and brand-trust complaints are 5x the rate elsewhere (14.5% vs 2.9%). Its CPA of €27.09 is the highest of its peers. Adding spend won't fix trust; a test shows whether trust content does.",
+    "expected_impact": "A 3-point lift in checkout-to-order (about 62% to 65%) would add about 5% to Miami orders, around €7k a week, and would also start closing the €87k/week demand gap.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Checkout-to-order rate, variant vs control, in Miami. About 4,034 checkouts per version are needed (detecting 62% vs 65% with 80% power at the 5% significance level).",
+    "metric_sql": "SELECT 100.0*SUM(orders)/NULLIF(SUM(checkouts),0) AS value FROM funnel_daily WHERE market='Miami' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "launch_ab_test",
+     "target": "checkout",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Market: Miami only. Version B adds customer reviews and ratings, a clear returns and delivery guarantee, secure-payment and US-payment badges, and US customer-service contact details on the product page and checkout. Control is the current page. Primary metric is checkout-to-order; secondary is CPA. Run for at least 2 weeks to cover full weekly cycles."
+    }
+   },
+   {
+    "action": "Open a ticket for Milan website usability and organic search",
+    "why": "Milan's organic revenue is down 18.2% on last year and its organic share is 39.6% vs 44.6–45.0% for peers, while complaints about website usability tripled (12.6% vs 4.0%). Paid spend is up 5.1% and is papering over the gap.",
+    "expected_impact": "Recovers part of the roughly €125k per 4 weeks of organic revenue lost against last year.",
+    "effort": "M",
+    "confidence": "medium",
+    "how_to_measure": "Milan's organic revenue share, back toward about 44–45%.",
+    "metric_sql": "SELECT 100.0*SUM(CASE WHEN channel_group='organic' THEN revenue ELSE 0 END)/NULLIF(SUM(revenue),0) AS value FROM sales_daily WHERE market='Milan' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "seo",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Market: Milan. Organic revenue share is 39.61% vs 42.69% in the previous period and 44.75% last year; organic revenue is -10.7% on the previous period and -18.2% on last year. Website-usability complaints are 12.6% (27 of 215) vs 4.0% elsewhere and 5.8% before; Milan Gifts is at 17.0%. Please check for recent site or Italian-locale releases, indexing and crawl errors, page speed, and broken navigation on Gifts. Copy to engineering."
+    }
+   },
+   {
+    "action": "Ask the Paid media manager to fix Mexico City spend delivery",
+    "why": "Mexico City is projected to spend only 63.6% of its €260k November budget while running a MER of 8.41. The market is ramping up (8 weeks old, 72–75% demand capture), so the unspent budget is lost reach. Miami is also behind pace (81.8%).",
+    "expected_impact": "Puts roughly €95k of unspent November budget to work in the market with the highest blended return among the new launches.",
+    "effort": "S",
+    "confidence": "low",
+    "how_to_measure": "Mexico City's projected share of monthly budget spent, toward about 95–100%, with MER held above about 7.",
+    "metric_sql": "SELECT SUM(spend) AS value FROM ad_daily WHERE market='Mexico City' AND day > date((SELECT MAX(day) FROM ad_daily), '-7 days')",
+    "check_after_days": 7,
+    "direction": "up",
+    "execution": {
+     "type": "notify",
+     "target": "channel_manager",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Mexico City: 2.1% of the €260,000 November budget spent after 3.3% of the month, projected 63.6%. MER is 8.41. Please check daily caps, bid limits, audience size and review status, and raise delivery to plan. Miami is also behind at a projected 81.8% of €264,000."
+    }
+   },
+   {
+    "action": "Open a logistics ticket for late deliveries in Berlin",
+    "why": "Late-delivery complaints jumped to 27.7% (vs 5.6% elsewhere) across all Berlin lines, NPS fell to -48 and repeat share fell to 8.36% from 12.57% last year. This is an operations problem, not a marketing one.",
+    "expected_impact": "Recovers about 3.4 points of repeat share, roughly €52k of revenue per 4 weeks, and halts the NPS slide.",
+    "effort": "M",
+    "confidence": "high",
+    "how_to_measure": "Berlin's repeat-order share, back toward about 12%, and the share of late-delivery complaints.",
+    "metric_sql": "SELECT 100.0*SUM(repeat_orders)/NULLIF(SUM(orders),0) AS value FROM sales_daily WHERE market='Berlin' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "logistics",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Market: Berlin. Late-delivery complaints are 27.7% (62 of 224) vs 5.6% in other markets and 6.2% before, across all lines (Fashion 29.3%, Beauty 28.6%, Gifts 26.8%, Home 25.9%). NPS is -48 vs -10 (92 answers). Repeat share is 8.36% vs 11.79% in the previous period and 12.57% last year. Please check carrier and warehouse SLA changes and set realistic delivery promises on the site until fixed."
+    }
+   },
+   {
+    "action": "Raise upper-funnel spend in São Paulo Gifts by 30% on rainy days",
+    "why": "Rain clearly lifts São Paulo Gifts sales (+19.2%, range 13.9–24.8%). 8 of the next 14 days are forecast rainy, and the line's marginal ROAS of 2.72 is among the highest in the portfolio.",
+    "expected_impact": "Captures more of the €41,549 of rain-driven demand expected for 2–15 Nov.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "São Paulo Gifts revenue on rainy days vs the demand forecast (8% average error), over 14 days.",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM sales_daily WHERE market='São Paulo' AND line='Gifts' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "weather_rule",
+     "target": "São Paulo|Gifts",
+     "to_target": "",
+     "amount_pct": 30,
+     "note": "On days with rain in the forecast, raise São Paulo Gifts Meta prospecting, TikTok, YouTube and creators spend by 30%. Rain effect +19.2% [13.9, 24.8]; 8 rainy days forecast 2–15 Nov; €41,549 of extra revenue expected."
+    }
+   },
+   {
+    "action": "Open an ops ticket to restock or replace the sold-out Paris Gifts edition",
+    "why": "PAR-GFT-E10 sold out on 23 Oct but the edition runs to 29 Nov, during the gifting season, in a line already capturing only 86% of demand. Ads are probably still sending traffic to a product that can't be bought.",
+    "expected_impact": "Protects part of Paris Gifts' roughly €113k weekly revenue and its €199k demand gap over 8 weeks.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Paris Gifts revenue per day over the next 14 days, compared with the demand forecast.",
+    "metric_sql": "SELECT SUM(revenue)/14.0 AS value FROM sales_daily WHERE market='Paris' AND line='Gifts' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "ops",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Market: Paris. Product PAR-GFT-E10 ('Paris · Gifts · Edition 11'; please check the ID/name mismatch) sold out on 2026-10-23 with a capacity of 358 units, but the edition runs to 2026-11-29. Please restock if possible. If not, swap ad and site landing pages to an available Gifts edition, and fix the catalogue ID."
+    }
+   },
+   {
+    "action": "Increase Amsterdam Gifts paid spend by 15%",
+    "why": "Amsterdam Gifts captures 78% of demand vs peers (a €234,625 gap over 8 weeks). It has the best marginal ROAS in Amsterdam (1.83) and a reliable model fit (0.944). The Amsterdam market-level dip is seasonal; this line-level gap is not.",
+    "expected_impact": "About €1,927/week more spend at a marginal ROAS of 1.83, roughly €3.5k/week of revenue. It is funded by the Amsterdam Beauty cut below, so the market total stays flat.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Amsterdam Gifts revenue and orders per 1,000 category searches, toward the peer level of 24.88.",
+    "metric_sql": "SELECT SUM(revenue)*1.0/NULLIF(SUM(spend),0) AS value FROM ad_daily WHERE market='Amsterdam' AND line='Gifts' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "change_line_budget",
+     "target": "Amsterdam|Gifts",
+     "to_target": "",
+     "amount_pct": 15,
+     "note": "Amsterdam Gifts +15% (weekly spend €12,849, so about +€1,927). Funded by Amsterdam Beauty -15%. Note: customers also ask for more range (13.1%), so supply may limit the upside."
+    }
+   },
+   {
+    "action": "Cut Amsterdam Beauty paid spend by 15% to fund Amsterdam Gifts",
+    "why": "Amsterdam Beauty has the lowest marginal ROAS of all 44 lines (0.79), so the last euro returns less than it costs, and the line already captures 104% of its demand potential.",
+    "expected_impact": "About €2,008/week less spend for an expected loss of about €1.6k/week of revenue, more than offset by the Amsterdam Gifts increase.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Amsterdam Beauty revenue per € of spend should rise while its revenue holds within about 4%.",
+    "metric_sql": "SELECT SUM(revenue)*1.0/NULLIF(SUM(spend),0) AS value FROM ad_daily WHERE market='Amsterdam' AND line='Beauty' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "change_line_budget",
+     "target": "Amsterdam|Beauty",
+     "to_target": "",
+     "amount_pct": -15,
+     "note": "Amsterdam Beauty -15% (weekly spend €13,386, so about -€2,008). Marginal ROAS 0.79; captures 104% of demand. Pairs with Amsterdam Gifts +15%."
+    }
+   },
+   {
+    "action": "Replace the worn-out creative on Paris Beauty Meta prospecting (manual: the ad ID isn't in the ads table)",
+    "why": "Average views per person more than doubled (2.39 to 5.11) and clicks per 1,000 fell 43% (11.31 to 6.5), while every other prospecting ad is stable at 1.9 views and about 12 clicks per 1,000.",
+    "expected_impact": "Recovers click-through on about €4,885/week of spend.",
+    "effort": "S",
+    "confidence": "high",
+    "how_to_measure": "Clicks per 1,000 impressions on Paris Beauty Meta prospecting, back toward about 11–12.",
+    "metric_sql": "SELECT 1000.0*SUM(clicks)/NULLIF(SUM(impressions),0) AS value FROM ad_daily WHERE market='Paris' AND line='Beauty' AND channel='meta_prospecting' AND day > date((SELECT MAX(day) FROM ad_daily), '-7 days')",
+    "check_after_days": 7,
+    "direction": "up",
+    "execution": {
+     "type": "manual",
+     "target": "",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Paris Beauty Meta prospecting (the fatigue query calls it PAR-BTY-META-PROSPECTING, an ID not found in the ads table): average views per person 2.39 to 5.11 in 5 weeks; clicks per 1,000 11.31 to 6.5; €4,885 spent last week. The Paid media manager should find the live ad, pause the worn-out creative, load a fresh Beauty asset and cap frequency at about 2.5. Also fix the ID mapping between the fatigue query and the ads table."
+    }
+   }
+  ],
+  "experiments": [
+   {
+    "hypothesis": "Visible trust signals cut Miami's brand-trust objection (14.5% of comments vs 2.9% elsewhere) and lift checkout completion.",
+    "variant": "Miami product page and checkout with reviews and ratings, a returns and delivery guarantee, secure and US-payment badges, and US contact details.",
+    "metric": "checkout_to_order_pct (Miami); secondary: CPA",
+    "sample_per_version": 4034,
+    "weeks_at_current_traffic": 2
+   }
+  ],
+  "questions_for_owner": [
+   "Did a payment, Apple Pay or 3DS change ship to the Spanish and French storefronts in late September or early October? The iOS drop is identical in Madrid and Paris.",
+   "Can Paris Gifts Edition 11 (PAR-GFT-E10) be restocked before 29 Nov, and why does the product ID say E10?",
+   "Has Berlin changed carrier or warehouse recently?",
+   "Was there a site release, redesign or Italian-locale change in Milan in the last two months?",
+   "Is Mexico City's underspend deliberate (caps or a test phase) or a delivery problem?",
+   "Can we get the full reallocation plan for the lines after Berlin Gifts (the output was cut off) before leadership signs off the portfolio mix change?",
+   "Does Amsterdam Gifts have more editions available to meet unmet demand? Customers ask for more range.",
+   "The Meta ad IDs in the fatigue query (e.g. PAR-BTY-META-PROSPECTING) don't match the ads table. Which naming is correct?"
+  ]
+ },
+ "routing": [
+  {
+   "rank": 1,
+   "action": "Open a P1 engineering ticket for the iOS checkout/payment failure in Madrid and Paris",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 2,
+   "action": "Apply the channel-mix model's split across the portfolio, capped at 25% per channel, keeping each line's total budget unchanged",
+   "approver": "Leadership",
+   "risk": "high",
+   "type": "apply_mix_plan"
+  },
+  {
+   "rank": 3,
+   "action": "Test trust signals in Miami checkout (reviews, returns guarantee, secure-payment badges, US contact details)",
+   "approver": "Growth manager",
+   "risk": "low",
+   "type": "launch_ab_test"
+  },
+  {
+   "rank": 4,
+   "action": "Open a ticket for Milan website usability and organic search",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 5,
+   "action": "Ask the Paid media manager to fix Mexico City spend delivery",
+   "approver": "Growth manager",
+   "risk": "low",
+   "type": "notify"
+  },
+  {
+   "rank": 6,
+   "action": "Open a logistics ticket for late deliveries in Berlin",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 7,
+   "action": "Raise upper-funnel spend in São Paulo Gifts by 30% on rainy days",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 8,
+   "action": "Open an ops ticket to restock or replace the sold-out Paris Gifts edition",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 9,
+   "action": "Increase Amsterdam Gifts paid spend by 15%",
+   "approver": "Growth manager",
+   "risk": "medium",
+   "type": "change_line_budget"
+  },
+  {
+   "rank": 10,
+   "action": "Cut Amsterdam Beauty paid spend by 15% to fund Amsterdam Gifts",
+   "approver": "Growth manager",
+   "risk": "medium",
+   "type": "change_line_budget"
+  },
+  {
+   "rank": 11,
+   "action": "Replace the worn-out creative on Paris Beauty Meta prospecting (manual: the ad ID isn't in the ads table)",
+   "approver": "Growth manager",
+   "risk": "low",
+   "type": "manual"
+  }
+ ],
+ "specialists": {},
+ "cost_usd": 1.834,
+ "seconds": 355,
+ "model": "claude-opus-5-5",
+ "error": "",
+ "turns": 3
+}

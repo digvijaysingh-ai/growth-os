@@ -9,6 +9,7 @@ reports/*
 !reports/team-eval-301.json
 !reports/team-eval-302.json
 !reports/team-eval-303.json
+!reports/baseline-*-30[123].json
 .venv/
 __pycache__/
 *.pyc

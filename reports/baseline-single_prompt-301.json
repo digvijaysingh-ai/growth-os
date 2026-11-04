@@ -1,0 +1,457 @@
+{
+ "decisions": {
+  "headline": "Android checkout broke in Barcelona and Milan: only about 35% of Android checkouts become orders, against about 62% last period, last year and in peer cities. That costs roughly €440k of revenue a month and is the biggest problem to fix this week; the next biggest lever is moving spend out of brand search and retargeting into TikTok, YouTube, creators and affiliates.",
+  "data_sufficiency": {
+   "verdict": "solid",
+   "explanation": "The data supports the main decisions well. Funnel data by device covers 4 weeks against last period, last year and 4 peer cities. Customer feedback has about 220–235 comments per market, and the gaps reported are significant (p≈0). The channel model has 60 weeks of history in 9 markets, 42 in São Paulo and 32 in Miami. The demand forecast is accurate: 6.4% average error, with 82% of forecasts within 10%. Limits: (1) there is no margin data, so gross profit can't be calculated and all money figures are revenue; (2) the channel model fits poorly (r2 below 0.6) in about a dozen lines, and Mexico City has no model at all; (3) the platforms claim more revenue than our own first-party data shows (TikTok 5.71 vs 3.27, YouTube 5.74 vs 2.92, Meta retargeting 3.49 vs 1.64), so gains should be judged on first-party numbers; (4) NPS rests on only 83–101 answers per market, so swings like Amsterdam (-23 to -2) and Mexico City (-32 to 1) are mostly noise; (5) the reallocation plan table is cut off after Paris Beauty."
+  },
+  "kpis": [
+   {
+    "name": "Milan revenue per day",
+    "value": "€44,274",
+    "previous": "€52,012 (last year €51,371)",
+    "note": "Down 15% and below the peer range (€52,453–56,021). The cause is the checkout break, not demand: Milan's 96–97% demand capture runs before the drop in orders per checkout."
+   },
+   {
+    "name": "Barcelona orders per checkout, Android",
+    "value": "35.24%",
+    "previous": "62.80% (last year 62.01%)",
+    "note": "Peers are 61.91–62.11%. iOS and desktop were not flagged, so the problem is Android only."
+   },
+   {
+    "name": "Milan orders per checkout, Android",
+    "value": "34.26%",
+    "previous": "62.46% (last year 61.42%)",
+    "note": "Same pattern as Barcelona, in the same period."
+   },
+   {
+    "name": "Orders per checkout, all devices, Barcelona / Milan",
+    "value": "54.0% / 53.07%",
+    "previous": "62.29% / 62.02%",
+    "note": "Peer median is 61.97%."
+   },
+   {
+    "name": "Lisbon return on marketing spend (revenue ÷ marketing cost)",
+    "value": "4.82",
+    "previous": "5.58 (last year 5.64)",
+    "note": "Spend is up 10.2% while organic revenue is down 13.2% (down 21.4% vs last year)."
+   },
+   {
+    "name": "Lisbon organic share of revenue",
+    "value": "37.19%",
+    "previous": "40.76% (last year 42.49%)",
+    "note": "Peers are 44.34–44.35%. Complaints about the website are new: 20.9% of comments vs 6.5% before."
+   },
+   {
+    "name": "London repeat-customer share",
+    "value": "8.87%",
+    "previous": "12.17% (last year 12.77%)",
+    "note": "Late-delivery complaints are at 32% vs 5.4% elsewhere. NPS fell from -7 to -35."
+   },
+   {
+    "name": "New York cost per order",
+    "value": "€21.54",
+    "previous": "€16.40 (last year €22.28)",
+    "note": "This is seasonal: it matches last year, and organic revenue is only 2.5% below last year. No action."
+   },
+   {
+    "name": "Mexico City revenue per day (launch, week 8)",
+    "value": "€2,535 now (€10,416 4-week average)",
+    "previous": "€3,255 (previous period average)",
+    "note": "6% of what Miami (€36,690) and São Paulo (€50,190) made at the same age. On pace to spend only 30.3% of its €260k November budget."
+   },
+   {
+    "name": "November paid budget, all markets",
+    "value": "€3.336M",
+    "previous": "n/a in pack",
+    "note": "Pacing is on plan except Mexico City (30.3%), London (90.9%) and New York (93.9%)."
+   }
+  ],
+  "findings": [
+   {
+    "title": "Android checkout failure in Barcelona and Milan is the biggest money leak",
+    "evidence": "Android orders per checkout: Barcelona 35.24% vs 62.80% last period and 62.01% last year; Milan 34.26% vs 62.46% and 61.42%. Peers are 61.91–62.11%. All-device rate is 54.0% and 53.07% vs a 61.97% peer median. 'Payment problem' complaints are new: Milan 9.7% (22/227, was 2.8%), Milan Beauty 14.3% (8/56), Barcelona 8.3% (19/229, was 1.4%). Milan revenue per day fell from €52,012 to €44,274 (about €217k per 4 weeks). Milan cost per order rose from €21.30 to €25.15. Barcelona organic revenue is down 12.1% and paid down 14.5% while spend fell only 3.7%. My estimate from the drop in orders per checkout is about €8.0k a day lost in Barcelona and €7.5k in Milan, about €440k a month in total.",
+    "confidence": "high"
+   },
+   {
+    "title": "Lisbon: website experience and organic traffic are both declining while paid spend rises",
+    "evidence": "Website complaints are new: 20.9% of comments (49/235) vs 6.5% before and 4.1% elsewhere; Gifts 29.3% (17/58), Beauty 20.3% (12/59). Organic revenue is down 13.2% on last period and 21.4% on last year. Organic share is 37.19% vs peers at 44.3%. Paid spend is up 10.2%, and return on marketing spend fell from 5.58 to 4.82. Revenue per day is €34,063 vs €37,931 last year. Lost organic revenue is about €54k per 4 weeks vs last period and about €97k vs last year. Demand capture is still 101–106%, so search interest is fine; visitors are being lost on the site.",
+    "confidence": "high"
+   },
+   {
+    "title": "London deliveries are late, and repeat buying and NPS have dropped",
+    "evidence": "Late-delivery complaints are at 32% (70/219) vs 4.9% before and 5.4% elsewhere. By line: Fashion drops 42.3% (22/52), Home 34.5%, Beauty 28.6%, Gifts 23.2%. NPS fell from -7 to -35 (84 answers). Repeat-customer share fell from 12.17% to 8.87% (last year 12.77%); on €3.008M of 4-week revenue that is roughly €99k per 4 weeks. Total revenue is still holding (organic -1.8%), so the risk is lost future customers.",
+    "confidence": "high"
+   },
+   {
+    "title": "Brand search and retargeting earn the least per extra euro; TikTok, YouTube, creators and affiliates earn the most",
+    "evidence": "Brand search returns €0.00–0.78 per extra euro across all lines, even though its first-party return is 9.44, which mostly reflects people who would have bought anyway. Retargeting returns €0.30–2.78 per extra euro, and its platform figure (3.49) overstates first-party (1.64). TikTok returns 2.0–10.3 and YouTube 2.0–7.8 per extra euro. On the visible good-fit lines (r2 ≥ 0.6, 14 lines), the full plan would add about €104k a week (London Home €10,039, New York Home €9,837, São Paulo Home €9,034, …). Treat this as an upper bound.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Madrid Beauty captures only 75% of its search demand; the problem is the product range, not media",
+    "evidence": "It converts 16.17 orders per 1,000 category searches vs a peer rate of 21.63. That gap is 8,602 orders, or €352,941, over 8 weeks. Customers asking for more range make up 15.6% of comments (10/64) vs 3.3% elsewhere, and this is long-standing (14.6% before). Madrid NPS fell from -15 to -23. Return per extra euro is middling at 1.72, so extra media would not close the gap.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Mexico City launch is far behind earlier launches and is not spending its budget",
+    "evidence": "At 8 weeks it makes €2,535 a day, 6% of the median of earlier launches. Each line captures only 49–52% of its search demand; the combined gap across 4 lines is €374k over 8 weeks. Cost per order is €38.87 vs a €18.46 peer median. Brand-trust comments are 13.0% (29/223) vs 2.5% elsewhere. It is on pace to spend 30.3% of a €260k November budget, leaving about €181k unspent. There is no channel model yet, so the data does not justify putting more media in.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Lisbon Beauty loses money on extra spend",
+    "evidence": "It returns €0.82 per extra euro, the lowest of all 48 lines, on €12,601 a week. Brand search returns 0.00, generic search 0.44 and Meta prospecting 0.76. Model fit is weak (r2 0.447), but every channel returns little.",
+    "confidence": "medium"
+   },
+   {
+    "title": "Rain lifts Home sales clearly; other lines barely or not at all",
+    "evidence": "Measured rain effect on Home: Paris +31.3% (range 28.6–34.1), London +31.5%, Berlin +33.4%, São Paulo +15.1% (9.9–20.5), Madrid +16.0%. Fashion drops fall in rain everywhere (-2.5% to -6.7%). Forecast for 2–15 Nov: São Paulo Home 8 rainy days (+€39,558), Paris Home 2 rainy days (+€39,729). The demand model's average error is 6.4%.",
+    "confidence": "high"
+   },
+   {
+    "title": "Meta prospecting ad fatigue in Berlin Beauty",
+    "evidence": "Berlin Beauty Meta prospecting: frequency rose from 2.39 to 5.11 in 5 weeks and clicks per 1,000 impressions fell from 11.3 to 6.5, on €3,532 last week. All other Meta prospecting ads are steady at 1.9 frequency and about 12 clicks per 1,000. The fatigue query's ad ID (BER-BTY-META-PROSPECTING) does not exist in the ads table, so the rotation can't run automatically.",
+    "confidence": "high"
+   },
+   {
+    "title": "Seasonal or noise only, no action needed",
+    "evidence": "New York: revenue down 24% on last period, but cost per order €21.54 vs €22.28 last year and organic only 2.5% below last year, so this is the usual seasonal dip. Amsterdam, Berlin, Paris, Miami and São Paulo are within ±3% on organic and paid. The NPS jumps in Amsterdam (-23 to -2) and Mexico City (-32 to 1) rest on about 86 answers each, which is within noise. London (90.9%) and New York (93.9%) are slightly underspending, which is not a problem.",
+    "confidence": "high"
+   },
+   {
+    "title": "Madrid Home edition sold out early",
+    "evidence": "MAD-HOM-E10 sold out on 2026-10-21, but the edition runs to 2026-11-29 (capacity 270). Madrid Home spends €18,444 a week, and 7 rainy days are forecast (+8% demand expected, +€19,916).",
+    "confidence": "medium"
+   }
+  ],
+  "recommendations": [
+   {
+    "action": "Open a P1 engineering ticket for the Android checkout/payment failure in Barcelona and Milan",
+    "why": "Android orders per checkout halved (35.24% in Barcelona, 34.26% in Milan vs about 62% last period, last year and in peers), and 'payment problem' complaints appeared at the same time. Marketing cannot fix this. Each day costs an estimated €15k across both markets.",
+    "expected_impact": "Bringing Android back to about 62% recovers an estimated €8.0k a day in Barcelona and €7.5k a day in Milan, about €440k a month in revenue. Milan's cost per order should return from €25.15 toward €21.",
+    "effort": "M",
+    "confidence": "high",
+    "how_to_measure": "Android orders per checkout in Barcelona and Milan over a rolling 14 days, target ≥60%. Secondary: Milan revenue per day back toward €52k.",
+    "metric_sql": "SELECT 100.0*SUM(orders)/NULLIF(SUM(checkouts),0) AS value FROM funnel_daily WHERE market IN ('Barcelona','Milan') AND device='android' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 7,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "engineering",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "P1, Barcelona and Milan, Android checkout. Android orders per checkout, 2026-10-05 to 11-01: Barcelona 35.24% (previous 62.80%, last year 62.01%), Milan 34.26% (previous 62.46%, last year 61.42%). Peers Madrid, Berlin and Amsterdam are about 62%; iOS and desktop are not affected. New 'payment problem' complaints: Milan 9.7% (22/227), Milan Beauty 14.3%, Barcelona 8.3% (19/229). Please check Android payment methods and recent releases or payment-provider changes in ES/IT, and test the full Android checkout end to end in both markets. Estimated cost: about €440k revenue a month."
+    }
+   },
+   {
+    "action": "Apply the channel model's reallocation across the portfolio, capped at 25% per channel, only on lines where the model fits well",
+    "why": "In 14 visible lines with r2 ≥ 0.6, the model consistently says brand search (0.1–0.8 per extra euro) and retargeting (0.5–2.8) are overfunded, and TikTok, YouTube, creators and affiliates (3–10) are underfunded. Each line's total stays the same, so revenue rises from the same budget, which is what leadership asked for.",
+    "expected_impact": "The full plan on visible good-fit lines adds about €104k a week; the 25% cap and platform over-claiming mean the real gain will be a fraction of that. It keeps the €3.336M budget flat.",
+    "effort": "M",
+    "confidence": "medium",
+    "how_to_measure": "First-party return on spend (all order revenue ÷ paid spend) over 14 days vs the 14 days before, with Barcelona, Milan and Mexico City excluded. Also check that brand-search order volume does not fall.",
+    "metric_sql": "SELECT (SELECT SUM(revenue) FROM orders WHERE market NOT IN ('Barcelona','Milan','Mexico City') AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market NOT IN ('Barcelona','Milan','Mexico City') AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) AS value",
+    "check_after_days": 21,
+    "direction": "up",
+    "execution": {
+     "type": "apply_mix_plan",
+     "target": "all",
+     "to_target": "",
+     "amount_pct": 25,
+     "note": "Portfolio reallocation toward the highest return per extra euro, each line's total unchanged, max 25% move per channel. Apply only where model r2 ≥ 0.6. Hold the low-fit lines: Madrid Beauty 0.402, Milan Beauty 0.377, Lisbon Beauty 0.447, Barcelona Fashion 0.436, Milan Fashion 0.468, Amsterdam Beauty 0.509, Madrid Home 0.514, Paris Beauty 0.539, Berlin Beauty 0.562, Barcelona Beauty 0.573, Paris Fashion 0.576, London Fashion 0.595, London Beauty 0.596. Mexico City has no model. Main moves: cut brand search (about -45% planned) and retargeting; raise TikTok, YouTube, creators and affiliates (about +60% planned). Judge results on first-party revenue, because platforms over-claim (TikTok 5.71 vs 3.27)."
+    }
+   },
+   {
+    "action": "Open a product ticket on the Madrid Beauty range gap",
+    "why": "Madrid Beauty converts only 75% of the search demand its peers convert (16.17 vs 21.63 orders per 1,000 searches), a gap of 8,602 orders or €352,941 in 8 weeks. 15.6% of comments ask for more range. Its return per extra euro (1.72) is not high enough to close this with media.",
+    "expected_impact": "Closing even part of the gap is worth up to about €176k a month in revenue.",
+    "effort": "L",
+    "confidence": "medium",
+    "how_to_measure": "Madrid Beauty orders per 1,000 category searches; as a proxy, Madrid Beauty orders over a rolling 28 days.",
+    "metric_sql": "SELECT COUNT(*) AS value FROM orders WHERE market='Madrid' AND line='Beauty' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 56,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "product",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Madrid, Beauty line. Converts 16.17 orders per 1,000 category searches vs a peer rate of 21.63 (75% of potential); gap of 8,602 orders / €352,941 over 8 weeks. 'Wants more range' comments are 15.6% (10/64) vs 3.3% elsewhere, persistent (14.6% before). NPS fell from -15 to -23. Please review edition depth, range and size of drops for Madrid Beauty against peers."
+    }
+   },
+   {
+    "action": "Open an engineering/SEO ticket for the Lisbon website experience and organic decline",
+    "why": "Website complaints jumped to 20.9% (Gifts 29.3%), organic revenue is down 21.4% on last year, and return on marketing spend fell from 5.58 to 4.82 while paid spend rose 10.2% to make up for it.",
+    "expected_impact": "Recovering organic to last year's level is worth about €54–97k per 4 weeks, and Lisbon's return on spend should move back toward about 5.6.",
+    "effort": "M",
+    "confidence": "high",
+    "how_to_measure": "Lisbon organic share of revenue over 14 days, target back toward 42%.",
+    "metric_sql": "SELECT 100.0*SUM(CASE WHEN channel_group='organic' THEN revenue ELSE 0 END)/NULLIF(SUM(revenue),0) AS value FROM orders WHERE market='Lisbon' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 21,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "engineering",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Lisbon site. Website complaints are new: 20.9% of comments (49/235) vs 6.5% before and 4.1% elsewhere; Gifts 29.3% (17/58), Beauty 20.3%. Organic revenue -13.2% on last period and -21.4% on last year; organic share 37.19% vs peers at 44.3%. Search demand is intact (capture 101–106%). Please check recent PT site changes, page speed, broken templates and indexing/SEO (lost rankings or redirects), and fix the UX issues on Gifts and Beauty pages first."
+    }
+   },
+   {
+    "action": "Open a logistics ticket for late deliveries in London",
+    "why": "32% of London comments are about late delivery (vs 5.4% elsewhere), new this period. NPS fell from -7 to -35, and repeat-customer share fell from 12.17% to 8.87% (last year 12.77%).",
+    "expected_impact": "Restoring repeat share is worth about €99k per 4 weeks of revenue, and protects London's €3.0M per 4 weeks.",
+    "effort": "M",
+    "confidence": "high",
+    "how_to_measure": "London repeat-customer share over 28 days, target back toward 12%.",
+    "metric_sql": "SELECT 100.0*SUM(CASE WHEN is_repeat=1 THEN 1 ELSE 0 END)/NULLIF(COUNT(*),0) AS value FROM orders WHERE market='London' AND day > date((SELECT MAX(day) FROM ad_daily), '-28 days')",
+    "check_after_days": 28,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "logistics",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "London, all lines. Late-delivery complaints 32% (70/219) vs 4.9% before and 5.4% elsewhere; Fashion drops 42.3%, Home 34.5%, Beauty 28.6%, Gifts 23.2%. NPS -35 (was -7). Repeat-customer share 8.87% vs 12.17% last period and 12.77% last year. Please check carrier performance and any carrier or warehouse change in London since early October, then fix delivery promises on site and contact affected customers."
+    }
+   },
+   {
+    "action": "Send leadership a launch review for Mexico City: budget is unspent and the launch is at 6% of the benchmark",
+    "why": "At week 8, Mexico City makes €2,535 a day, against €36,690 (Miami) and €50,190 (São Paulo) at the same age. Cost per order is €38.87, there are brand-trust complaints (13%), and it will spend only 30.3% of €260k. There is no channel model, so adding media isn't supported.",
+    "expected_impact": "A decision on about €181k of unspent November budget, and a trust/conversion plan aimed at the €374k (8-week) demand gap.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Mexico City revenue per day over 14 days.",
+    "metric_sql": "SELECT SUM(revenue)/14.0 AS value FROM orders WHERE market='Mexico City' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "notify",
+     "target": "leadership",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Mexico City launch, week 8: revenue €2,535 a day = 6% of Miami/São Paulo at the same age. Each line captures 49–52% of search demand (gap €374k over 8 weeks). Cost per order €38.87 vs €18.46 for peers. Brand-trust comments 13.0% (29/223). November pacing 30.3% of €260k (about €181k unspent). Proposal: fix trust first (local reviews, payment methods, delivery promise; test on checkout), build a channel model, and decide whether to release the unspent budget or keep it held back. No extra media until conversion improves."
+    }
+   },
+   {
+    "action": "Cut Lisbon Beauty paid spend by 20%",
+    "why": "It returns €0.82 per extra euro, the lowest of all 48 lines and below break-even on revenue alone. Lisbon spend rose 10.2% while its return on marketing spend fell.",
+    "expected_impact": "Frees about €2,520 a week (about €10.9k a month) while losing at most about €2k a week of revenue at €0.82 per euro. The freed budget funds São Paulo Home.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Lisbon return on marketing spend over 14 days (revenue ÷ marketing cost), should rise from 4.82, with Lisbon Beauty revenue roughly flat.",
+    "metric_sql": "SELECT (SELECT SUM(revenue) FROM orders WHERE market='Lisbon' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Lisbon' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) AS value",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "change_line_budget",
+     "target": "Lisbon|Beauty",
+     "to_target": "",
+     "amount_pct": -20,
+     "note": "Lisbon Beauty: €0.82 per extra euro (lowest of 48 lines) on €12,601 a week; brand search 0.00, generic search 0.44, Meta prospecting 0.76. Cut 20% (about €2,520 a week), funding the São Paulo Home increase."
+    }
+   },
+   {
+    "action": "Raise São Paulo Home paid spend by 15%, funded by the Lisbon Beauty cut",
+    "why": "It has the highest return per extra euro in the portfolio (3.81 blended, TikTok 10.29), with near-perfect model fit (r2 0.988). It already captures 99% of demand, so the gain depends on the model rather than unmet demand.",
+    "expected_impact": "About €2,195 a week more spend at about 3.8 per euro, roughly €8k a week more revenue at the margin. Net spend change with Lisbon Beauty is close to zero.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "São Paulo Home revenue over 14 days vs the prior 14 days.",
+    "metric_sql": "SELECT SUM(revenue) AS value FROM orders WHERE market='São Paulo' AND line='Home' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "change_line_budget",
+     "target": "São Paulo|Home",
+     "to_target": "",
+     "amount_pct": 15,
+     "note": "São Paulo Home: 3.81 per extra euro blended (highest of 48 lines), TikTok 10.29, YouTube 7.80, r2 0.988. +15% (about €2,195 a week), funded by Lisbon Beauty -20% (about €2,520 a week)."
+    }
+   },
+   {
+    "action": "Add a rain rule for São Paulo Home: +20% upper-funnel spend on rainy days",
+    "why": "Rain lifts sales by 15.1% (range 9.9–20.5, clearly positive). 8 rainy days are forecast for 2–15 Nov, worth an expected +€39,558, and this line has the highest return per extra euro.",
+    "expected_impact": "Captures more of the expected €39.6k rain uplift over the next 2 weeks.",
+    "effort": "S",
+    "confidence": "high",
+    "how_to_measure": "São Paulo Home revenue per day over 14 days, compared on rainy vs dry days.",
+    "metric_sql": "SELECT SUM(revenue)/14.0 AS value FROM orders WHERE market='São Paulo' AND line='Home' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "weather_rule",
+     "target": "São Paulo|Home",
+     "to_target": "",
+     "amount_pct": 20,
+     "note": "Rain effect +15.1% (9.9–20.5) over 300 days. 8 rainy days forecast for 2–15 Nov. Upper-funnel channels (TikTok 10.29, YouTube 7.80, creators 5.90 per extra euro) get +20% on rain days."
+    }
+   },
+   {
+    "action": "Add a rain rule for Paris Home: +20% upper-funnel spend on rainy days",
+    "why": "Rain lifts sales by 31.3% (range 28.6–34.1), one of the strongest effects measured. Return per extra euro is 2.6 (creators 5.62, YouTube 5.11). Expected +€39,729 in the next 2 weeks.",
+    "expected_impact": "Captures more of the expected €39.7k rain uplift; the rule keeps working in the wetter weeks after this forecast.",
+    "effort": "S",
+    "confidence": "high",
+    "how_to_measure": "Paris Home revenue per day over 14 days.",
+    "metric_sql": "SELECT SUM(revenue)/14.0 AS value FROM orders WHERE market='Paris' AND line='Home' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "weather_rule",
+     "target": "Paris|Home",
+     "to_target": "",
+     "amount_pct": 20,
+     "note": "Rain effect +31.3% (28.6–34.1) over 434 days. 2 rainy days forecast for 2–15 Nov, expected +€39,729. Upper funnel: creators 5.62, YouTube 5.11, TikTok 4.81 per extra euro."
+    }
+   },
+   {
+    "action": "Open an ops ticket for the sold-out Madrid Home edition and repoint its ads",
+    "why": "MAD-HOM-E10 sold out on 21 Oct but the edition runs to 29 Nov. Madrid Home spends €18,444 a week, and rainy days are expected to lift demand 8% (+€19,916).",
+    "expected_impact": "Avoids paying for clicks to a sold-out product and lets the line capture the rain uplift.",
+    "effort": "S",
+    "confidence": "medium",
+    "how_to_measure": "Madrid Home revenue per paid euro over 14 days.",
+    "metric_sql": "SELECT (SELECT SUM(revenue) FROM orders WHERE market='Madrid' AND line='Home' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) / (SELECT SUM(spend) FROM ad_daily WHERE market='Madrid' AND line='Home' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')) AS value",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "ops",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Madrid, Home: edition MAD-HOM-E10 ('Madrid · Home · Edition 11', capacity 270) sold out on 2026-10-21, but the edition ends 2026-11-29. Please confirm whether a restock or next drop is possible, and make sure paid ads and landing pages point to in-stock Madrid Home editions (line spend €18,444 a week; 7 rainy days forecast, +€19,916 expected)."
+    }
+   },
+   {
+    "action": "Ask the creative team for a replacement Berlin Beauty Meta prospecting creative, and have the paid media manager pause the fatigued ad by hand",
+    "why": "Frequency more than doubled (2.39 to 5.11) and clicks per 1,000 impressions fell from 11.3 to 6.5; all other Meta prospecting ads are steady. The fatigue query's ad ID is not in the ads table, so rotate_creative cannot run automatically.",
+    "expected_impact": "Stops wasting about €3.5k a week; clicks per 1,000 in Berlin Beauty Meta prospecting should return toward about 11–12.",
+    "effort": "S",
+    "confidence": "high",
+    "how_to_measure": "Clicks per 1,000 impressions for Berlin Beauty Meta prospecting over 14 days.",
+    "metric_sql": "SELECT 1000.0*SUM(clicks)/NULLIF(SUM(impressions),0) AS value FROM ad_daily WHERE market='Berlin' AND line='Beauty' AND channel='meta_prospecting' AND day > date((SELECT MAX(day) FROM ad_daily), '-14 days')",
+    "check_after_days": 14,
+    "direction": "up",
+    "execution": {
+     "type": "open_ticket",
+     "target": "creative",
+     "to_target": "",
+     "amount_pct": 0,
+     "note": "Berlin, Beauty, Meta prospecting: creative fatigue. Frequency 2.39 to 5.11 over 5 weeks; clicks per 1,000 impressions from 11.3 to 6.5; €3,532 spend last week. Please deliver a fresh Beauty prospecting concept for Berlin. The paid media manager should pause the current ad by hand: the fatigue query's ID BER-BTY-META-PROSPECTING does not match the ads table."
+    }
+   }
+  ],
+  "experiments": [
+   {
+    "hypothesis": "In Mexico City, adding trust signals at checkout (local reviews, delivery promise, recognised local payment logos) will raise orders per checkout. Brand-trust complaints are 13% vs 2.5% elsewhere, and cost per order is €38.87 vs €18.46 for peers.",
+    "variant": "Version B: the Mexico City checkout shows a review score with local review count, a dated delivery promise, and local payment-method badges above the pay button.",
+    "metric": "Orders per checkout (Mexico City)",
+    "sample_per_version": 4034,
+    "weeks_at_current_traffic": 6.2
+   }
+  ],
+  "questions_for_owner": [
+   "What is the gross margin by line and market? Without it I can rank only by revenue, not gross profit, and judge Lisbon Beauty's €0.82 return only against revenue.",
+   "Was there an Android app release, payment-provider change or new payment method in Spain/Italy around early October? That would point engineering straight at the Barcelona/Milan checkout break.",
+   "Did anything change on the Lisbon site in the last 4–8 weeks (redesign, CMS or domain migration, new Gifts/Beauty templates)?",
+   "Did London change carrier, warehouse or delivery promise in October?",
+   "For Mexico City: is the €260k November budget committed, or can the about €181k likely to go unspent be released or held back? And what was the launch plan's revenue target at week 8?",
+   "Can Madrid Home edition E10/11 be restocked before 29 Nov, or is there a next Madrid Home drop the ads should point to?",
+   "What are the real ad IDs for Berlin Beauty Meta prospecting? The fatigue query returned an ID that is not in the ads table.",
+   "The reallocation plan table was cut off after Paris Beauty. Can the media planner send the remaining lines so the portfolio move can be checked line by line?"
+  ]
+ },
+ "routing": [
+  {
+   "rank": 1,
+   "action": "Open a P1 engineering ticket for the Android checkout/payment failure in Barcelona and Milan",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 2,
+   "action": "Apply the channel model's reallocation across the portfolio, capped at 25% per channel, only on lines where the model fits well",
+   "approver": "Leadership",
+   "risk": "high",
+   "type": "apply_mix_plan"
+  },
+  {
+   "rank": 3,
+   "action": "Open a product ticket on the Madrid Beauty range gap",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 4,
+   "action": "Open an engineering/SEO ticket for the Lisbon website experience and organic decline",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 5,
+   "action": "Open a logistics ticket for late deliveries in London",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 6,
+   "action": "Send leadership a launch review for Mexico City: budget is unspent and the launch is at 6% of the benchmark",
+   "approver": "Growth manager",
+   "risk": "low",
+   "type": "notify"
+  },
+  {
+   "rank": 7,
+   "action": "Cut Lisbon Beauty paid spend by 20%",
+   "approver": "Growth manager",
+   "risk": "medium",
+   "type": "change_line_budget"
+  },
+  {
+   "rank": 8,
+   "action": "Raise São Paulo Home paid spend by 15%, funded by the Lisbon Beauty cut",
+   "approver": "Growth manager",
+   "risk": "medium",
+   "type": "change_line_budget"
+  },
+  {
+   "rank": 9,
+   "action": "Add a rain rule for São Paulo Home: +20% upper-funnel spend on rainy days",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 10,
+   "action": "Add a rain rule for Paris Home: +20% upper-funnel spend on rainy days",
+   "approver": "Paid media manager",
+   "risk": "low",
+   "type": "weather_rule"
+  },
+  {
+   "rank": 11,
+   "action": "Open an ops ticket for the sold-out Madrid Home edition and repoint its ads",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  },
+  {
+   "rank": 12,
+   "action": "Ask the creative team for a replacement Berlin Beauty Meta prospecting creative, and have the paid media manager pause the fatigued ad by hand",
+   "approver": "Product / engineering owner",
+   "risk": "low",
+   "type": "open_ticket"
+  }
+ ],
+ "specialists": {},
+ "cost_usd": 1.934,
+ "seconds": 390,
+ "model": "claude-opus-5-5",
+ "error": "",
+ "turns": 3
+}

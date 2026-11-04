@@ -3,6 +3,7 @@
     python evals/human_grading.py build   # writes evals/human/grading.html: memos + criteria, AI verdicts hidden
     (open it, mark each criterion pass/fail, press "Export", save the file as evals/human/grades.json)
     python evals/human_grading.py score   # agreement between you and the AI grader, per criterion and overall
+    python evals/human_grading.py team    # the same for the agent team's held-out run (evals/human/team-heldout-grades.json)
 
 Memos are drawn from the latest b2c and enterprise result files so the sample covers both scenarios.
 """
@@ -80,5 +81,25 @@ def score() -> None:
     (OUT / "agreement.json").write_text(json.dumps({"agree": agree, "total": total, "by_criterion": by}, indent=1))
 
 
+def team() -> dict:
+    """Agreement on the team's held-out checks: the person's verdict per seed:criterion against the AI grader's."""
+    human = json.loads((OUT / "team-heldout-grades.json").read_text())
+    ai = {f"{r['seed']}:{g['criterion']}": g["pass"] for r in json.loads((ROOT / human["source"]).read_text())["runs"] for g in r["grades"]}
+    keys = sorted(set(ai) & set(human["grades"]))
+    h, a = [human["grades"][k] for k in keys], [ai[k] for k in keys]
+    n, agree = len(keys), sum(x == y for x, y in zip(h, a))
+    p_h, p_a = sum(h) / n, sum(a) / n
+    chance = p_h * p_a + (1 - p_h) * (1 - p_a)
+    out = {"checks": n, "human_pass": sum(h), "ai_pass": sum(a), "agree": agree,
+           "kappa": round((agree / n - chance) / (1 - chance), 2),
+           "ai_stricter": [k for k in keys if human["grades"][k] and not ai[k]],
+           "ai_more_lenient": [k for k in keys if ai[k] and not human["grades"][k]]}
+    print(f"team held-out: person {out['human_pass']}/{n}, AI grader {out['ai_pass']}/{n}, agree {agree}/{n}, kappa {out['kappa']}")
+    print("  AI stricter:", ", ".join(out["ai_stricter"]) or "none")
+    print("  AI more lenient:", ", ".join(out["ai_more_lenient"]) or "none")
+    (OUT / "team-agreement.json").write_text(json.dumps(out, indent=1))
+    return out
+
+
 if __name__ == "__main__":
-    {"build": lambda: print(build()), "score": score}[sys.argv[1] if len(sys.argv) > 1 else "build"]()
+    {"build": lambda: print(build()), "score": score, "team": team}[sys.argv[1] if len(sys.argv) > 1 else "build"]()

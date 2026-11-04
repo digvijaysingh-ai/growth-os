@@ -1,0 +1,19 @@
+{
+ "checks": 45,
+ "human_pass": 41,
+ "ai_pass": 37,
+ "agree": 37,
+ "kappa": 0.24,
+ "ai_stricter": [
+  "301:meta_saturation",
+  "301:seo_drop",
+  "302:demand_gap",
+  "302:meta_saturation",
+  "302:seo_drop",
+  "303:meta_saturation"
+ ],
+ "ai_more_lenient": [
+  "302:sized_in_money",
+  "303:brand_search_cannibalisation"
+ ]
+}
