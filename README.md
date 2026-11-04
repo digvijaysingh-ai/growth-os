@@ -241,7 +241,7 @@ holdout plan, and every assumption the simulation makes. Outcomes in the public 
 
 ## Modules
 
-Built on the "AI marketing engineer" roadmap: every module answers the same questions (problem, decision, KPI, evidence).
+Every module answers the same questions: problem, decision, KPI, evidence.
 
 | Module | Problem it solves | Decision it enables | KPI it moves | Status |
 |---|---|---|---|---|
@@ -292,7 +292,7 @@ Details: [governance](docs/governance.md) · [architecture](docs/architecture.md
 
 ```bash
 uv venv --python 3.12 && uv pip install -e . pytest
-pytest -q                                                    # 35 tests, no API calls
+pytest -q                                                    # 63 tests (2 need Node), no API calls
 python -m growth_os.showcase state/showcase-7.sqlite 7       # synthetic 12-city business with behaviour data
 growth-os analyse --hub state/showcase-7.sqlite --period-days 28 --name memo-showcase-7   # needs Claude credentials
 growth-os loop --hub state/showcase-7.sqlite --memo reports/memo-showcase-7.json --out reports/loop-showcase-7.json
